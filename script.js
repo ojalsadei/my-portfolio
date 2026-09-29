@@ -58,9 +58,11 @@ if (reducedMotion.matches) {
 
   revealElements.forEach(
     (element) => {
+
       revealObserver.observe(
         element
       );
+
     }
   );
 
@@ -78,6 +80,7 @@ window.addEventListener(
     if (reducedMotion.matches) {
       return;
     }
+
 
     const heroElements =
       document.querySelectorAll(
@@ -289,9 +292,13 @@ if (
 
 
       if (isOpen) {
+
         closeMobileMenu();
+
       } else {
+
         openMobileMenu();
+
       }
 
     }
@@ -306,7 +313,9 @@ if (
         link.addEventListener(
           'click',
           () => {
+
             closeMobileMenu();
+
           }
         );
 
@@ -321,7 +330,9 @@ if (
       if (
         event.key === 'Escape'
       ) {
+
         closeMobileMenu();
+
       }
 
     }
@@ -335,7 +346,9 @@ if (
       if (
         window.innerWidth > 760
       ) {
+
         closeMobileMenu();
+
       }
 
     },
@@ -454,21 +467,56 @@ const copyButtons =
   );
 
 
-const copyText =
+/*
+  Modern clipboard first.
+  If the browser blocks it,
+  automatically use the legacy
+  selection-based fallback.
+*/
+
+const copyWithFallback =
   async (value) => {
+
+    /*
+      Method 1:
+      Modern Clipboard API
+    */
 
     if (
       navigator.clipboard &&
-      window.isSecureContext
+      typeof navigator.clipboard.writeText ===
+        'function'
     ) {
 
-      await navigator.clipboard.writeText(
-        value
-      );
+      try {
 
-      return;
+        await navigator.clipboard.writeText(
+          value
+        );
+
+        return true;
+
+      } catch (error) {
+
+        /*
+          Don't stop here.
+
+          Some desktop browsers expose
+          navigator.clipboard but block
+          writeText depending on permissions.
+
+          Continue to the fallback.
+        */
+
+      }
+
     }
 
+
+    /*
+      Method 2:
+      Hidden textarea fallback
+    */
 
     const textarea =
       document.createElement(
@@ -476,7 +524,8 @@ const copyText =
       );
 
 
-    textarea.value = value;
+    textarea.value =
+      value;
 
 
     textarea.setAttribute(
@@ -485,8 +534,42 @@ const copyText =
     );
 
 
+    textarea.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+
     textarea.style.position =
       'fixed';
+
+
+    textarea.style.top =
+      '0';
+
+
+    textarea.style.left =
+      '-9999px';
+
+
+    textarea.style.width =
+      '1px';
+
+
+    textarea.style.height =
+      '1px';
+
+
+    textarea.style.padding =
+      '0';
+
+
+    textarea.style.border =
+      '0';
+
+
+    textarea.style.outline =
+      '0';
 
 
     textarea.style.opacity =
@@ -502,15 +585,39 @@ const copyText =
     );
 
 
+    textarea.focus();
+
+
     textarea.select();
 
 
-    document.execCommand(
-      'copy'
+    textarea.setSelectionRange(
+      0,
+      textarea.value.length
     );
 
 
+    let copied = false;
+
+
+    try {
+
+      copied =
+        document.execCommand(
+          'copy'
+        );
+
+    } catch (error) {
+
+      copied = false;
+
+    }
+
+
     textarea.remove();
+
+
+    return copied;
 
   };
 
@@ -518,7 +625,8 @@ const copyText =
 copyButtons.forEach(
   (button) => {
 
-    let resetTimer = null;
+    let resetTimer =
+      null;
 
 
     button.addEventListener(
@@ -543,11 +651,25 @@ copyButtons.forEach(
         }
 
 
+        const originalText =
+          'Copy';
+
+
         try {
 
-          await copyText(
-            value
-          );
+          const copied =
+            await copyWithFallback(
+              value
+            );
+
+
+          if (!copied) {
+
+            throw new Error(
+              'Copy failed'
+            );
+
+          }
 
 
           button.classList.add(
@@ -574,16 +696,21 @@ copyButtons.forEach(
 
 
                 feedback.textContent =
-                  'Copy';
+                  originalText;
 
               },
               1400
             );
 
-        } catch {
+        } catch (error) {
+
+          button.classList.remove(
+            'is-copied'
+          );
+
 
           feedback.textContent =
-            'Copy failed';
+            'Try again';
 
 
           window.clearTimeout(
@@ -596,7 +723,7 @@ copyButtons.forEach(
               () => {
 
                 feedback.textContent =
-                  'Copy';
+                  originalText;
 
               },
               1400
@@ -626,13 +753,15 @@ if (
   !reducedMotion.matches
 ) {
 
-  let ticking = false;
+  let ticking =
+    false;
 
 
   const updatePhoneParallax =
     () => {
 
-      ticking = false;
+      ticking =
+        false;
 
 
       if (
@@ -657,7 +786,9 @@ if (
         rect.top >=
           window.innerHeight
       ) {
+
         return;
+
       }
 
 
@@ -704,7 +835,8 @@ if (
       }
 
 
-      ticking = true;
+      ticking =
+        true;
 
 
       window.requestAnimationFrame(
