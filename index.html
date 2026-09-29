@@ -1,192 +1,1176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
-  <link rel="apple-touch-icon" href="icon.png">
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Osama Alsadei - Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad.">
-  <meta name="author" content="Osama Alsadei">
-  <meta name="theme-color" content="#090909">
-  <meta property="og:title" content="Osama Alsadei - Business Analyst & Product Builder">
-  <meta property="og:description" content="Business analysis, product thinking and practical digital products. Explore selected work including Sanad.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ojalsadei.github.io/my-portfolio/">
-  <meta name="twitter:card" content="summary_large_image">
-  <title>Osama Alsadei - Business Analyst & Product Builder</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Osama Alsadei — Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad and Mithaq."
+  >
+
+  <meta
+    name="author"
+    content="Osama Alsadei"
+  >
+
+  <meta
+    name="theme-color"
+    content="#090909"
+  >
+
+  <meta
+    property="og:title"
+    content="Osama Alsadei — Business Analyst & Product Builder"
+  >
+
+  <meta
+    property="og:description"
+    content="Business analysis, product thinking and practical digital products. Explore selected work including Sanad and Mithaq."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://ojalsadei.github.io/my-portfolio/"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <title>
+    Osama Alsadei — Business Analyst & Product Builder
+  </title>
+
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       MITHAQ PROJECT
+    ======================================== */
+
+    .mithaq-project {
+      margin-top: clamp(130px, 14vw, 220px);
+      padding-top: 44px;
+      border-top: 1px solid var(--line);
+    }
+
+
+    .mithaq-cover {
+      min-height: 760px;
+      padding: clamp(35px, 5vw, 70px);
+
+      position: relative;
+      overflow: hidden;
+
+      border-radius: var(--radius-lg);
+
+      background:
+        radial-gradient(
+          circle at 78% 16%,
+          rgba(183, 255, 86, 0.10),
+          transparent 28%
+        ),
+        linear-gradient(
+          145deg,
+          #0b100c,
+          #111812
+        );
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: clamp(40px, 6vw, 90px);
+
+      align-items: stretch;
+
+      color: #f4f5f0;
+
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+    }
+
+
+    .mithaq-cover:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(183, 255, 86, 0.24);
+    }
+
+
+    .mithaq-cover::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      left: -180px;
+      bottom: -260px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(183, 255, 86, 0.09);
+
+      box-shadow:
+        0 0 0 70px rgba(183, 255, 86, 0.018),
+        0 0 0 140px rgba(183, 255, 86, 0.012);
+
+      pointer-events: none;
+    }
+
+
+    .mithaq-cover-copy {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+
+    .mithaq-cover-label {
+      color: #b7ff56;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 11px;
+      font-weight: 600;
+
+      letter-spacing: 0.15em;
+    }
+
+
+    .mithaq-arabic-name {
+      direction: rtl;
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      font-size:
+        clamp(
+          95px,
+          12vw,
+          190px
+        );
+
+      line-height: 0.85;
+
+      font-weight: 700;
+
+      letter-spacing: -0.08em;
+    }
+
+
+    .mithaq-cover-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      width: fit-content;
+
+      color: #b7ff56;
+
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+
+    .mithaq-demo {
+      min-width: 0;
+
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .mithaq-demo-window {
+      width: 100%;
+
+      padding: clamp(28px, 3.5vw, 48px);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.11);
+
+      border-radius: 30px;
+
+      background:
+        rgba(255, 255, 255, 0.025);
+
+      box-shadow:
+        0 35px 90px
+        rgba(0, 0, 0, 0.30);
+
+      backdrop-filter:
+        blur(20px);
+
+      -webkit-backdrop-filter:
+        blur(20px);
+
+      direction: rtl;
+    }
+
+
+    .mithaq-demo-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      padding-bottom: 28px;
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+    }
+
+
+    .mithaq-demo-top span:first-child {
+      padding: 8px 13px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(183, 255, 86, 0.10);
+
+      color: #b7ff56;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+
+    .mithaq-demo-top span:last-child {
+      color: #777d76;
+      font-size: 12px;
+    }
+
+
+    .mithaq-demo h4 {
+      max-width: 620px;
+
+      margin-top: 38px;
+
+      font-size:
+        clamp(
+          27px,
+          3vw,
+          44px
+        );
+
+      line-height: 1.35;
+
+      font-weight: 600;
+    }
+
+
+    .mithaq-demo-answer {
+      margin-top: 32px;
+
+      padding: 22px;
+
+      border:
+        1px solid
+        rgba(183, 255, 86, 0.17);
+
+      border-radius: 18px;
+
+      background:
+        rgba(183, 255, 86, 0.07);
+    }
+
+
+    .mithaq-demo-answer span {
+      color: #b7ff56;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+
+    .mithaq-demo-answer p {
+      margin-top: 10px;
+
+      color: #c5c9c2;
+
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+    .mithaq-demo-logic {
+      margin-top: 34px;
+
+      display: grid;
+      gap: 0;
+    }
+
+
+    .mithaq-demo-logic div {
+      padding: 14px 0;
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: #a1a69f;
+
+      font-size: 13px;
+    }
+
+
+    .mithaq-demo-logic div::before {
+      content: "✓";
+
+      color: #b7ff56;
+
+      font-weight: 700;
+    }
+
+
+    .mithaq-demo-source {
+      margin-top: 27px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      color: #777d76;
+
+      font-size: 11px;
+    }
+
+
+    .mithaq-demo-source strong {
+      color: #b7ff56;
+      font-weight: 500;
+    }
+
+
+    @media
+    (max-width: 900px) {
+
+      .mithaq-cover {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        gap: 80px;
+      }
+
+
+      .mithaq-cover-copy {
+        min-height: 420px;
+      }
+
+
+      .mithaq-demo-window {
+        max-width: 700px;
+      }
+
+    }
+
+
+    @media
+    (max-width: 760px) {
+
+      .mithaq-project {
+        margin-top: 110px;
+      }
+
+
+      .mithaq-cover {
+        padding: 26px;
+
+        border-radius: 30px;
+
+        gap: 55px;
+      }
+
+
+      .mithaq-cover-copy {
+        min-height: 330px;
+      }
+
+
+      .mithaq-arabic-name {
+        font-size:
+          clamp(
+            82px,
+            28vw,
+            125px
+          );
+      }
+
+
+      .mithaq-demo-window {
+        padding: 23px;
+
+        border-radius: 23px;
+      }
+
+
+      .mithaq-demo h4 {
+        font-size: 28px;
+      }
+
+
+      .mithaq-demo-source {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
+
   <div class="noise"></div>
 
+
   <header class="site-header">
+
     <nav class="nav shell">
-      <a href="#top" class="brand" aria-label="Back to top">OSAMA ALSADEI</a>
+
+      <a
+        href="#top"
+        class="brand"
+        aria-label="Back to top"
+      >
+        OSAMA ALSADEI
+      </a>
+
 
       <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#work">
+          Work
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
       </div>
 
-      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
+
+      <button
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+      >
+
         <span></span>
         <span></span>
+
       </button>
+
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#work"><span>01</span>Work</a>
-      <a href="#about"><span>02</span>About</a>
-      <a href="#contact"><span>03</span>Contact</a>
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+    >
+
+      <a href="#work">
+        <span>01</span>
+        Work
+      </a>
+
+      <a href="#about">
+        <span>02</span>
+        About
+      </a>
+
+      <a href="#contact">
+        <span>03</span>
+        Contact
+      </a>
+
     </div>
+
   </header>
 
+
+
   <main id="top">
+
+
+    <!-- HERO -->
+
     <section class="hero shell">
+
       <div class="hero-meta reveal">
-        <span>Riyadh, Saudi Arabia</span>
-        <span>Portfolio 2026</span>
+
+        <span>
+          Riyadh, Saudi Arabia
+        </span>
+
+        <span>
+          Portfolio — 2026
+        </span>
+
       </div>
+
 
       <div class="hero-main">
-        <p class="eyebrow reveal">BUSINESS ANALYST × PRODUCT BUILDER</p>
+
+        <p class="eyebrow reveal">
+          BUSINESS ANALYST × PRODUCT BUILDER
+        </p>
+
+
         <h1 class="hero-title">
-          <span class="reveal">I analyze</span>
-          <span class="reveal">problems,</span>
-          <span class="reveal accent-line">design systems,</span>
-          <span class="reveal">and build products.</span>
+
+          <span class="reveal">
+            I analyze
+          </span>
+
+          <span class="reveal">
+            problems,
+          </span>
+
+          <span class="reveal accent-line">
+            design systems,
+          </span>
+
+          <span class="reveal">
+            and build products.
+          </span>
+
         </h1>
+
       </div>
+
 
       <div class="hero-footer reveal">
-        <p>I'm Osama Alsadei, a Computer Information Systems graduate focused on business analysis, product thinking and turning ideas into practical digital experiences.</p>
-        <a href="#work" class="scroll-button" aria-label="View selected work">↓</a>
+
+        <p>
+          I'm Osama Alsadei, a Computer Information Systems
+          graduate focused on business analysis, product thinking
+          and turning ideas into practical digital experiences.
+        </p>
+
+
+        <a
+          href="#work"
+          class="scroll-button"
+          aria-label="View selected work"
+        >
+          ↓
+        </a>
+
       </div>
+
     </section>
 
-    <section id="work" class="work-section">
+
+
+    <!-- WORK -->
+
+    <section
+      id="work"
+      class="work-section"
+    >
+
       <div class="shell">
+
         <div class="section-heading reveal">
-          <p class="section-number">01</p>
+
+          <p class="section-number">
+            01
+          </p>
+
           <div>
-            <p class="eyebrow">SELECTED WORK</p>
-            <h2>Products I've built.</h2>
+
+            <p class="eyebrow">
+              SELECTED WORK
+            </p>
+
+            <h2>
+              Work I've built & analyzed.
+            </h2>
+
           </div>
+
         </div>
+
+
+
+        <!-- SANAD -->
 
         <article class="featured-project">
+
           <div class="project-top reveal">
+
             <div>
-              <p class="project-index">01 / SANAD</p>
-              <h3>Keep proof.<br>Stay covered.</h3>
+
+              <p class="project-index">
+                01 / SANAD
+              </p>
+
+              <h3>
+                Keep proof.
+                <br>
+                Stay covered.
+              </h3>
+
             </div>
+
 
             <div class="project-intro">
-              <p>A local-first receipt and warranty management app designed to keep purchase proof, products and warranty coverage together.</p>
+
+              <p>
+                A local-first receipt and warranty management app
+                designed to keep purchase proof, products and
+                warranty coverage together.
+              </p>
+
+
               <div class="project-tags">
-                <span>Product</span>
-                <span>Mobile App</span>
-                <span>React Native</span>
-                <span>Local-first</span>
+
+                <span>
+                  Product
+                </span>
+
+                <span>
+                  Mobile App
+                </span>
+
+                <span>
+                  React Native
+                </span>
+
+                <span>
+                  Local-first
+                </span>
+
               </div>
+
             </div>
+
           </div>
 
-          <a href="sanad.html" class="project-cover reveal">
+
+          <a
+            href="sanad.html"
+            class="project-cover reveal"
+          >
+
             <div class="cover-copy">
-              <span class="cover-label">FEATURED PROJECT</span>
-              <span class="cover-name">SANAD</span>
-              <span class="cover-link">View case study →</span>
+
+              <span class="cover-label">
+                FEATURED PROJECT
+              </span>
+
+              <span class="cover-name">
+                SANAD
+              </span>
+
+              <span class="cover-link">
+                View case study →
+              </span>
+
             </div>
+
 
             <div class="cover-phone phone-frame">
+
               <div class="phone-island"></div>
-              <img src="home.png" alt="Sanad home screen" loading="eager" decoding="async">
+
+              <img
+                src="home.png"
+                alt="Sanad home screen"
+                loading="eager"
+                decoding="async"
+              >
+
             </div>
+
           </a>
+
         </article>
+
+
+
+        <!-- MITHAQ -->
+
+        <article class="mithaq-project">
+
+          <div class="project-top reveal">
+
+            <div>
+
+              <p class="project-index">
+                02 / MITHAQ
+              </p>
+
+              <h3>
+                From rules
+                <br>
+                to clarity.
+              </h3>
+
+            </div>
+
+
+            <div class="project-intro">
+
+              <p>
+                An interactive rental decision-support concept
+                that turns official rules into contextual questions,
+                explainable outcomes and traceable next steps.
+              </p>
+
+
+              <div class="project-tags">
+
+                <span>
+                  Business Analysis
+                </span>
+
+                <span>
+                  Decision Design
+                </span>
+
+                <span>
+                  Business Rules
+                </span>
+
+                <span>
+                  Interactive Prototype
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <a
+            href="mithaq.html"
+            class="mithaq-cover reveal"
+            aria-label="View Mithaq case study"
+          >
+
+            <div class="mithaq-cover-copy">
+
+              <span class="mithaq-cover-label">
+                BUSINESS ANALYSIS CASE STUDY
+              </span>
+
+
+              <strong
+                class="mithaq-arabic-name"
+                lang="ar"
+              >
+                ميثاق
+              </strong>
+
+
+              <span class="mithaq-cover-link">
+                View case study →
+              </span>
+
+            </div>
+
+
+            <div class="mithaq-demo">
+
+              <div class="mithaq-demo-window">
+
+                <div class="mithaq-demo-top">
+
+                  <span>
+                    مسار السداد
+                  </span>
+
+                  <span>
+                    03 / 03
+                  </span>
+
+                </div>
+
+
+                <h4>
+                  تجاوز التأخر مهلة السداد المرتبطة بحالتك
+                </h4>
+
+
+                <div class="mithaq-demo-answer">
+
+                  <span>
+                    ماذا يقول المصدر الرسمي؟
+                  </span>
+
+                  <p>
+                    تختلف مهلة السداد حسب دورة الدفعات،
+                    ويستخدم ميثاق هذه المعلومة لتحديد المسار
+                    المرتبط بالحالة
+                  </p>
+
+                </div>
+
+
+                <div class="mithaq-demo-logic">
+
+                  <div>
+                    توجد دفعة مستحقة
+                  </div>
+
+                  <div>
+                    دورة السداد معروفة
+                  </div>
+
+                  <div>
+                    مدة التأخر تجاوزت المهلة
+                  </div>
+
+                </div>
+
+
+                <div class="mithaq-demo-source">
+
+                  <span>
+                    المصدر الرسمي
+                  </span>
+
+                  <strong>
+                    شبكة إيجار
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </a>
+
+        </article>
+
       </div>
+
     </section>
 
-    <section id="about" class="about-section">
+
+
+    <!-- ABOUT -->
+
+    <section
+      id="about"
+      class="about-section"
+    >
+
       <div class="shell about-shell">
+
         <div class="section-heading reveal">
-          <p class="section-number">02</p>
+
+          <p class="section-number">
+            02
+          </p>
+
           <div>
-            <p class="eyebrow">ABOUT</p>
-            <h2>I like turning ambiguity into something people can use.</h2>
+
+            <p class="eyebrow">
+              ABOUT
+            </p>
+
+            <h2>
+              I like turning ambiguity
+              into something people can use.
+            </h2>
+
           </div>
+
         </div>
+
 
         <div class="about-grid">
+
           <div class="about-copy reveal">
-            <p>I'm a Computer Information Systems graduate based in Riyadh, focused on the intersection of business, systems and product.</p>
-            <p>I enjoy understanding a problem, structuring requirements, thinking through the experience and taking an idea far enough to become a working product.</p>
+
+            <p>
+              I'm a Computer Information Systems graduate based
+              in Riyadh, focused on the intersection of business,
+              systems and product.
+            </p>
+
+            <p>
+              I enjoy understanding a problem, structuring
+              requirements, thinking through the experience
+              and taking an idea far enough to become a
+              working product.
+            </p>
+
           </div>
+
 
           <div class="capabilities">
-            <div class="capability reveal"><span>01</span>Business Analysis</div>
-            <div class="capability reveal"><span>02</span>Product Thinking</div>
-            <div class="capability reveal"><span>03</span>Requirements & Process Design</div>
-            <div class="capability reveal"><span>04</span>UI / UX Prototyping</div>
-            <div class="capability reveal"><span>05</span>React Native / Expo</div>
-            <div class="capability reveal"><span>06</span>SQL & Data Modeling</div>
+
+            <div class="capability reveal">
+              <span>01</span>
+              Business Analysis
+            </div>
+
+            <div class="capability reveal">
+              <span>02</span>
+              Product Thinking
+            </div>
+
+            <div class="capability reveal">
+              <span>03</span>
+              Requirements & Process Design
+            </div>
+
+            <div class="capability reveal">
+              <span>04</span>
+              UI / UX Prototyping
+            </div>
+
+            <div class="capability reveal">
+              <span>05</span>
+              React Native / Expo
+            </div>
+
+            <div class="capability reveal">
+              <span>06</span>
+              SQL & Data Modeling
+            </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section id="contact" class="contact-section">
+
+
+    <!-- CONTACT -->
+
+    <section
+      id="contact"
+      class="contact-section"
+    >
+
       <div class="shell contact-shell">
-        <p class="eyebrow reveal">03 CONTACT</p>
+
+        <p class="eyebrow reveal">
+          03 — CONTACT
+        </p>
+
 
         <div class="contact-main">
+
           <div class="contact-title-wrap">
-            <h2 class="reveal">Let's build<br>something useful.</h2>
+
+            <h2 class="reveal">
+              Let's build
+              <br>
+              something useful.
+            </h2>
+
           </div>
+
 
           <div class="contact-side reveal">
-            <p>I'm interested in business analysis, product and technology opportunities. Feel free to reach out.</p>
+
+            <p>
+              I'm interested in business analysis,
+              product and technology opportunities.
+              Feel free to reach out.
+            </p>
+
 
             <div class="contact-info">
-              <button class="copy-contact" type="button" data-copy="o.j.alsadei@gmail.com" aria-label="Copy email address">
+
+              <button
+                class="copy-contact"
+                type="button"
+                data-copy="o.j.alsadei@gmail.com"
+                aria-label="Copy email address"
+              >
+
                 <span class="copy-contact-text">
-                  <span class="contact-info-label">Email</span>
-                  <span class="contact-info-value">o.j.alsadei@gmail.com</span>
+
+                  <span class="contact-info-label">
+                    Email
+                  </span>
+
+                  <span class="contact-info-value">
+                    o.j.alsadei@gmail.com
+                  </span>
+
                 </span>
-                <span class="copy-feedback" aria-live="polite">Copy</span>
+
+                <span
+                  class="copy-feedback"
+                  aria-live="polite"
+                >
+                  Copy
+                </span>
+
               </button>
 
-              <button class="copy-contact" type="button" data-copy="+966532801162" aria-label="Copy phone number">
+
+              <button
+                class="copy-contact"
+                type="button"
+                data-copy="+966532801162"
+                aria-label="Copy phone number"
+              >
+
                 <span class="copy-contact-text">
-                  <span class="contact-info-label">Phone</span>
-                  <span class="contact-info-value">+966 53 280 1162</span>
+
+                  <span class="contact-info-label">
+                    Phone
+                  </span>
+
+                  <span class="contact-info-value">
+                    +966 53 280 1162
+                  </span>
+
                 </span>
-                <span class="copy-feedback" aria-live="polite">Copy</span>
+
+                <span
+                  class="copy-feedback"
+                  aria-live="polite"
+                >
+                  Copy
+                </span>
+
               </button>
+
             </div>
+
 
             <div class="contact-socials">
-              <a href="https://www.linkedin.com/in/osama-alsadei/" target="_blank" rel="noreferrer" class="contact-link">LinkedIn <span>↗</span></a>
-              <a href="https://github.com/ojalsadei" target="_blank" rel="noreferrer" class="contact-link">GitHub <span>↗</span></a>
+
+              <a
+                href="https://www.linkedin.com/in/osama-alsadei/"
+                target="_blank"
+                rel="noreferrer"
+                class="contact-link"
+              >
+                LinkedIn
+                <span>↗</span>
+              </a>
+
+
+              <a
+                href="https://github.com/ojalsadei"
+                target="_blank"
+                rel="noreferrer"
+                class="contact-link"
+              >
+                GitHub
+                <span>↗</span>
+              </a>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+
+
   <footer class="footer">
+
     <div class="shell footer-inner">
-      <span>© 2026 Osama Alsadei</span>
-      <a href="#top">Back to top ↑</a>
+
+      <span>
+        © 2026 Osama Alsadei
+      </span>
+
+      <a href="#top">
+        Back to top ↑
+      </a>
+
     </div>
+
   </footer>
 
+
   <script src="script.js"></script>
+
 </body>
+
 </html>
