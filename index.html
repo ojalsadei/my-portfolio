@@ -579,7 +579,9 @@
     }
 
 
-    /* SANAD */
+    /* =========================================
+       SANAD
+    ========================================= */
 
     .sanad-card {
       background:
@@ -777,7 +779,9 @@
     }
 
 
-    /* MITHAQ */
+    /* =========================================
+       MITHAQ
+    ========================================= */
 
     .mithaq-card {
       background:
@@ -1050,10 +1054,24 @@
     }
 
 
-    /* TABLET */
+    /* =========================================
+       SWIPE HINT
+    ========================================= */
+
+    .work-swipe-hint {
+      display:
+        none;
+    }
+
+
+    /* =========================================
+       TABLET
+    ========================================= */
 
     @media
-    (max-width: 1000px) {
+    (max-width: 1000px)
+    and
+    (min-width: 761px) {
 
       .work-cards {
         height:
@@ -1090,7 +1108,9 @@
     }
 
 
-    /* MOBILE */
+    /* =========================================
+       MOBILE
+    ========================================= */
 
     @media
     (max-width: 760px) {
@@ -1100,9 +1120,12 @@
           auto;
 
         padding:
-          110px
+          105px
           0
-          100px;
+          95px;
+
+        overflow:
+          hidden;
       }
 
 
@@ -1111,19 +1134,31 @@
           flex-start;
 
         margin-bottom:
-          42px;
+          38px;
       }
 
 
       .work-heading-left {
         gap:
-          18px;
+          17px;
+      }
+
+
+      .work-heading-number {
+        padding-top:
+          7px;
       }
 
 
       .work-heading-compact h2 {
+        max-width:
+          300px;
+
         font-size:
-          43px;
+          42px;
+
+        line-height:
+          0.98;
       }
 
 
@@ -1133,15 +1168,16 @@
       }
 
 
+      /*
+        Mobile project rail
+      */
+
       .work-cards {
         width:
-          calc(
-            100vw
-            - 16px
-          );
+          100vw;
 
         height:
-          570px;
+          510px;
 
         min-height:
           0;
@@ -1157,10 +1193,27 @@
             -2
           );
 
+        margin-right:
+          calc(
+            (
+              100vw
+              -
+              var(--shell)
+            )
+            /
+            -2
+          );
+
         padding:
           0
-          16px
-          18px;
+          18px
+          14px;
+
+        display:
+          flex;
+
+        gap:
+          14px;
 
         overflow-x:
           auto;
@@ -1168,14 +1221,17 @@
         overflow-y:
           hidden;
 
-        gap:
-          13px;
-
         scroll-snap-type:
           x mandatory;
 
+        scroll-padding-inline:
+          18px;
+
         scrollbar-width:
           none;
+
+        -webkit-overflow-scrolling:
+          touch;
       }
 
 
@@ -1193,93 +1249,457 @@
         flex:
           0
           0
-          calc(
-            100vw
-            - 58px
-          );
+          82vw;
+
+        width:
+          82vw;
+
+        max-width:
+          390px;
 
         height:
-          550px;
+          490px;
 
         transform:
           none;
 
         border-radius:
-          29px;
+          30px;
 
         scroll-snap-align:
-          center;
+          start;
       }
 
 
       .work-card-inner {
         padding:
-          24px;
+          22px;
+
+        z-index:
+          6;
+      }
+
+
+      .work-card-top {
+        position:
+          relative;
+
+        z-index:
+          7;
+      }
+
+
+      .work-card-index,
+      .work-card-type {
+        font-size:
+          9px;
+      }
+
+
+      .work-card-bottom {
+        position:
+          relative;
+
+        z-index:
+          7;
       }
 
 
       .work-card h3 {
         font-size:
-          53px;
+          42px;
+
+        line-height:
+          0.9;
+      }
+
+
+      .work-card-subtitle {
+        margin-top:
+          8px;
+
+        font-size:
+          12px;
+
+        line-height:
+          1.4;
+      }
+
+
+      .work-card-tags {
+        gap:
+          5px;
+
+        margin-bottom:
+          10px;
+      }
+
+
+      .work-card-tags span {
+        padding:
+          5px
+          8px;
+
+        font-size:
+          8px;
+      }
+
+
+      .work-card-link {
+        margin-top:
+          13px;
+
+        padding-top:
+          12px;
+
+        font-size:
+          11px;
+      }
+
+
+      .work-card-link i {
+        font-size:
+          17px;
+      }
+
+
+      /* SANAD MOBILE */
+
+      .sanad-card::after {
+        content:
+          "";
+
+        position:
+          absolute;
+
+        inset:
+          40%
+          0
+          0;
+
+        z-index:
+          3;
+
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(
+              70,
+              103,
+              232,
+              0
+            ),
+            rgba(
+              65,
+              95,
+              215,
+              0.92
+            )
+            38%,
+            rgba(
+              54,
+              80,
+              185,
+              0.99
+            )
+            100%
+          );
+
+        pointer-events:
+          none;
+      }
+
+
+      .sanad-card::before {
+        top:
+          23%;
+
+        left:
+          -5%;
+
+        font-size:
+          94px;
       }
 
 
       .sanad-phone {
         width:
-          57%;
+          42%;
 
         top:
-          13%;
+          15%;
 
         right:
           5%;
 
         border-width:
-          5px;
+          4px;
 
         border-radius:
-          35px;
+          29px;
+
+        transform:
+          rotate(
+            5deg
+          );
+      }
+
+
+      .sanad-phone::before {
+        height:
+          11px;
+
+        top:
+          5px;
+      }
+
+
+      .sanad-card:hover
+      .sanad-phone {
+        transform:
+          rotate(
+            5deg
+          );
       }
 
 
       .sanad-card
       .work-card-bottom {
         max-width:
-          78%;
+          68%;
+      }
+
+
+      .sanad-card
+      .work-card-tags
+      span:nth-child(3) {
+        display:
+          none;
+      }
+
+
+      /* MITHAQ MOBILE */
+
+      .mithaq-card::after {
+        content:
+          "";
+
+        position:
+          absolute;
+
+        inset:
+          39%
+          0
+          0;
+
+        z-index:
+          3;
+
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(
+              11,
+              15,
+              12,
+              0
+            ),
+            rgba(
+              11,
+              15,
+              12,
+              0.92
+            )
+            37%,
+            #0b0f0c
+            100%
+          );
+
+        pointer-events:
+          none;
       }
 
 
       .mithaq-stage {
         width:
-          78%;
+          76%;
+
+        height:
+          54%;
 
         top:
-          11%;
+          13%;
 
         right:
-          -4%;
+          -7%;
 
         bottom:
-          22%;
+          auto;
+
+        z-index:
+          2;
+      }
+
+
+      .mithaq-shot {
+        border-radius:
+          14px;
+      }
+
+
+      .mithaq-shot-start {
+        width:
+          92%;
+
+        top:
+          0;
+
+        right:
+          0;
+
+        transform:
+          rotate(
+            2deg
+          );
+      }
+
+
+      .mithaq-shot-result {
+        width:
+          80%;
+
+        bottom:
+          0;
+
+        left:
+          0;
+
+        transform:
+          rotate(
+            -2deg
+          );
+      }
+
+
+      .mithaq-card:hover
+      .mithaq-shot-start {
+        transform:
+          rotate(
+            2deg
+          );
+      }
+
+
+      .mithaq-card:hover
+      .mithaq-shot-result {
+        transform:
+          rotate(
+            -2deg
+          );
       }
 
 
       .mithaq-card
       .work-card-bottom {
         max-width:
-          88%;
+          72%;
       }
 
 
-      .mithaq-shot-start {
-        width:
-          91%;
+      .mithaq-card {
+        box-shadow:
+          inset
+          1px
+          0
+          0
+          rgba(
+            183,
+            255,
+            86,
+            0.08
+          );
       }
 
 
-      .mithaq-shot-result {
+      /* Swipe hint */
+
+      .work-swipe-hint {
+        margin-top:
+          11px;
+
+        display:
+          flex;
+
+        align-items:
+          center;
+
+        gap:
+          7px;
+
+        color:
+          var(--faint);
+
+        font-family:
+          "Space Grotesk",
+          sans-serif;
+
+        font-size:
+          9px;
+
+        letter-spacing:
+          0.12em;
+
+        text-transform:
+          uppercase;
+      }
+
+
+      .work-swipe-hint span {
         width:
-          84%;
+          15px;
+
+        height:
+          3px;
+
+        border-radius:
+          99px;
+
+        background:
+          var(--surface-3);
+      }
+
+
+      .work-swipe-hint
+      span:first-child {
+        width:
+          28px;
+
+        background:
+          var(--text);
+      }
+
+    }
+
+
+    @media
+    (max-width: 400px) {
+
+      .work-card,
+      .work-cards:has(.work-card:hover)
+      .work-card,
+      .work-cards
+      .work-card:hover {
+        flex-basis:
+          80vw;
+
+        width:
+          80vw;
+      }
+
+
+      .work-heading-compact h2 {
+        font-size:
+          38px;
       }
 
     }
@@ -1306,6 +1726,8 @@
 
   <div class="noise"></div>
 
+
+  <!-- HEADER -->
 
   <header class="site-header">
 
@@ -1434,7 +1856,7 @@
       <div class="hero-footer reveal">
 
         <p>
-          I'm Osama, a Computer Information Systems
+          I'm Osama Alsadei, a Computer Information Systems
           graduate focused on business analysis, product thinking
           and turning ideas into practical digital experiences.
         </p>
@@ -1690,6 +2112,19 @@
 
         </div>
 
+
+        <div
+          class="work-swipe-hint"
+          aria-hidden="true"
+        >
+
+          <span></span>
+          <span></span>
+
+          Swipe to explore
+
+        </div>
+
       </div>
 
     </section>
@@ -1923,6 +2358,8 @@
   </main>
 
 
+
+  <!-- FOOTER -->
 
   <footer class="footer">
 
