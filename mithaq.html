@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ميثاق — نموذج تفاعلي ودراسة حالة في تحليل الأعمال لتبسيط مسارات الحقوق الإيجارية للمستأجر السكني في الرياض.">
+  <meta name="theme-color" content="#0b0d0c">
+  <title>ميثاق — تحليل أعمال × تصميم قرار</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="mithaq.css">
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="العودة إلى بداية الصفحة">
+        <span class="brand-mark">م</span>
+        <span>ميثاق</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="التنقل داخل الصفحة">
+        <a href="#prototype">المنصة</a>
+        <a href="#analysis">التحليل</a>
+        <a href="#rules">قواعد الأعمال</a>
+        <a href="#requirements">المتطلبات</a>
+        <a href="#sources">المصادر</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="#prototype">المنصة</a>
+      <a href="#analysis">التحليل</a>
+      <a href="#rules">قواعد الأعمال</a>
+      <a href="#requirements">المتطلبات</a>
+      <a href="#sources">المصادر</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero shell">
+      <div class="hero-kicker reveal">
+        BUSINESS ANALYSIS × DECISION DESIGN
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title reveal">
+            ميثاق
+            <span>دليل الحقوق الإيجارية.</span>
+          </h1>
+
+          <p class="hero-lead reveal">
+            تجربة تفاعلية تحول الأحكام والإجراءات الإيجارية إلى
+            مسار قرار مفهوم، مع توضيح سبب النتيجة وربطها بالمصدر الرسمي.
+          </p>
+        </div>
+
+        <div class="hero-meta reveal">
+          <div>
+            <span>النطاق</span>
+            <strong>المستأجر السكني — الرياض</strong>
+          </div>
+          <div>
+            <span>نوع المشروع</span>
+            <strong>دراسة حالة في تحليل الأعمال</strong>
+          </div>
+          <div>
+            <span>النسخة</span>
+            <strong>MVP — 4 حالات</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-note reveal">
+        <span>تنبيه</span>
+        ميثاق نموذج توضيحي لدعم القرار وليس استشارة قانونية، ولا يستبدل الخدمات الرسمية أو التحقق من تفاصيل الحالة.
+      </div>
+    </section>
+
+    <!-- PROTOTYPE -->
+    <section class="prototype-section" id="prototype">
+      <div class="shell">
+
+        <div class="section-head reveal">
+          <span>01</span>
+          <div>
+            <p class="eyebrow">النموذج التفاعلي</p>
+            <h2>ابدأ من المشكلة، لا من النظام.</h2>
+            <p>
+              بدل أن يبحث المستخدم في صفحات متعددة، يبدأ بوصف حالته،
+              ثم يمر عبر أسئلة قصيرة حتى يصل إلى القاعدة والمسار المرتبط بها.
+            </p>
+          </div>
+        </div>
+
+        <div class="navigator reveal" id="navigator">
+          <div class="navigator-top">
+            <div>
+              <span class="navigator-label">ميثاق / تقييم الحالة</span>
+              <h3 id="stepTitle">وش المشكلة اللي تواجهك؟</h3>
+            </div>
+            <div class="step-indicator">
+              <span id="stepCurrent">1</span>
+              <span>/</span>
+              <span id="stepTotal">4</span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span id="progressBar"></span>
+          </div>
+
+          <div id="stepContent" class="step-content"></div>
+
+          <div class="navigator-actions">
+            <button id="backBtn" class="ghost-btn" type="button" disabled>السابق</button>
+            <button id="restartBtn" class="ghost-btn hidden" type="button">بدء حالة جديدة</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ANALYSIS -->
+    <section class="analysis-section" id="analysis">
+      <div class="shell">
+
+        <div class="section-head reveal">
+          <span>02</span>
+          <div>
+            <p class="eyebrow">تعريف المشكلة</p>
+            <h2>المعلومة موجودة. التحدي في معرفة ما ينطبق عليك.</h2>
+          </div>
+        </div>
+
+        <div class="problem-grid">
+          <article class="statement-card reveal">
+            <span>Problem Statement</span>
+            <p>
+              قد يواجه المستأجر حالة إيجارية محددة، بينما تكون المعلومات ذات الصلة موزعة
+              بين أحكام تنظيمية وخدمات وصفحات توعوية. المشكلة ليست غياب المعلومة،
+              بل صعوبة تحويلها إلى قرار واضح مرتبط بسياق الحالة.
+            </p>
+          </article>
+
+          <article class="statement-card reveal">
+            <span>Design Question</span>
+            <p>
+              كيف نحول القواعد الإيجارية الرسمية إلى رحلة أسئلة قصيرة تساعد المستخدم
+              على فهم القاعدة ذات الصلة، سبب انطباقها، وما الخطوة الرسمية التالية؟
+            </p>
+          </article>
+        </div>
+
+        <div class="scope-strip reveal">
+          <div>
+            <span>المستخدم الأساسي</span>
+            <strong>المستأجر السكني</strong>
+          </div>
+          <div>
+            <span>النطاق الجغرافي</span>
+            <strong>مدينة الرياض</strong>
+          </div>
+          <div>
+            <span>القناة الرسمية</span>
+            <strong>إيجار / الهيئة العامة للعقار</strong>
+          </div>
+          <div>
+            <span>الحالات</span>
+            <strong>4 مسارات في النسخة الأولى</strong>
+          </div>
+        </div>
+
+        <div class="subsection reveal">
+          <div class="subsection-title">
+            <span>أصحاب المصلحة</span>
+            <h3>مين يتأثر بالقرار؟</h3>
+          </div>
+
+          <div class="stakeholder-grid">
+            <div class="stakeholder primary">
+              <span>01</span>
+              <strong>المستأجر</strong>
+              <p>يحتاج فهم حالته والخطوة المناسبة بأقل غموض ممكن.</p>
+            </div>
+            <div class="stakeholder">
+              <span>02</span>
+              <strong>المؤجر</strong>
+              <p>طرف رئيسي في إجراءات التجديد والتسجيل والتزامات العقد.</p>
+            </div>
+            <div class="stakeholder">
+              <span>03</span>
+              <strong>إيجار</strong>
+              <p>القناة الرسمية لتوثيق وإدارة العديد من إجراءات العلاقة الإيجارية.</p>
+            </div>
+            <div class="stakeholder">
+              <span>04</span>
+              <strong>الهيئة العامة للعقار</strong>
+              <p>الجهة التنظيمية والمصدر الأساسي للأحكام والضوابط ذات الصلة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-compare reveal">
+          <div class="process-side">
+            <span class="process-label">AS-IS</span>
+            <h3>رحلة غير موجهة</h3>
+
+            <ol class="flow-list">
+              <li><span>01</span>تظهر مشكلة إيجارية</li>
+              <li><span>02</span>بحث في أكثر من صفحة أو مصدر</li>
+              <li><span>03</span>محاولة تفسير القاعدة ذاتيًا</li>
+              <li><span>04</span>البحث عن الخدمة أو الإجراء المناسب</li>
+              <li><span>05</span>احتمال غموض أو مسار غير مناسب</li>
+            </ol>
+          </div>
+
+          <div class="process-side future">
+            <span class="process-label">TO-BE</span>
+            <h3>رحلة مبنية على القرار</h3>
+
+            <ol class="flow-list">
+              <li><span>01</span>اختيار نوع المشكلة</li>
+              <li><span>02</span>أسئلة سياقية قصيرة</li>
+              <li><span>03</span>تطبيق قواعد الأعمال</li>
+              <li><span>04</span>عرض النتيجة وسببها</li>
+              <li><span>05</span>التوجيه إلى المصدر أو المسار الرسمي</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="pain-section reveal">
+          <div class="subsection-title">
+            <span>نقاط الألم</span>
+            <h3>وش نحاول نقلله؟</h3>
+          </div>
+
+          <div class="pain-grid">
+            <div><span>01</span><strong>تشتت المعلومات</strong><p>المستخدم يحتاج جمع أكثر من معلومة قبل معرفة ما ينطبق عليه.</p></div>
+            <div><span>02</span><strong>قواعد مشروطة</strong><p>الموقع، نوع العقار، التاريخ والاستثناءات تغير النتيجة.</p></div>
+            <div><span>03</span><strong>غياب تفسير القرار</strong><p>حتى النتيجة الصحيحة تصبح أقل ثقة إذا لم نوضح لماذا ظهرت.</p></div>
+            <div><span>04</span><strong>الانتقال بين القنوات</strong><p>فهم الحالة شيء، ومعرفة الإجراء الرسمي التالي شيء آخر.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="rules-section" id="rules">
+      <div class="shell">
+
+        <div class="section-head reveal">
+          <span>03</span>
+          <div>
+            <p class="eyebrow">Business Rules Catalogue</p>
+            <h2>القواعد هي قلب ميثاق.</h2>
+            <p>
+              كل نتيجة في النموذج مرتبطة بقاعدة موثقة، مدخلات واضحة،
+              ونطاق تطبيق محدد.
+            </p>
+          </div>
+        </div>
+
+        <div class="rules-list">
+
+          <article class="rule-card reveal">
+            <div class="rule-id">BR-001</div>
+            <div class="rule-main">
+              <h3>إيقاف الزيادة السنوية للإيجار في الرياض</h3>
+              <p>
+                للعقارات السكنية والتجارية داخل النطاق العمراني لمدينة الرياض،
+                أوقفت الزيادة السنوية في قيمة الأجرة الإجمالية لمدة خمس سنوات
+                ابتداءً من 25 سبتمبر 2025.
+              </p>
+            </div>
+            <div class="rule-meta">
+              <span>المدخلات</span>
+              <strong>الموقع · نوع الحالة · التاريخ</strong>
+              <a href="https://rega.gov.sa/media-center/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85-%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85-%D8%B3%D8%AA%D8%A3%D8%AC-%D8%B1/" target="_blank" rel="noreferrer">المصدر الرسمي ↗</a>
+            </div>
+          </article>
+
+          <article class="rule-card reveal">
+            <div class="rule-id">BR-002</div>
+            <div class="rule-main">
+              <h3>تسجيل العقد غير المسجل</h3>
+              <p>
+                يجب على المؤجر في عقد الإيجار غير المسجل في شبكة إيجار التقدم بطلب تسجيله،
+                وللمستأجر كذلك حق طلب تسجيل العقد.
+              </p>
+            </div>
+            <div class="rule-meta">
+              <span>المدخلات</span>
+              <strong>حالة التسجيل · صفة المستخدم</strong>
+              <a href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/" target="_blank" rel="noreferrer">المصدر الرسمي ↗</a>
+            </div>
+          </article>
+
+          <article class="rule-card reveal">
+            <div class="rule-id">BR-003</div>
+            <div class="rule-main">
+              <h3>الاعتراض على بيانات التسجيل</h3>
+              <p>
+                للطرف الآخر الاعتراض أمام الهيئة على بيانات العقد خلال 60 يومًا
+                من تاريخ إبلاغه بالتسجيل؛ وإذا انقضت المدة دون اعتراض فتكون بيانات العقد صحيحة وفق الأحكام.
+              </p>
+            </div>
+            <div class="rule-meta">
+              <span>المدخلات</span>
+              <strong>تاريخ الإبلاغ · وجود اعتراض</strong>
+              <a href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/" target="_blank" rel="noreferrer">المصدر الرسمي ↗</a>
+            </div>
+          </article>
+
+          <article class="rule-card reveal">
+            <div class="rule-id">BR-004</div>
+            <div class="rule-main">
+              <h3>التجديد التلقائي وإشعار عدم الرغبة</h3>
+              <p>
+                يتجدد عقد الإيجار تلقائيًا ما لم يُشعر أحد الطرفين الآخر بعدم الرغبة
+                في التجديد قبل 60 يومًا على الأقل من انتهاء العقد، مع الاستثناءات المنصوص عليها.
+              </p>
+            </div>
+            <div class="rule-meta">
+              <span>المدخلات</span>
+              <strong>تاريخ الانتهاء · تاريخ الإشعار</strong>
+              <a href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/" target="_blank" rel="noreferrer">المصدر الرسمي ↗</a>
+            </div>
+          </article>
+
+          <article class="rule-card reveal">
+            <div class="rule-id">BR-005</div>
+            <div class="rule-main">
+              <h3>امتناع المؤجر عن التجديد في الرياض</h3>
+              <p>
+                داخل النطاق العمراني لمدينة الرياض، يرتبط امتناع المؤجر عن التجديد
+                مع استمرار رغبة المستأجر بالتجديد بالحالات المحددة في الأحكام،
+                ومنها عدم السداد، والعيوب الهيكلية المؤثرة على السلامة وفق تقرير معتمد،
+                والاستخدام الشخصي في الحالات المحددة.
+              </p>
+            </div>
+            <div class="rule-meta">
+              <span>المدخلات</span>
+              <strong>سبب الرفض · رغبة المستأجر · الموقع</strong>
+              <a href="https://rega.gov.sa/rega-services/platforms/ejar/" target="_blank" rel="noreferrer">المصدر الرسمي ↗</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="decision-block reveal">
+          <div class="subsection-title">
+            <span>Decision Table</span>
+            <h3>مثال: زيادة الإيجار</h3>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الشرط</th>
+                  <th>القيمة</th>
+                  <th>الأثر على القرار</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>الموقع</td>
+                  <td>الرياض</td>
+                  <td>يفعّل فحص الأحكام الخاصة بالرياض</td>
+                </tr>
+                <tr>
+                  <td>داخل النطاق العمراني</td>
+                  <td>نعم</td>
+                  <td>يحقق النطاق المكاني للقاعدة</td>
+                </tr>
+                <tr>
+                  <td>نوع الاستخدام</td>
+                  <td>سكني</td>
+                  <td>ضمن الأنواع المشمولة</td>
+                </tr>
+                <tr>
+                  <td>نوع المشكلة</td>
+                  <td>زيادة سنوية</td>
+                  <td>يوجه إلى BR-001</td>
+                </tr>
+                <tr class="decision-result">
+                  <td>النتيجة</td>
+                  <td colspan="2">تظهر القاعدة BR-001 مع تفسير سبب المطابقة والمصدر الرسمي</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REQUIREMENTS -->
+    <section class="requirements-section" id="requirements">
+      <div class="shell">
+
+        <div class="section-head reveal">
+          <span>04</span>
+          <div>
+            <p class="eyebrow">Requirements</p>
+            <h2>تحويل التحليل إلى متطلبات قابلة للبناء.</h2>
+          </div>
+        </div>
+
+        <div class="requirement-grid">
+          <article class="requirement reveal">
+            <span>FR-01</span>
+            <h3>تحديد السياق</h3>
+            <p>يجب أن يجمع النظام المتغيرات الضرورية قبل تطبيق أي قاعدة، مثل الموقع ونوع المشكلة وحالة العقد.</p>
+          </article>
+
+          <article class="requirement reveal">
+            <span>FR-02</span>
+            <h3>تفسير النتيجة</h3>
+            <p>يجب أن يعرض النظام للمستخدم الأسباب التي أدت إلى النتيجة بدل إظهار توصية مجردة.</p>
+          </article>
+
+          <article class="requirement reveal">
+            <span>FR-03</span>
+            <h3>التتبع للمصدر</h3>
+            <p>يجب أن ترتبط كل قاعدة مستخدمة في القرار بمصدر رسمي يمكن الرجوع إليه.</p>
+          </article>
+
+          <article class="requirement reveal">
+            <span>FR-04</span>
+            <h3>المسار الرسمي</h3>
+            <p>يجب أن يوضح النظام الخطوة التالية ويوجه المستخدم إلى القناة الرسمية المناسبة عند توفرها.</p>
+          </article>
+
+          <article class="requirement reveal">
+            <span>NFR-01</span>
+            <h3>قابلية الفهم</h3>
+            <p>يجب صياغة الأسئلة والنتائج بلغة واضحة، مع تجنب تحويل النص التنظيمي إلى تجربة معقدة.</p>
+          </article>
+
+          <article class="requirement reveal">
+            <span>NFR-02</span>
+            <h3>قابلية التحديث</h3>
+            <p>يجب فصل قواعد الأعمال عن واجهة العرض حتى يمكن تحديث القاعدة دون إعادة تصميم رحلة المستخدم بالكامل.</p>
+          </article>
+        </div>
+
+        <div class="story-block reveal">
+          <div class="story-tag">USER STORY 01</div>
+          <blockquote>
+            كمستأجر سكني في الرياض، أريد معرفة القاعدة المرتبطة بمحاولة زيادة الإيجار،
+            حتى أفهم لماذا تنطبق على حالتي وما الخطوة الرسمية التالية.
+          </blockquote>
+
+          <div class="acceptance-grid">
+            <div>
+              <span>Given</span>
+              <p>أن العقار داخل النطاق العمراني لمدينة الرياض.</p>
+            </div>
+            <div>
+              <span>And</span>
+              <p>أن المستخدم اختار "زيادة الإيجار" كنوع المشكلة.</p>
+            </div>
+            <div>
+              <span>When</span>
+              <p>يكمل المستخدم الأسئلة المطلوبة لتحديد سياق الحالة.</p>
+            </div>
+            <div>
+              <span>Then</span>
+              <p>يعرض النظام القاعدة ذات الصلة، أسباب المطابقة، والمصدر الرسمي.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-block reveal">
+          <div class="subsection-title">
+            <span>KPIs المقترحة</span>
+            <h3>كيف نقيس نجاح الحل؟</h3>
+          </div>
+
+          <div class="kpi-grid">
+            <div><strong>Completion Rate</strong><span>نسبة إكمال رحلة التقييم</span></div>
+            <div><strong>Time to Guidance</strong><span>الوقت للوصول إلى مسار مفهوم</span></div>
+            <div><strong>First-Time-Right</strong><span>نسبة الحالات التي تصل للمسار الصحيح من أول مرة</span></div>
+            <div><strong>Source Open Rate</strong><span>نسبة فتح المصدر الرسمي بعد النتيجة</span></div>
+          </div>
+
+          <p class="data-note">
+            هذه مؤشرات أداء مقترحة لتقييم المنتج بعد التشغيل، وليست أرقامًا تشغيلية فعلية.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DATA / SOURCES -->
+    <section class="sources-section" id="sources">
+      <div class="shell">
+
+        <div class="section-head reveal">
+          <span>05</span>
+          <div>
+            <p class="eyebrow">Official Sources</p>
+            <h2>مصادر يمكن تتبعها، لا بيانات مخترعة.</h2>
+            <p>
+              يعتمد المشروع على مصادر رسمية منشورة. وفي حال استخدام بيانات تشغيلية افتراضية
+              لاحقًا في لوحة معلومات، سيتم تمييزها بوضوح كبيانات توضيحية.
+            </p>
+          </div>
+        </div>
+
+        <div class="source-grid">
+          <a class="source-card reveal" href="https://rega.gov.sa/media-center/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85-%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85-%D8%B3%D8%AA%D8%A3%D8%AC-%D8%B1/" target="_blank" rel="noreferrer">
+            <span>01</span>
+            <h3>الأحكام الخاصة بضبط العلاقة بين المؤجر والمستأجر</h3>
+            <p>الهيئة العامة للعقار — الأحكام المتعلقة بالرياض، الزيادة، التسجيل والتجديد.</p>
+            <b>فتح المصدر ↗</b>
+          </a>
+
+          <a class="source-card reveal" href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/" target="_blank" rel="noreferrer">
+            <span>02</span>
+            <h3>النص النظامي للأحكام</h3>
+            <p>مرجع القواعد الخاصة بالتسجيل والاعتراض والتجديد التلقائي.</p>
+            <b>فتح المصدر ↗</b>
+          </a>
+
+          <a class="source-card reveal" href="https://rega.gov.sa/rega-services/platforms/ejar/" target="_blank" rel="noreferrer">
+            <span>03</span>
+            <h3>منصة إيجار</h3>
+            <p>معلومات الخدمة وضوابط مرتبطة بالتجديد وحالات الامتناع في الرياض.</p>
+            <b>فتح المصدر ↗</b>
+          </a>
+
+          <a class="source-card reveal" href="https://rei.rega.gov.sa/ar/advanced-search/rental-market" target="_blank" rel="noreferrer">
+            <span>04</span>
+            <h3>منصة المؤشرات العقارية — السوق الإيجاري</h3>
+            <p>مؤشرات رسمية تشمل متوسط القيم الإيجارية وعدد الصفقات الموثقة عبر شبكة إيجار.</p>
+            <b>فتح المصدر ↗</b>
+          </a>
+        </div>
+
+        <div class="research-note reveal">
+          <span>Research note</span>
+          منصة المؤشرات العقارية تعرض مؤشرات السوق الإيجاري مثل متوسط قيمة الإيجار وعدد الصفقات،
+          وتذكر أن مصدر البيانات هو شبكة إيجار وأن دورية تحديث مؤشرات الإيجار شهرية.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <div>
+        <strong>ميثاق</strong>
+        <span>Business Analysis Case Study</span>
+      </div>
+
+      <a href="#top">العودة للأعلى ↑</a>
+    </div>
+  </footer>
+
+  <script src="mithaq.js"></script>
+</body>
+</html>
