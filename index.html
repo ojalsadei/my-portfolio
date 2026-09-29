@@ -12,7 +12,7 @@
 
   <meta
     name="description"
-    content="I'm Osama, Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad and Mithaq."
+    content="Osama Alsadei, Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad and Mithaq."
   >
 
   <meta
@@ -27,7 +27,7 @@
 
   <meta
     property="og:title"
-    content="Osama, Business Analyst & Product Builder"
+    content="Osama Alsadei | Business Analyst & Product Builder"
   >
 
   <meta
@@ -45,13 +45,8 @@
     content="https://ojalsadei.github.io/my-portfolio/"
   >
 
-  <meta
-    name="twitter:card"
-    content="summary_large_image"
-  >
-
   <title>
-    Osama Alsadei, Business Analyst & Product Builder
+    Osama Alsadei | Business Analyst & Product Builder
   </title>
 
 
@@ -71,7 +66,6 @@
     rel="stylesheet"
   >
 
-
   <link
     rel="stylesheet"
     href="style.css"
@@ -80,399 +74,1225 @@
 
   <style>
 
-    /* ========================================
-       MITHAQ PROJECT
-    ======================================== */
+    /* =========================================
+       COMPACT WORK CARDS
+    ========================================= */
 
-    .mithaq-project {
-      margin-top: clamp(130px, 14vw, 220px);
-      padding-top: 44px;
-      border-top: 1px solid var(--line);
-    }
+    .portfolio-work {
+      min-height: 100svh;
 
+      padding:
+        clamp(110px, 10vw, 150px)
+        0
+        clamp(90px, 9vw, 130px);
 
-    .mithaq-cover {
-      min-height: 760px;
-      padding: clamp(35px, 5vw, 70px);
-
-      position: relative;
-      overflow: hidden;
-
-      border-radius: var(--radius-lg);
-
-      background:
-        radial-gradient(
-          circle at 78% 16%,
-          rgba(183, 255, 86, 0.10),
-          transparent 28%
-        ),
-        linear-gradient(
-          145deg,
-          #0b100c,
-          #111812
-        );
-
-      border: 1px solid rgba(255, 255, 255, 0.08);
-
-      display: grid;
-      grid-template-columns: 0.75fr 1.25fr;
-      gap: clamp(40px, 6vw, 90px);
-
-      align-items: stretch;
-
-      color: #f4f5f0;
-
-      transition:
-        transform 0.35s ease,
-        border-color 0.35s ease;
-    }
-
-
-    .mithaq-cover:hover {
-      transform: translateY(-5px);
-
-      border-color:
-        rgba(183, 255, 86, 0.24);
-    }
-
-
-    .mithaq-cover::before {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      left: -180px;
-      bottom: -260px;
-
-      border-radius: 50%;
-
-      border:
+      border-top:
         1px solid
-        rgba(183, 255, 86, 0.09);
+        var(--line);
 
-      box-shadow:
-        0 0 0 70px rgba(183, 255, 86, 0.018),
-        0 0 0 140px rgba(183, 255, 86, 0.012);
+      display:
+        flex;
 
-      pointer-events: none;
+      align-items:
+        center;
     }
 
 
-    .mithaq-cover-copy {
-      position: relative;
-      z-index: 2;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .portfolio-work .shell {
+      width:
+        var(--shell);
     }
 
 
-    .mithaq-cover-label {
-      color: #b7ff56;
+    .work-heading-compact {
+      display:
+        flex;
 
-      font-family: "Space Grotesk", sans-serif;
+      justify-content:
+        space-between;
 
-      font-size: 11px;
-      font-weight: 600;
+      align-items:
+        flex-end;
 
-      letter-spacing: 0.15em;
+      gap:
+        40px;
+
+      margin-bottom:
+        clamp(38px, 5vw, 68px);
     }
 
 
-    .mithaq-arabic-name {
-      direction: rtl;
+    .work-heading-left {
+      display:
+        flex;
+
+      align-items:
+        flex-start;
+
+      gap:
+        clamp(24px, 4vw, 58px);
+    }
+
+
+    .work-heading-number {
+      padding-top:
+        10px;
+
+      color:
+        var(--faint);
+
+      font-size:
+        12px;
+    }
+
+
+    .work-heading-compact h2 {
+      max-width:
+        850px;
+
+      margin-top:
+        14px;
 
       font-family:
-        Arial,
+        "Space Grotesk",
         sans-serif;
 
       font-size:
         clamp(
-          95px,
-          12vw,
-          190px
+          44px,
+          5.2vw,
+          78px
         );
 
-      line-height: 0.85;
+      line-height:
+        0.98;
 
-      font-weight: 700;
+      letter-spacing:
+        -0.055em;
 
-      letter-spacing: -0.08em;
+      font-weight:
+        500;
     }
 
 
-    .mithaq-cover-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .work-count {
+      padding-bottom:
+        7px;
 
-      width: fit-content;
+      color:
+        var(--faint);
 
-      color: #b7ff56;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 15px;
-      font-weight: 600;
+      font-size:
+        11px;
+
+      letter-spacing:
+        0.13em;
+
+      white-space:
+        nowrap;
     }
 
 
-    .mithaq-demo {
-      min-width: 0;
+    .work-cards {
+      height:
+        min(
+          610px,
+          65vw
+        );
 
-      position: relative;
-      z-index: 2;
+      min-height:
+        520px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display:
+        flex;
+
+      gap:
+        18px;
     }
 
 
-    .mithaq-demo-window {
-      width: 100%;
+    .work-card {
+      position:
+        relative;
 
-      padding: clamp(28px, 3.5vw, 48px);
+      flex:
+        1 1 50%;
+
+      min-width:
+        0;
+
+      overflow:
+        hidden;
 
       border:
         1px solid
-        rgba(255, 255, 255, 0.11);
+        rgba(
+          255,
+          255,
+          255,
+          0.1
+        );
 
-      border-radius: 30px;
+      border-radius:
+        38px;
 
-      background:
-        rgba(255, 255, 255, 0.025);
+      color:
+        white;
 
-      box-shadow:
-        0 35px 90px
-        rgba(0, 0, 0, 0.30);
+      isolation:
+        isolate;
 
-      backdrop-filter:
-        blur(20px);
-
-      -webkit-backdrop-filter:
-        blur(20px);
-
-      direction: rtl;
+      transition:
+        flex
+        0.65s
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        ),
+        transform
+        0.45s
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        ),
+        border-color
+        0.3s
+        ease;
     }
 
 
-    .mithaq-demo-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 20px;
-
-      padding-bottom: 28px;
-
-      border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.09);
+    .work-cards:has(.work-card:hover)
+    .work-card {
+      flex:
+        0.78 1 0;
     }
 
 
-    .mithaq-demo-top span:first-child {
-      padding: 8px 13px;
+    .work-cards
+    .work-card:hover {
+      flex:
+        1.22 1 0;
 
-      border-radius: 999px;
-
-      background:
-        rgba(183, 255, 86, 0.10);
-
-      color: #b7ff56;
-
-      font-size: 12px;
-      font-weight: 600;
+      transform:
+        translateY(
+          -5px
+        );
     }
 
 
-    .mithaq-demo-top span:last-child {
-      color: #777d76;
-      font-size: 12px;
-    }
+    .work-card-inner {
+      position:
+        absolute;
 
+      inset:
+        0;
 
-    .mithaq-demo h4 {
-      max-width: 620px;
+      z-index:
+        4;
 
-      margin-top: 38px;
-
-      font-size:
+      padding:
         clamp(
-          27px,
-          3vw,
+          24px,
+          3.2vw,
           44px
         );
 
-      line-height: 1.35;
+      display:
+        flex;
 
-      font-weight: 600;
+      flex-direction:
+        column;
+
+      justify-content:
+        space-between;
+
+      pointer-events:
+        none;
     }
 
 
-    .mithaq-demo-answer {
-      margin-top: 32px;
+    .work-card-top {
+      display:
+        flex;
 
-      padding: 22px;
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-start;
+
+      gap:
+        20px;
+    }
+
+
+    .work-card-index {
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.52
+        );
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size:
+        11px;
+
+      letter-spacing:
+        0.13em;
+    }
+
+
+    .work-card-type {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.55
+        );
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size:
+        10px;
+
+      letter-spacing:
+        0.13em;
+
+      text-transform:
+        uppercase;
+    }
+
+
+    .work-card-type::before {
+      content:
+        "";
+
+      width:
+        6px;
+
+      height:
+        6px;
+
+      border-radius:
+        50%;
+
+      background:
+        currentColor;
+    }
+
+
+    .work-card-bottom {
+      position:
+        relative;
+
+      z-index:
+        5;
+    }
+
+
+    .work-card-tags {
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        7px;
+
+      margin-bottom:
+        17px;
+    }
+
+
+    .work-card-tags span {
+      padding:
+        7px
+        10px;
 
       border:
         1px solid
-        rgba(183, 255, 86, 0.17);
+        rgba(
+          255,
+          255,
+          255,
+          0.16
+        );
 
-      border-radius: 18px;
+      border-radius:
+        999px;
 
       background:
-        rgba(183, 255, 86, 0.07);
+        rgba(
+          0,
+          0,
+          0,
+          0.13
+        );
+
+      backdrop-filter:
+        blur(
+          10px
+        );
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.72
+        );
+
+      font-size:
+        10px;
     }
 
 
-    .mithaq-demo-answer span {
-      color: #b7ff56;
+    .work-card h3 {
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 12px;
-      font-weight: 600;
+      font-size:
+        clamp(
+          46px,
+          5.8vw,
+          86px
+        );
+
+      line-height:
+        0.88;
+
+      letter-spacing:
+        -0.065em;
+
+      font-weight:
+        600;
     }
 
 
-    .mithaq-demo-answer p {
-      margin-top: 10px;
+    .work-card-subtitle {
+      max-width:
+        390px;
 
-      color: #c5c9c2;
+      margin-top:
+        15px;
 
-      font-size: 14px;
-      line-height: 1.8;
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.66
+        );
+
+      font-size:
+        14px;
+
+      line-height:
+        1.6;
     }
 
 
-    .mithaq-demo-logic {
-      margin-top: 34px;
+    .work-card-link {
+      margin-top:
+        23px;
 
-      display: grid;
-      gap: 0;
-    }
+      display:
+        flex;
 
+      justify-content:
+        space-between;
 
-    .mithaq-demo-logic div {
-      padding: 14px 0;
+      align-items:
+        center;
 
-      border-bottom:
+      gap:
+        20px;
+
+      padding-top:
+        17px;
+
+      border-top:
         1px solid
-        rgba(255, 255, 255, 0.08);
+        rgba(
+          255,
+          255,
+          255,
+          0.17
+        );
 
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      color:
+        white;
 
-      color: #a1a69f;
-
-      font-size: 13px;
+      font-size:
+        13px;
     }
 
 
-    .mithaq-demo-logic div::before {
-      content: "✓";
+    .work-card-link i {
+      font-style:
+        normal;
 
-      color: #b7ff56;
+      font-size:
+        22px;
 
-      font-weight: 700;
+      transition:
+        transform
+        0.3s
+        ease;
     }
 
 
-    .mithaq-demo-source {
-      margin-top: 27px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 20px;
-
-      color: #777d76;
-
-      font-size: 11px;
+    .work-card:hover
+    .work-card-link i {
+      transform:
+        translate(
+          4px,
+          -4px
+        );
     }
 
 
-    .mithaq-demo-source strong {
-      color: #b7ff56;
-      font-weight: 500;
+    /* SANAD */
+
+    .sanad-card {
+      background:
+        linear-gradient(
+          145deg,
+          #4266e7,
+          #7190ff
+        );
+
+      border-color:
+        rgba(
+          255,
+          255,
+          255,
+          0.16
+        );
     }
 
+
+    .sanad-card::before {
+      content:
+        "SANAD";
+
+      position:
+        absolute;
+
+      top:
+        17%;
+
+      left:
+        -3%;
+
+      z-index:
+        0;
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size:
+        clamp(
+          105px,
+          14vw,
+          230px
+        );
+
+      font-weight:
+        700;
+
+      line-height:
+        0.8;
+
+      letter-spacing:
+        -0.085em;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.09
+        );
+
+      pointer-events:
+        none;
+    }
+
+
+    .sanad-phone {
+      position:
+        absolute;
+
+      width:
+        min(
+          325px,
+          48%
+        );
+
+      top:
+        8%;
+
+      right:
+        8%;
+
+      z-index:
+        2;
+
+      overflow:
+        hidden;
+
+      border:
+        7px solid
+        #111;
+
+      border-radius:
+        46px;
+
+      background:
+        #111;
+
+      box-shadow:
+        0
+        40px
+        90px
+        rgba(
+          0,
+          0,
+          0,
+          0.32
+        );
+
+      transform:
+        rotate(
+          5deg
+        )
+        translateY(
+          15px
+        );
+
+      transition:
+        transform
+        0.65s
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        );
+    }
+
+
+    .sanad-phone img {
+      display:
+        block;
+
+      width:
+        100%;
+    }
+
+
+    .sanad-phone::before {
+      content:
+        "";
+
+      position:
+        absolute;
+
+      z-index:
+        3;
+
+      top:
+        9px;
+
+      left:
+        50%;
+
+      width:
+        31%;
+
+      height:
+        19px;
+
+      transform:
+        translateX(
+          -50%
+        );
+
+      border-radius:
+        999px;
+
+      background:
+        #050505;
+    }
+
+
+    .sanad-card:hover
+    .sanad-phone {
+      transform:
+        rotate(
+          1deg
+        )
+        translateY(
+          -7px
+        )
+        scale(
+          1.025
+        );
+    }
+
+
+    .sanad-card
+    .work-card-bottom {
+      max-width:
+        60%;
+    }
+
+
+    /* MITHAQ */
+
+    .mithaq-card {
+      background:
+        radial-gradient(
+          circle
+          at
+          75%
+          5%,
+          rgba(
+            183,
+            255,
+            86,
+            0.085
+          ),
+          transparent
+          31%
+        ),
+        linear-gradient(
+          145deg,
+          #0b0f0c,
+          #121713
+        );
+    }
+
+
+    .mithaq-card:hover {
+      border-color:
+        rgba(
+          183,
+          255,
+          86,
+          0.28
+        );
+    }
+
+
+    .mithaq-card
+    .work-card-type {
+      color:
+        #b7ff56;
+    }
+
+
+    .mithaq-card
+    .work-card-bottom {
+      max-width:
+        56%;
+    }
+
+
+    .mithaq-card
+    .work-card-tags
+    span:first-child {
+      border-color:
+        rgba(
+          183,
+          255,
+          86,
+          0.22
+        );
+
+      color:
+        #b7ff56;
+    }
+
+
+    .mithaq-card
+    .work-card-link {
+      color:
+        #b7ff56;
+    }
+
+
+    .mithaq-stage {
+      position:
+        absolute;
+
+      top:
+        8%;
+
+      right:
+        4%;
+
+      bottom:
+        9%;
+
+      width:
+        53%;
+
+      z-index:
+        2;
+
+      pointer-events:
+        none;
+    }
+
+
+    .mithaq-shot {
+      position:
+        absolute;
+
+      overflow:
+        hidden;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.12
+        );
+
+      border-radius:
+        20px;
+
+      background:
+        #0c100d;
+
+      box-shadow:
+        0
+        32px
+        80px
+        rgba(
+          0,
+          0,
+          0,
+          0.38
+        );
+
+      transition:
+        transform
+        0.65s
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        ),
+        opacity
+        0.45s
+        ease;
+    }
+
+
+    .mithaq-shot img {
+      display:
+        block;
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        cover;
+    }
+
+
+    .mithaq-shot-start {
+      width:
+        92%;
+
+      aspect-ratio:
+        16 / 10;
+
+      top:
+        4%;
+
+      right:
+        0;
+
+      transform:
+        rotate(
+          1.5deg
+        );
+    }
+
+
+    .mithaq-shot-result {
+      width:
+        82%;
+
+      aspect-ratio:
+        1.52 / 1;
+
+      bottom:
+        3%;
+
+      left:
+        0;
+
+      z-index:
+        3;
+
+      transform:
+        rotate(
+          -2.5deg
+        )
+        translateY(
+          5px
+        );
+    }
+
+
+    .mithaq-card:hover
+    .mithaq-shot-start {
+      transform:
+        rotate(
+          3deg
+        )
+        translate(
+          18px,
+          -8px
+        );
+    }
+
+
+    .mithaq-card:hover
+    .mithaq-shot-result {
+      transform:
+        rotate(
+          -0.7deg
+        )
+        translate(
+          -8px,
+          -13px
+        )
+        scale(
+          1.025
+        );
+    }
+
+
+    .mithaq-glow {
+      position:
+        absolute;
+
+      width:
+        380px;
+
+      height:
+        380px;
+
+      top:
+        -160px;
+
+      right:
+        -100px;
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(
+          183,
+          255,
+          86,
+          0.07
+        );
+
+      filter:
+        blur(
+          60px
+        );
+
+      pointer-events:
+        none;
+    }
+
+
+    /* TABLET */
 
     @media
-    (max-width: 900px) {
+    (max-width: 1000px) {
 
-      .mithaq-cover {
-        min-height: auto;
-
-        grid-template-columns: 1fr;
-
-        gap: 80px;
+      .work-cards {
+        height:
+          570px;
       }
 
 
-      .mithaq-cover-copy {
-        min-height: 420px;
+      .sanad-phone {
+        width:
+          48%;
+
+        right:
+          4%;
       }
 
 
-      .mithaq-demo-window {
-        max-width: 700px;
+      .sanad-card
+      .work-card-bottom,
+      .mithaq-card
+      .work-card-bottom {
+        max-width:
+          68%;
+      }
+
+
+      .mithaq-stage {
+        width:
+          58%;
+
+        right:
+          2%;
       }
 
     }
 
+
+    /* MOBILE */
 
     @media
     (max-width: 760px) {
 
-      .mithaq-project {
-        margin-top: 110px;
+      .portfolio-work {
+        min-height:
+          auto;
+
+        padding:
+          110px
+          0
+          100px;
       }
 
 
-      .mithaq-cover {
-        padding: 26px;
+      .work-heading-compact {
+        align-items:
+          flex-start;
 
-        border-radius: 30px;
-
-        gap: 55px;
+        margin-bottom:
+          42px;
       }
 
 
-      .mithaq-cover-copy {
-        min-height: 330px;
+      .work-heading-left {
+        gap:
+          18px;
       }
 
 
-      .mithaq-arabic-name {
+      .work-heading-compact h2 {
         font-size:
-          clamp(
-            82px,
-            28vw,
-            125px
+          43px;
+      }
+
+
+      .work-count {
+        display:
+          none;
+      }
+
+
+      .work-cards {
+        width:
+          calc(
+            100vw
+            - 16px
           );
+
+        height:
+          570px;
+
+        min-height:
+          0;
+
+        margin-left:
+          calc(
+            (
+              100vw
+              -
+              var(--shell)
+            )
+            /
+            -2
+          );
+
+        padding:
+          0
+          16px
+          18px;
+
+        overflow-x:
+          auto;
+
+        overflow-y:
+          hidden;
+
+        gap:
+          13px;
+
+        scroll-snap-type:
+          x mandatory;
+
+        scrollbar-width:
+          none;
       }
 
 
-      .mithaq-demo-window {
-        padding: 23px;
-
-        border-radius: 23px;
+      .work-cards::-webkit-scrollbar {
+        display:
+          none;
       }
 
 
-      .mithaq-demo h4 {
-        font-size: 28px;
+      .work-card,
+      .work-cards:has(.work-card:hover)
+      .work-card,
+      .work-cards
+      .work-card:hover {
+        flex:
+          0
+          0
+          calc(
+            100vw
+            - 58px
+          );
+
+        height:
+          550px;
+
+        transform:
+          none;
+
+        border-radius:
+          29px;
+
+        scroll-snap-align:
+          center;
       }
 
 
-      .mithaq-demo-source {
-        align-items: flex-start;
-        flex-direction: column;
+      .work-card-inner {
+        padding:
+          24px;
+      }
+
+
+      .work-card h3 {
+        font-size:
+          53px;
+      }
+
+
+      .sanad-phone {
+        width:
+          57%;
+
+        top:
+          13%;
+
+        right:
+          5%;
+
+        border-width:
+          5px;
+
+        border-radius:
+          35px;
+      }
+
+
+      .sanad-card
+      .work-card-bottom {
+        max-width:
+          78%;
+      }
+
+
+      .mithaq-stage {
+        width:
+          78%;
+
+        top:
+          11%;
+
+        right:
+          -4%;
+
+        bottom:
+          22%;
+      }
+
+
+      .mithaq-card
+      .work-card-bottom {
+        max-width:
+          88%;
+      }
+
+
+      .mithaq-shot-start {
+        width:
+          91%;
+      }
+
+
+      .mithaq-shot-result {
+        width:
+          84%;
+      }
+
+    }
+
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+      .work-card,
+      .sanad-phone,
+      .mithaq-shot {
+        transition:
+          none;
       }
 
     }
@@ -575,7 +1395,7 @@
         </span>
 
         <span>
-          Portfolio 2026
+          Portfolio · 2026
         </span>
 
       </div>
@@ -638,275 +1458,226 @@
 
     <section
       id="work"
-      class="work-section"
+      class="portfolio-work"
     >
 
       <div class="shell">
 
-        <div class="section-heading reveal">
 
-          <p class="section-number">
-            01
-          </p>
+        <div class="work-heading-compact reveal">
 
-          <div>
+          <div class="work-heading-left">
 
-            <p class="eyebrow">
-              SELECTED WORK
-            </p>
+            <span class="work-heading-number">
+              01
+            </span>
 
-            <h2>
-              Work I've built & analyzed.
-            </h2>
+
+            <div>
+
+              <p class="eyebrow">
+                SELECTED WORK
+              </p>
+
+              <h2>
+                Things I've built,
+                analyzed & shaped.
+              </h2>
+
+            </div>
 
           </div>
+
+
+          <span class="work-count">
+            02 PROJECTS
+          </span>
 
         </div>
 
 
 
-        <!-- SANAD -->
-
-        <article class="featured-project">
-
-          <div class="project-top reveal">
-
-            <div>
-
-              <p class="project-index">
-                01 / SANAD
-              </p>
-
-              <h3>
-                Keep proof.
-                <br>
-                Stay covered.
-              </h3>
-
-            </div>
+        <div class="work-cards">
 
 
-            <div class="project-intro">
-
-              <p>
-                A local-first receipt and warranty management app
-                designed to keep purchase proof, products and
-                warranty coverage together.
-              </p>
-
-
-              <div class="project-tags">
-
-                <span>
-                  Product
-                </span>
-
-                <span>
-                  Mobile App
-                </span>
-
-                <span>
-                  React Native
-                </span>
-
-                <span>
-                  Local-first
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
+          <!-- SANAD -->
 
           <a
             href="sanad.html"
-            class="project-cover reveal"
+            class="work-card sanad-card reveal"
+            aria-label="View Sanad case study"
           >
 
-            <div class="cover-copy">
-
-              <span class="cover-label">
-                FEATURED PROJECT
-              </span>
-
-              <span class="cover-name">
-                SANAD
-              </span>
-
-              <span class="cover-link">
-                View case study →
-              </span>
-
-            </div>
-
-
-            <div class="cover-phone phone-frame">
-
-              <div class="phone-island"></div>
+            <div class="sanad-phone">
 
               <img
                 src="home.png"
-                alt="Sanad home screen"
+                alt="Sanad application home screen"
                 loading="eager"
                 decoding="async"
               >
 
             </div>
 
-          </a>
 
-        </article>
+            <div class="work-card-inner">
 
+              <div class="work-card-top">
 
-
-        <!-- MITHAQ -->
-
-        <article class="mithaq-project">
-
-          <div class="project-top reveal">
-
-            <div>
-
-              <p class="project-index">
-                02 / MITHAQ
-              </p>
-
-              <h3>
-                From rules
-                <br>
-                to clarity.
-              </h3>
-
-            </div>
-
-
-            <div class="project-intro">
-
-              <p>
-                An interactive rental decision-support concept
-                that turns official rules into contextual questions,
-                explainable outcomes and traceable next steps.
-              </p>
-
-
-              <div class="project-tags">
-
-                <span>
-                  Business Analysis
+                <span class="work-card-index">
+                  01 / SANAD
                 </span>
 
-                <span>
-                  Decision Design
+                <span class="work-card-type">
+                  Product
                 </span>
 
-                <span>
-                  Business Rules
-                </span>
+              </div>
 
-                <span>
-                  Interactive Prototype
-                </span>
+
+              <div class="work-card-bottom">
+
+                <div class="work-card-tags">
+
+                  <span>
+                    Mobile App
+                  </span>
+
+                  <span>
+                    Product Design
+                  </span>
+
+                  <span>
+                    React Native
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  SANAD
+                </h3>
+
+
+                <p class="work-card-subtitle">
+                  Keep proof. Stay covered.
+                </p>
+
+
+                <div class="work-card-link">
+
+                  <span>
+                    View case study
+                  </span>
+
+                  <i>
+                    ↗
+                  </i>
+
+                </div>
 
               </div>
 
             </div>
 
-          </div>
+          </a>
 
+
+
+          <!-- MITHAQ -->
 
           <a
             href="mithaq.html"
-            class="mithaq-cover reveal"
+            class="work-card mithaq-card reveal"
             aria-label="View Mithaq case study"
           >
 
-            <div class="mithaq-cover-copy">
-
-              <span class="mithaq-cover-label">
-                BUSINESS ANALYSIS CASE STUDY
-              </span>
-
-
-              <strong
-                class="mithaq-arabic-name"
-                lang="ar"
-              >
-                ميثاق
-              </strong>
+            <span
+              class="mithaq-glow"
+              aria-hidden="true"
+            ></span>
 
 
-              <span class="mithaq-cover-link">
-                View case study →
-              </span>
+            <div
+              class="mithaq-stage"
+              aria-hidden="true"
+            >
+
+              <div class="mithaq-shot mithaq-shot-start">
+
+                <img
+                  src="mithaq-hero.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                >
+
+              </div>
+
+
+              <div class="mithaq-shot mithaq-shot-result">
+
+                <img
+                  src="mithaq-cover.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                >
+
+              </div>
 
             </div>
 
 
-            <div class="mithaq-demo">
+            <div class="work-card-inner">
 
-              <div class="mithaq-demo-window">
+              <div class="work-card-top">
 
-                <div class="mithaq-demo-top">
+                <span class="work-card-index">
+                  02 / MITHAQ
+                </span>
+
+                <span class="work-card-type">
+                  Analysis
+                </span>
+
+              </div>
+
+
+              <div class="work-card-bottom">
+
+                <div class="work-card-tags">
 
                   <span>
-                    مسار السداد
+                    Business Analysis
                   </span>
 
                   <span>
-                    03 / 03
+                    Decision Design
                   </span>
 
                 </div>
 
 
-                <h4>
-                  تجاوز التأخر مهلة السداد المرتبطة بحالتك
-                </h4>
+                <h3>
+                  MITHAQ
+                </h3>
 
 
-                <div class="mithaq-demo-answer">
-
-                  <span>
-                    ماذا يقول المصدر الرسمي؟
-                  </span>
-
-                  <p>
-                    تختلف مهلة السداد حسب دورة الدفعات،
-                    ويستخدم ميثاق هذه المعلومة لتحديد المسار
-                    المرتبط بالحالة
-                  </p>
-
-                </div>
+                <p class="work-card-subtitle">
+                  From complexity to clarity.
+                </p>
 
 
-                <div class="mithaq-demo-logic">
-
-                  <div>
-                    توجد دفعة مستحقة
-                  </div>
-
-                  <div>
-                    دورة السداد معروفة
-                  </div>
-
-                  <div>
-                    مدة التأخر تجاوزت المهلة
-                  </div>
-
-                </div>
-
-
-                <div class="mithaq-demo-source">
+                <div class="work-card-link">
 
                   <span>
-                    المصدر الرسمي
+                    View case study
                   </span>
 
-                  <strong>
-                    شبكة إيجار
-                  </strong>
+                  <i>
+                    ↗
+                  </i>
 
                 </div>
 
@@ -916,7 +1687,8 @@
 
           </a>
 
-        </article>
+
+        </div>
 
       </div>
 
@@ -1027,7 +1799,7 @@
       <div class="shell contact-shell">
 
         <p class="eyebrow reveal">
-          03 CONTACT
+          03 · CONTACT
         </p>
 
 
