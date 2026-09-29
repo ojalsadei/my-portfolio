@@ -2703,35 +2703,12 @@ function renderResult(
 
         </div>
 
-
-        <button
-          class="result-restart"
-          id="resultRestartButton"
-          type="button"
-        >
-          ابدأ تقييمًا جديدًا
-        </button>
-
       </section>
 
     </div>
   `;
 
 
-  document
-    .getElementById(
-      "resultRestartButton"
-    )
-    ?.addEventListener(
-      "click",
-      () => {
-
-        renderScenarioPicker();
-
-        scrollToQuestion();
-
-      }
-    );
 
 
   if (
