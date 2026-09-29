@@ -1,612 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Osama Alsadei — Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad."
-  >
-
-  <meta
-    name="author"
-    content="Osama Alsadei"
-  >
-
-  <meta
-    name="theme-color"
-    content="#090909"
-  >
-
-  <meta
-    property="og:title"
-    content="Osama Alsadei — Business Analyst & Product Builder"
-  >
-
-  <meta
-    property="og:description"
-    content="Business analysis, product thinking and practical digital products. Explore selected work including Sanad."
-  >
-
-  <meta
-    property="og:type"
-    content="website"
-  >
-
-  <meta
-    property="og:url"
-    content="https://ojalsadei.github.io/my-portfolio/"
-  >
-
-  <meta
-    name="twitter:card"
-    content="summary_large_image"
-  >
-
-  <title>
-    Osama Alsadei — Business Analyst & Product Builder
-  </title>
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
-  <style>
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      margin-bottom: 38px;
-    }
-
-    .contact-info-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .contact-info-label {
-      color: var(--faint);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .contact-info-value {
-      color: var(--text);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(18px, 1.6vw, 24px);
-      line-height: 1.3;
-      user-select: text;
-    }
-
-    .contact-socials {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 18px;
-    }
-
-    @media (max-width: 760px) {
-      .contact-info {
-        gap: 22px;
-        margin-bottom: 32px;
-      }
-
-      .contact-info-value {
-        font-size: 18px;
-        word-break: break-word;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Osama Alsadei — Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad.">
+  <meta name="author" content="Osama Alsadei">
+  <meta name="theme-color" content="#090909">
+  <meta property="og:title" content="Osama Alsadei — Business Analyst & Product Builder">
+  <meta property="og:description" content="Business analysis, product thinking and practical digital products. Explore selected work including Sanad.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ojalsadei.github.io/my-portfolio/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Osama Alsadei — Business Analyst & Product Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
   <div class="noise"></div>
 
-
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
   <header class="site-header">
-
     <nav class="nav shell">
-
-      <a
-        href="#top"
-        class="brand"
-        aria-label="Back to top"
-      >
-        OSAMA ALSADEI
-      </a>
-
+      <a href="#top" class="brand" aria-label="Back to top">OSAMA ALSADEI</a>
 
       <div class="nav-links">
-
-        <a href="#work">
-          Work
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </div>
 
-
-      <a
-        href="https://www.linkedin.com/in/osama-alsadei/"
-        target="_blank"
-        rel="noreferrer"
-        class="nav-cta"
-      >
-        LinkedIn
-        <span>↗</span>
-      </a>
-
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
     </nav>
 
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#work"><span>01</span>Work</a>
+      <a href="#about"><span>02</span>About</a>
+      <a href="#contact"><span>03</span>Contact</a>
+    </div>
   </header>
 
-
   <main id="top">
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
     <section class="hero shell">
-
       <div class="hero-meta reveal">
-
-        <span>
-          Riyadh, Saudi Arabia
-        </span>
-
-        <span>
-          Portfolio — 2026
-        </span>
-
+        <span>Riyadh, Saudi Arabia</span>
+        <span>Portfolio — 2026</span>
       </div>
-
 
       <div class="hero-main">
-
-        <p class="eyebrow reveal">
-          BUSINESS ANALYST × PRODUCT BUILDER
-        </p>
-
-
+        <p class="eyebrow reveal">BUSINESS ANALYST × PRODUCT BUILDER</p>
         <h1 class="hero-title">
-
-          <span class="reveal">
-            I analyze
-          </span>
-
-          <span class="reveal">
-            problems,
-          </span>
-
-          <span class="reveal accent-line">
-            design systems,
-          </span>
-
-          <span class="reveal">
-            and build products.
-          </span>
-
+          <span class="reveal">I analyze</span>
+          <span class="reveal">problems,</span>
+          <span class="reveal accent-line">design systems,</span>
+          <span class="reveal">and build products.</span>
         </h1>
-
       </div>
-
 
       <div class="hero-footer reveal">
-
-        <p>
-          I'm Osama Alsadei, a Computer Information
-          Systems graduate focused on business analysis,
-          product thinking and turning ideas into
-          practical digital experiences.
-        </p>
-
-
-        <a
-          href="#work"
-          class="scroll-button"
-          aria-label="View selected work"
-        >
-          ↓
-        </a>
-
+        <p>I'm Osama Alsadei, a Computer Information Systems graduate focused on business analysis, product thinking and turning ideas into practical digital experiences.</p>
+        <a href="#work" class="scroll-button" aria-label="View selected work">↓</a>
       </div>
-
     </section>
 
-
-    <!-- =========================
-         WORK
-    ========================== -->
-
-    <section
-      id="work"
-      class="work-section"
-    >
-
+    <section id="work" class="work-section">
       <div class="shell">
-
         <div class="section-heading reveal">
-
-          <p class="section-number">
-            01
-          </p>
-
+          <p class="section-number">01</p>
           <div>
-
-            <p class="eyebrow">
-              SELECTED WORK
-            </p>
-
-            <h2>
-              Products I've built.
-            </h2>
-
+            <p class="eyebrow">SELECTED WORK</p>
+            <h2>Products I've built.</h2>
           </div>
-
         </div>
-
-
-        <!-- Sanad -->
 
         <article class="featured-project">
-
           <div class="project-top reveal">
-
             <div>
-
-              <p class="project-index">
-                01 / SANAD
-              </p>
-
-              <h3>
-                Keep proof.<br>
-                Stay covered.
-              </h3>
-
+              <p class="project-index">01 / SANAD</p>
+              <h3>Keep proof.<br>Stay covered.</h3>
             </div>
-
 
             <div class="project-intro">
-
-              <p>
-                A local-first receipt and warranty
-                management app designed to keep
-                purchase proof, products and warranty
-                coverage together.
-              </p>
-
-
+              <p>A local-first receipt and warranty management app designed to keep purchase proof, products and warranty coverage together.</p>
               <div class="project-tags">
-
-                <span>
-                  Product
-                </span>
-
-                <span>
-                  Mobile App
-                </span>
-
-                <span>
-                  React Native
-                </span>
-
-                <span>
-                  Local-first
-                </span>
-
+                <span>Product</span>
+                <span>Mobile App</span>
+                <span>React Native</span>
+                <span>Local-first</span>
               </div>
-
             </div>
-
           </div>
 
-
-          <a
-            href="sanad.html"
-            class="project-cover reveal"
-          >
-
+          <a href="sanad.html" class="project-cover reveal">
             <div class="cover-copy">
-
-              <span class="cover-label">
-                FEATURED PROJECT
-              </span>
-
-              <span class="cover-name">
-                SANAD
-              </span>
-
-              <span class="cover-link">
-                View case study →
-              </span>
-
+              <span class="cover-label">FEATURED PROJECT</span>
+              <span class="cover-name">SANAD</span>
+              <span class="cover-link">View case study →</span>
             </div>
-
 
             <div class="cover-phone phone-frame">
-
               <div class="phone-island"></div>
-
-              <img
-                src="home.png"
-                alt="Sanad home screen"
-              >
-
+              <img src="home.png" alt="Sanad home screen" loading="eager" decoding="async">
             </div>
-
           </a>
-
         </article>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section
-      id="about"
-      class="about-section"
-    >
-
+    <section id="about" class="about-section">
       <div class="shell about-shell">
-
         <div class="section-heading reveal">
-
-          <p class="section-number">
-            02
-          </p>
-
+          <p class="section-number">02</p>
           <div>
-
-            <p class="eyebrow">
-              ABOUT
-            </p>
-
-            <h2>
-              I like turning ambiguity
-              into something people can use.
-            </h2>
-
+            <p class="eyebrow">ABOUT</p>
+            <h2>I like turning ambiguity into something people can use.</h2>
           </div>
-
         </div>
-
 
         <div class="about-grid">
-
           <div class="about-copy reveal">
-
-            <p>
-              I'm a Computer Information Systems
-              graduate based in Riyadh, focused on
-              the intersection of business, systems
-              and product.
-            </p>
-
-            <p>
-              I enjoy understanding a problem,
-              structuring requirements, thinking
-              through the experience and taking an
-              idea far enough to become a working
-              product.
-            </p>
-
+            <p>I'm a Computer Information Systems graduate based in Riyadh, focused on the intersection of business, systems and product.</p>
+            <p>I enjoy understanding a problem, structuring requirements, thinking through the experience and taking an idea far enough to become a working product.</p>
           </div>
-
 
           <div class="capabilities">
-
-            <div class="capability reveal">
-              <span>01</span>
-              Business Analysis
-            </div>
-
-            <div class="capability reveal">
-              <span>02</span>
-              Product Thinking
-            </div>
-
-            <div class="capability reveal">
-              <span>03</span>
-              Requirements & Process Design
-            </div>
-
-            <div class="capability reveal">
-              <span>04</span>
-              UI / UX Prototyping
-            </div>
-
-            <div class="capability reveal">
-              <span>05</span>
-              React Native / Expo
-            </div>
-
-            <div class="capability reveal">
-              <span>06</span>
-              SQL & Data Modeling
-            </div>
-
+            <div class="capability reveal"><span>01</span>Business Analysis</div>
+            <div class="capability reveal"><span>02</span>Product Thinking</div>
+            <div class="capability reveal"><span>03</span>Requirements & Process Design</div>
+            <div class="capability reveal"><span>04</span>UI / UX Prototyping</div>
+            <div class="capability reveal"><span>05</span>React Native / Expo</div>
+            <div class="capability reveal"><span>06</span>SQL & Data Modeling</div>
           </div>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section
-      id="contact"
-      class="contact-section"
-    >
-
+    <section id="contact" class="contact-section">
       <div class="shell contact-shell">
-
-        <p class="eyebrow reveal">
-          03 — CONTACT
-        </p>
-
+        <p class="eyebrow reveal">03 — CONTACT</p>
 
         <div class="contact-main">
-
           <div class="contact-title-wrap">
-
-            <h2 class="reveal">
-              Let's build<br>
-              something useful.
-            </h2>
-
+            <h2 class="reveal">Let's build<br>something useful.</h2>
           </div>
-
 
           <div class="contact-side reveal">
-
-            <p>
-              I'm interested in business analysis,
-              product and technology opportunities.
-              Feel free to reach out.
-            </p>
-
+            <p>I'm interested in business analysis, product and technology opportunities. Feel free to reach out.</p>
 
             <div class="contact-info">
-
-              <div class="contact-info-item">
-
-                <span class="contact-info-label">
-                  Email
+              <button class="copy-contact" type="button" data-copy="o.j.alsadei@gmail.com" aria-label="Copy email address">
+                <span class="copy-contact-text">
+                  <span class="contact-info-label">Email</span>
+                  <span class="contact-info-value">o.j.alsadei@gmail.com</span>
                 </span>
+                <span class="copy-feedback" aria-live="polite">Copy</span>
+              </button>
 
-                <span class="contact-info-value">
-                  o.j.alsadei@gmail.com
+              <button class="copy-contact" type="button" data-copy="+966532801162" aria-label="Copy phone number">
+                <span class="copy-contact-text">
+                  <span class="contact-info-label">Phone</span>
+                  <span class="contact-info-value">+966 53 280 1162</span>
                 </span>
-
-              </div>
-
-
-              <div class="contact-info-item">
-
-                <span class="contact-info-label">
-                  Phone
-                </span>
-
-                <span class="contact-info-value">
-                  +966 53 280 1162
-                </span>
-
-              </div>
-
+                <span class="copy-feedback" aria-live="polite">Copy</span>
+              </button>
             </div>
-
 
             <div class="contact-socials">
-
-              <a
-                href="https://www.linkedin.com/in/osama-alsadei/"
-                target="_blank"
-                rel="noreferrer"
-                class="contact-link"
-              >
-                LinkedIn
-                <span>↗</span>
-              </a>
-
-
-              <a
-                href="https://github.com/ojalsadei"
-                target="_blank"
-                rel="noreferrer"
-                class="contact-link"
-              >
-                GitHub
-                <span>↗</span>
-              </a>
-
+              <a href="https://www.linkedin.com/in/osama-alsadei/" target="_blank" rel="noreferrer" class="contact-link">LinkedIn <span>↗</span></a>
+              <a href="https://github.com/ojalsadei" target="_blank" rel="noreferrer" class="contact-link">GitHub <span>↗</span></a>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
 
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
   <footer class="footer">
-
     <div class="shell footer-inner">
-
-      <span>
-        © 2026 Osama Alsadei
-      </span>
-
-      <a href="#top">
-        Back to top ↑
-      </a>
-
+      <span>© 2026 Osama Alsadei</span>
+      <a href="#top">Back to top ↑</a>
     </div>
-
   </footer>
 
-
   <script src="script.js"></script>
-
 </body>
-
 </html>
