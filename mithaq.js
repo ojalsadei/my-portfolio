@@ -1,2488 +1,1905 @@
-const SOURCES = {
-  regulations: {
-    authority: "الهيئة العامة للعقار",
-    reviewed: "29 سبتمبر 2026",
-    url: "https://rega.gov.sa/"
-  },
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-  ejar: {
-    authority: "شبكة إيجار",
-    reviewed: "29 سبتمبر 2026",
-    url: "https://www.ejar.sa/"
-  },
+<head>
+  <meta charset="UTF-8">
 
-  renewal: {
-    authority: "شبكة إيجار",
-    reviewed: "29 سبتمبر 2026",
-    url: "https://www.ejar.sa/ar/service/188290"
-  }
-};
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
+  <meta
+    name="description"
+    content="ميثاق، نموذج تفاعلي ودراسة حالة في تحليل الأعمال لتبسيط فهم المسارات الإيجارية السكنية."
+  >
 
-const navigator =
-  document.getElementById(
-    "navigator"
-  );
+  <meta
+    name="theme-color"
+    content="#080a09"
+  >
 
+  <title>ميثاق | دليل المسار الإيجاري</title>
 
-const stepContent =
-  document.getElementById(
-    "stepContent"
-  );
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
-const stepTitle =
-  document.getElementById(
-    "stepTitle"
-  );
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
+  <link
+    rel="stylesheet"
+    href="mithaq.css"
+  >
+</head>
 
-const stepCurrent =
-  document.getElementById(
-    "stepCurrent"
-  );
 
+<body>
 
-const stepTotal =
-  document.getElementById(
-    "stepTotal"
-  );
+  <div
+    class="page-noise"
+    aria-hidden="true"
+  ></div>
 
 
-const progressBar =
-  document.getElementById(
-    "progressBar"
-  );
+  <header class="site-header">
 
+    <div class="header-shell">
 
-const backButton =
-  document.getElementById(
-    "backButton"
-  );
+      <a
+        class="header-brand"
+        href="#top"
+      >
+        <strong>ميثاق</strong>
 
-
-const restartButton =
-  document.getElementById(
-    "restartButton"
-  );
-
-
-let currentScenario = null;
-let currentStep = 0;
-let answers = {};
-let showingResult = false;
-
-
-const reducedMotion =
-  window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
-
-/* أدوات */
-
-function createOption(
-  value,
-  title,
-  description
-) {
-  return `
-    <button
-      class="option-button"
-      type="button"
-      data-value="${value}"
-    >
-      <strong>
-        ${title}
-      </strong>
-
-      <span>
-        ${description}
-      </span>
-    </button>
-  `;
-}
-
-
-function createCategory(
-  id,
-  group,
-  title,
-  description
-) {
-  return `
-    <button
-      class="category-button"
-      type="button"
-      data-scenario="${id}"
-    >
-      <small>
-        ${group}
-      </small>
-
-      <strong>
-        ${title}
-      </strong>
-
-      <span>
-        ${description}
-      </span>
-    </button>
-  `;
-}
-
-
-function createResult({
-  label,
-  title,
-  body,
-  reasons,
-  next,
-  source,
-  disclaimer
-}) {
-  return {
-    label,
-    title,
-    body,
-    reasons,
-    next,
-    source,
-
-    disclaimer:
-      disclaimer ||
-      "هذه نتيجة إرشادية مبنية على إجاباتك والقواعد الممثلة في النموذج. قد توجد تفاصيل أو استثناءات تغير الحالة الفعلية، لذلك تحقق دائمًا من المصدر الرسمي."
-  };
-}
-
-
-/* تحريك السؤال إلى مكان واضح */
-
-function scrollToQuestion() {
-
-  requestAnimationFrame(
-    () => {
-
-      const rect =
-        navigator.getBoundingClientRect();
-
-
-      const comfortableTop =
-        125;
-
-
-      const currentTop =
-        rect.top;
-
-
-      if (
-        currentTop < 95 ||
-        currentTop > 190
-      ) {
-
-        const target =
-          window.scrollY +
-          currentTop -
-          comfortableTop;
-
-
-        window.scrollTo({
-          top: target,
-
-          behavior:
-            reducedMotion
-              ? "auto"
-              : "smooth"
-        });
-
-      }
-
-    }
-  );
-
-}
-
-
-/* السيناريوهات */
-
-const scenarios = {
-
-
-  rentIncrease: {
-
-    name:
-      "زيادة الإيجار",
-
-
-    steps: [
-
-      {
-        key:
-          "city",
-
-        title:
-          "في أي مدينة يقع العقار؟",
-
-        options: [
-          [
-            "riyadh",
-            "الرياض",
-            "العقار داخل مدينة الرياض"
-          ],
-
-          [
-            "other",
-            "مدينة أخرى",
-            "العقار خارج مدينة الرياض"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "urban",
-
-        title:
-          "هل العقار داخل النطاق العمراني لمدينة الرياض؟",
-
-        when:
-          a =>
-            a.city === "riyadh",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "داخل النطاق العمراني"
-          ],
-
-          [
-            "no",
-            "لا",
-            "خارج النطاق العمراني"
-          ],
-
-          [
-            "unknown",
-            "لا أعرف",
-            "أحتاج التحقق من الموقع"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "date",
-
-        title:
-          "هل الحالة حدثت بعد 25 سبتمبر 2025؟",
-
-        when:
-          a =>
-            a.city === "riyadh" &&
-            a.urban === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "الحالة بعد تاريخ بدء السريان"
-          ],
-
-          [
-            "no",
-            "لا",
-            "الحالة أقدم من ذلك"
-          ],
-
-          [
-            "unknown",
-            "غير متأكد",
-            "أحتاج مراجعة التاريخ"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.city === "other"
-      ) {
-        return createResult({
-          label:
-            "مسار عام",
-
-          title:
-            "القاعدة الخاصة بمدينة الرياض لا تنطبق على موقع العقار الذي اخترته.",
-
-          body:
-            "هذه النسخة تميز الأحكام الخاصة بالرياض عن الحالات الواقعة في مدن أخرى حتى لا تطبق قاعدة محلية على حالة خارج نطاقها.",
-
-          reasons: [
-            "العقار خارج مدينة الرياض",
-            "لم يتم سؤالك عن النطاق العمراني لأنه غير مطلوب لهذه الحالة"
-          ],
-
-          next:
-            "راجع عقدك والمصدر الرسمي لمعرفة الأحكام أو الخدمات المرتبطة بحالتك في المدينة التي يقع فيها العقار.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      if (
-        a.city === "riyadh" &&
-        a.urban === "unknown"
-      ) {
-        return createResult({
-          label:
-            "تحتاج تحقق إضافي",
-
-          title:
-            "النطاق العمراني معلومة أساسية قبل تطبيق القاعدة الخاصة بالرياض.",
-
-          body:
-            "لا يعطي ميثاق نتيجة حاسمة قبل اكتمال المعلومات التي يعتمد عليها منطق القرار.",
-
-          reasons: [
-            "العقار في الرياض",
-            "حالة النطاق العمراني غير مؤكدة"
-          ],
-
-          next:
-            "تحقق من موقع العقار ثم أعد التقييم.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      if (
-        a.city === "riyadh" &&
-        a.urban === "no"
-      ) {
-        return createResult({
-          label:
-            "خارج نطاق القاعدة",
-
-          title:
-            "العقار بحسب إجابتك خارج النطاق المكاني المستخدم في هذه القاعدة.",
-
-          body:
-            "لذلك توقف ميثاق عن طرح الأسئلة المرتبطة بتاريخ تطبيق القاعدة لأنها لم تعد ضرورية للمسار الحالي.",
-
-          reasons: [
-            "العقار في الرياض",
-            "العقار خارج النطاق العمراني بحسب إجابتك"
-          ],
-
-          next:
-            "راجع المصدر الرسمي وتفاصيل عقدك لمعرفة المسار المناسب لحالتك.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      if (
-        a.city === "riyadh" &&
-        a.urban === "yes" &&
-        a.date === "yes"
-      ) {
-        return createResult({
-          label:
-            "قاعدة مرتبطة بالحالة",
-
-          title:
-            "المعطيات المدخلة تطابق نطاق القاعدة الخاصة بالزيادة في الرياض.",
-
-          body:
-            "تم الوصول لهذه النتيجة بناءً على موقع العقار والنطاق العمراني وتاريخ الحالة.",
-
-          reasons: [
-            "العقار في مدينة الرياض",
-            "العقار داخل النطاق العمراني",
-            "الحالة ضمن الفترة المستخدمة في القاعدة"
-          ],
-
-          next:
-            "راجع تفاصيل عقدك ثم تحقق من النص الرسمي قبل اتخاذ أي إجراء.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      if (
-        a.date === "unknown"
-      ) {
-        return createResult({
-          label:
-            "تحتاج تحقق إضافي",
-
-          title:
-            "تاريخ الحالة مطلوب قبل إكمال التقييم.",
-
-          body:
-            "التاريخ أحد المتغيرات المستخدمة لتحديد ما إذا كانت القاعدة ممثلة في الحالة الحالية.",
-
-          reasons: [
-            "العقار في الرياض",
-            "العقار داخل النطاق العمراني",
-            "تاريخ الحالة غير مؤكد"
-          ],
-
-          next:
-            "تحقق من تاريخ الزيادة ثم أعد التقييم.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      return createResult({
-        label:
-          "مسار مختلف",
-
-        title:
-          "المعطيات الحالية لا تطابق نطاق القاعدة المستخدمة في النموذج.",
-
-        body:
-          "هذا لا يعني عدم وجود حكم أو خدمة مرتبطة بحالتك، وإنما يعني أن القاعدة الحالية ليست المطابقة المباشرة.",
-
-        reasons: [
-          "واحد أو أكثر من شروط القاعدة غير متحقق"
-        ],
-
-        next:
-          "راجع المصدر الرسمي أو تفاصيل عقدك للحصول على المسار الأنسب.",
-
-        source:
-          SOURCES.regulations
-      });
-
-    }
-
-  },
-
-
-
-  renewalRefusal: {
-
-    name:
-      "رفض التجديد",
-
-
-    steps: [
-
-      {
-        key:
-          "city",
-
-        title:
-          "هل العقار في مدينة الرياض؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "العقار في الرياض"
-          ],
-
-          [
-            "no",
-            "لا",
-            "العقار في مدينة أخرى"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "tenantWants",
-
-        title:
-          "هل ترغب أنت كمستأجر في الاستمرار وتجديد العقد؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "أرغب في التجديد"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لا أرغب في التجديد"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "reason",
-
-        title:
-          "ما السبب الذي ذكره المؤجر؟",
-
-        when:
-          a =>
-            a.city === "yes" &&
-            a.tenantWants === "yes",
-
-        options: [
-          [
-            "payment",
-            "عدم السداد",
-            "ذكر وجود مبالغ مستحقة"
-          ],
-
-          [
-            "safety",
-            "سلامة المبنى",
-            "ذكر وجود مشكلة مرتبطة بسلامة العقار"
-          ],
-
-          [
-            "personal",
-            "استخدام شخصي",
-            "ذكر حاجته إلى العقار"
-          ],
-
-          [
-            "other",
-            "سبب آخر",
-            "السبب مختلف"
-          ],
-
-          [
-            "unknown",
-            "ما ذكر سببًا واضحًا",
-            "لم يتم توضيح السبب"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.tenantWants === "no"
-      ) {
-        return createResult({
-          label:
-            "مسار مختلف",
-
-          title:
-            "المشكلة ليست رفض تجديد من المؤجر إذا كنت لا ترغب أنت في الاستمرار.",
-
-          body:
-            "يمكنك استخدام مسار عدم التجديد بدلًا من هذا المسار.",
-
-          reasons: [
-            "المستأجر لا يرغب في التجديد"
-          ],
-
-          next:
-            "ابدأ حالة جديدة واختر مسار عدم التجديد.",
-
-          source:
-            SOURCES.renewal
-        });
-      }
-
-
-      if (
-        a.city === "no"
-      ) {
-        return createResult({
-          label:
-            "تحتاج مسارًا عامًا",
-
-          title:
-            "الأحكام المحلية الممثلة في هذا المسار مرتبطة بالرياض.",
-
-          body:
-            "لذلك لم يطلب منك ميثاق سبب رفض التجديد لأنه لن يستخدمه في تطبيق قاعدة محلية خارج نطاقها.",
-
-          reasons: [
-            "العقار خارج مدينة الرياض"
-          ],
-
-          next:
-            "راجع العقد والخدمات الرسمية المرتبطة بالتجديد في إيجار.",
-
-          source:
-            SOURCES.renewal
-        });
-      }
-
-
-      return createResult({
-        label:
-          "تحتاج تحقق من السبب",
-
-        title:
-          "سبب رفض التجديد يؤثر في تقييم الحالة.",
-
-        body:
-          "النتيجة الحالية تعتمد على المدينة ورغبة المستأجر والسبب الذي ذكره المؤجر.",
-
-        reasons: [
-          "العقار في الرياض",
-          "المستأجر يرغب في التجديد",
-          "تم تحديد سبب رفض التجديد"
-        ],
-
-        next:
-          "تحقق من شروط السبب ومستنداته وتفاصيل عقدك عبر المصدر الرسمي.",
-
-        source:
-          SOURCES.regulations
-      });
-
-    }
-
-  },
-
-
-
-  unregistered: {
-
-    name:
-      "العقد غير موثق",
-
-
-    steps: [
-
-      {
-        key:
-          "status",
-
-        title:
-          "هل العقد غير مسجل حاليًا في شبكة إيجار؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "العقد غير مسجل"
-          ],
-
-          [
-            "unknown",
-            "غير متأكد",
-            "أحتاج التحقق من حالة العقد"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "registeredLater",
-
-        title:
-          "هل تم تسجيل العقد مؤخرًا من أحد الطرفين؟",
-
-        when:
-          a =>
-            a.status === "yes",
-
-        options: [
-          [
-            "no",
-            "لا",
-            "ما زال غير مسجل"
-          ],
-
-          [
-            "yes",
-            "نعم",
-            "تم تسجيله مؤخرًا"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.status === "unknown"
-      ) {
-        return createResult({
-          label:
-            "تحقق أولًا",
-
-          title:
-            "نحتاج التأكد من حالة العقد في شبكة إيجار.",
-
-          body:
-            "لا يمكن اختيار مسار التسجيل أو الاعتراض قبل معرفة حالة العقد.",
-
-          reasons: [
-            "حالة تسجيل العقد غير مؤكدة"
-          ],
-
-          next:
-            "تحقق من حسابك في إيجار ثم أعد التقييم.",
-
-          source:
-            SOURCES.ejar
-        });
-      }
-
-
-      if (
-        a.registeredLater === "yes"
-      ) {
-        return createResult({
-          label:
-            "مسار الاعتراض",
-
-          title:
-            "بما أن العقد تم تسجيله، قد يصبح الاعتراض على البيانات هو المسار الأكثر ارتباطًا بحالتك.",
-
-          body:
-            "يختلف هذا المسار عن حالة العقد الذي ما زال غير مسجل.",
-
-          reasons: [
-            "العقد تم تسجيله بعد أن كان غير مسجل"
-          ],
-
-          next:
-            "راجع بيانات التسجيل وتاريخ الإبلاغ عبر المصدر الرسمي.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      return createResult({
-        label:
-          "مسار التسجيل",
-
-        title:
-          "العقد بحسب إجابتك ما زال غير مسجل.",
-
-        body:
-          "الميزة هنا تفرق بين الحاجة إلى التسجيل وبين الاعتراض على عقد تم تسجيله بالفعل.",
-
-        reasons: [
-          "العقد غير مسجل",
-          "لم يتم تسجيله لاحقًا"
-        ],
-
-        next:
-          "راجع إجراءات تسجيل العقد في إيجار.",
-
-        source:
-          SOURCES.ejar
-      });
-
-    }
-
-  },
-
-
-
-  objection: {
-
-    name:
-      "اعتراض على بيانات العقد",
-
-
-    steps: [
-
-      {
-        key:
-          "notified",
-
-        title:
-          "هل تم إبلاغك بتسجيل العقد؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "وصلني إبلاغ بالتسجيل"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لم يصلني إبلاغ واضح"
-          ],
-
-          [
-            "unknown",
-            "غير متأكد",
-            "أحتاج التحقق"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "days",
-
-        title:
-          "هل مضى على الإبلاغ أكثر من 60 يومًا؟",
-
-        when:
-          a =>
-            a.notified === "yes",
-
-        options: [
-          [
-            "no",
-            "لا",
-            "لم تمض 60 يومًا"
-          ],
-
-          [
-            "yes",
-            "نعم",
-            "مضت أكثر من 60 يومًا"
-          ],
-
-          [
-            "unknown",
-            "لا أعرف",
-            "أحتاج حساب المدة"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.notified !== "yes"
-      ) {
-        return createResult({
-          label:
-            "معلومة ناقصة",
-
-          title:
-            "تاريخ الإبلاغ مهم لتقييم مسار الاعتراض.",
-
-          body:
-            "لهذا لم يعرض ميثاق سؤال المدة إذا لم يكن الإبلاغ مؤكدًا.",
-
-          reasons: [
-            "حالة الإبلاغ غير مؤكدة"
-          ],
-
-          next:
-            "تحقق من إشعارات العقد أو حسابك في إيجار.",
-
-          source:
-            SOURCES.regulations
-        });
-      }
-
-
-      return createResult({
-        label:
-          "مسار الاعتراض",
-
-        title:
-          "مدة الإبلاغ عنصر أساسي في تقييم الحالة.",
-
-        body:
-          "تم بناء النتيجة اعتمادًا على وجود الإبلاغ والمدة التي ذكرتها.",
-
-        reasons: [
-          "تم إبلاغك بالتسجيل",
-          "تم تحديد المدة منذ الإبلاغ"
-        ],
-
-        next:
-          "تحقق من البيانات وتاريخ الإبلاغ عبر القنوات الرسمية.",
-
-        source:
-          SOURCES.regulations
-      });
-
-    }
-
-  },
-
-
-
-  maintenance: {
-
-    name:
-      "الصيانة",
-
-
-    steps: [
-
-      {
-        key:
-          "type",
-
-        title:
-          "وش نوع مشكلة الصيانة؟",
-
-        options: [
-          [
-            "common",
-            "الأجزاء المشتركة",
-            "مثل المرافق والمساحات المشتركة"
-          ],
-
-          [
-            "safety",
-            "مشكلة سلامة",
-            "مشكلة تؤثر في سلامة المبنى أو الوحدة"
-          ],
-
-          [
-            "other",
-            "صيانة أخرى",
-            "عطل داخل الوحدة"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "contract",
-
-        title:
-          "هل راجعت بند الصيانة في عقدك؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "راجعت مسؤوليات الصيانة"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لم أراجع العقد بعد"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      return createResult({
-        label:
-          "مسار الصيانة",
-
-        title:
-          "نوع العطل وبنود العقد عاملان أساسيان في تقييم مسؤولية الصيانة.",
-
-        body:
-          "لهذا لا يعطي ميثاق حكمًا عامًا على جميع الأعطال.",
-
-        reasons: [
-          "تم تحديد نوع مشكلة الصيانة",
-          a.contract === "yes"
-            ? "تمت مراجعة بند الصيانة في العقد"
-            : "بند الصيانة في العقد لم تتم مراجعته بعد"
-        ],
-
-        next:
-          "وثق المشكلة وراجع عقدك ثم تحقق من الخدمة الرسمية المناسبة.",
-
-        source:
-          SOURCES.ejar
-      });
-
-    }
-
-  },
-
-
-
-  deposit: {
-
-    name:
-      "مبلغ الضمان",
-
-
-    steps: [
-
-      {
-        key:
-          "vacated",
-
-        title:
-          "هل تم إخلاء الوحدة بالفعل؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "تم إخلاء الوحدة"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لم يتم الإخلاء بعد"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "days",
-
-        title:
-          "هل مر أكثر من 30 يومًا منذ الإخلاء؟",
-
-        when:
-          a =>
-            a.vacated === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "مر أكثر من 30 يومًا"
-          ],
-
-          [
-            "no",
-            "لا",
-            "ما زلت داخل المدة"
-          ],
-
-          [
-            "unknown",
-            "غير متأكد",
-            "أحتاج مراجعة تاريخ الإخلاء"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "deductions",
-
-        title:
-          "هل تم توضيح وجود أضرار أو مستحقات سيتم خصمها؟",
-
-        when:
-          a =>
-            a.vacated === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "تم توضيح خصومات"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لم يتم توضيح شيء"
-          ],
-
-          [
-            "unknown",
-            "غير واضح",
-            "لا أعرف التفاصيل"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.vacated === "no"
-      ) {
-        return createResult({
-          label:
-            "قبل الإخلاء",
-
-          title:
-            "مسار إعادة مبلغ الضمان يبدأ بعد إخلاء الوحدة.",
-
-          body:
-            "لذلك تجاوز ميثاق أسئلة المدة والخصومات لأنها ليست مطلوبة بعد.",
-
-          reasons: [
-            "الوحدة لم يتم إخلاؤها بعد"
-          ],
-
-          next:
-            "راجع إجراءات الإخلاء والتسليم في عقدك.",
-
-          source:
-            SOURCES.ejar
-        });
-      }
-
-
-      return createResult({
-        label:
-          "مسار مبلغ الضمان",
-
-        title:
-          "تاريخ الإخلاء وأي خصومات محتملة من أهم مدخلات الحالة.",
-
-        body:
-          "الميزة تجمع المتغيرات الأساسية قبل توجيه المستخدم إلى المصدر.",
-
-        reasons: [
-          "تم إخلاء الوحدة",
-          "تم تحديد المدة منذ الإخلاء",
-          "تم تحديد حالة الخصومات أو الأضرار"
-        ],
-
-        next:
-          "راجع تفاصيل الضمان ومحضر التسليم والمصدر الرسمي.",
-
-        source:
-          SOURCES.ejar
-      });
-
-    }
-
-  },
-
-
-
-  latePayment: {
-
-    name:
-      "التأخر في السداد",
-
-
-    steps: [
-
-      {
-        key:
-          "due",
-
-        title:
-          "هل لديك دفعة مستحقة غير مسددة؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "هناك دفعة متأخرة"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لا توجد دفعة متأخرة"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "grace",
-
-        title:
-          "هل تعرف المهلة المحددة في عقدك؟",
-
-        when:
-          a =>
-            a.due === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "راجعت المهلة في العقد"
-          ],
-
-          [
-            "no",
-            "لا",
-            "لا أعرف المهلة"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "expired",
-
-        title:
-          "هل انتهت المهلة المذكورة في العقد؟",
-
-        when:
-          a =>
-            a.due === "yes" &&
-            a.grace === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "انتهت المهلة"
-          ],
-
-          [
-            "no",
-            "لا",
-            "ما زلت داخل المهلة"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.due === "no"
-      ) {
-        return createResult({
-          label:
-            "لا توجد دفعة متأخرة",
-
-          title:
-            "مسار التأخر في السداد لا ينطبق على الإجابة الحالية.",
-
-          body:
-            "لهذا تم إيقاف الأسئلة الإضافية المتعلقة بالمهلة.",
-
-          reasons: [
-            "لا توجد دفعة مستحقة غير مسددة"
-          ],
-
-          next:
-            "ابدأ حالة جديدة إذا كانت مشكلتك مختلفة.",
-
-          source:
-            SOURCES.ejar
-        });
-      }
-
-
-      if (
-        a.grace === "no"
-      ) {
-        return createResult({
-          label:
-            "راجع العقد",
-
-          title:
-            "المهلة الموجودة في العقد مطلوبة قبل تقييم أثر التأخر.",
-
-          body:
-            "بدل افتراض مدة موحدة، يطلب ميثاق الرجوع إلى العقد الفعلي.",
-
-          reasons: [
-            "هناك دفعة متأخرة",
-            "المهلة غير معروفة"
-          ],
-
-          next:
-            "راجع بند السداد في عقدك ثم أعد التقييم.",
-
-          source:
-            SOURCES.ejar
-        });
-      }
-
-
-      return createResult({
-        label:
-          "مسار السداد",
-
-        title:
-          "تم تقييم الحالة بناءً على وجود الدفعة والمهلة وحالتها.",
-
-        body:
-          "تفاصيل العقد تظل المرجع الأساسي قبل اتخاذ أي خطوة.",
-
-        reasons: [
-          "هناك دفعة متأخرة",
-          "المهلة معروفة",
-          a.expired === "yes"
-            ? "المهلة انتهت"
-            : "المهلة ما زالت قائمة"
-        ],
-
-        next:
-          "راجع حالة الدفعة والعقد والخدمات الرسمية في إيجار.",
-
-        source:
-          SOURCES.ejar
-      });
-
-    }
-
-  },
-
-
-
-  nonRenewal: {
-
-    name:
-      "عدم التجديد",
-
-
-    steps: [
-
-      {
-        key:
-          "wantsOut",
-
-        title:
-          "هل أنت المستأجر وتريد عدم الاستمرار بعد نهاية العقد؟",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "لا أرغب في التجديد"
-          ],
-
-          [
-            "no",
-            "لا",
-            "المشكلة مختلفة"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "auto",
-
-        title:
-          "هل التجديد التلقائي مفعل في عقدك؟",
-
-        when:
-          a =>
-            a.wantsOut === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "الخاصية مفعلة"
-          ],
-
-          [
-            "no",
-            "لا",
-            "الخاصية غير مفعلة"
-          ],
-
-          [
-            "unknown",
-            "غير متأكد",
-            "أحتاج التحقق"
-          ]
-        ]
-      },
-
-
-      {
-        key:
-          "period",
-
-        title:
-          "هل دخل العقد في فترة الستين يومًا السابقة للانتهاء؟",
-
-        when:
-          a =>
-            a.wantsOut === "yes" &&
-            a.auto === "yes",
-
-        options: [
-          [
-            "yes",
-            "نعم",
-            "العقد داخل الفترة"
-          ],
-
-          [
-            "no",
-            "لا",
-            "ما زال باقي أكثر من ذلك"
-          ],
-
-          [
-            "unknown",
-            "لا أعرف",
-            "أحتاج مراجعة تاريخ نهاية العقد"
-          ]
-        ]
-      }
-
-    ],
-
-
-    evaluate: a => {
-
-      if (
-        a.wantsOut === "no"
-      ) {
-        return createResult({
-          label:
-            "مسار مختلف",
-
-          title:
-            "عدم التجديد ليس المشكلة المطابقة لإجابتك.",
-
-          body:
-            "يمكنك العودة واختيار الحالة الأقرب لمشكلتك.",
-
-          reasons: [
-            "المستأجر لا يريد استخدام مسار عدم التجديد"
-          ],
-
-          next:
-            "ابدأ حالة جديدة.",
-
-          source:
-            SOURCES.renewal
-        });
-      }
-
-
-      return createResult({
-        label:
-          "مسار عدم التجديد",
-
-        title:
-          "حالة التجديد التلقائي وتوقيت نهاية العقد يؤثران في المسار.",
-
-        body:
-          "لهذا تظهر أسئلة التوقيت فقط عندما تكون خاصية التجديد التلقائي مفعلة.",
-
-        reasons: [
-          "المستأجر لا يرغب في التجديد",
-          a.auto === "yes"
-            ? "التجديد التلقائي مفعل"
-            : "التجديد التلقائي غير مفعل أو غير مؤكد"
-        ],
-
-        next:
-          "تحقق من إعدادات عقدك وتاريخ الانتهاء عبر إيجار.",
-
-        source:
-          SOURCES.renewal
-      });
-
-    }
-
-  }
-
-};
-
-
-/* خطوات السيناريو الفعلية */
-
-function getActiveSteps() {
-
-  if (
-    !currentScenario
-  ) {
-    return [];
-  }
-
-
-  return currentScenario.steps.filter(
-    step => {
-
-      if (
-        typeof step.when !== "function"
-      ) {
-        return true;
-      }
-
-
-      return step.when(
-        answers
-      );
-
-    }
-  );
-
-}
-
-
-/* الشاشة الرئيسية */
-
-function renderScenarioPicker() {
-
-  currentScenario = null;
-  currentStep = 0;
-  answers = {};
-  showingResult = false;
-
-
-  stepTitle.textContent =
-    "وش المشكلة اللي تواجهك؟";
-
-
-  stepCurrent.textContent =
-    "1";
-
-
-  stepTotal.textContent =
-    "1";
-
-
-  progressBar.style.width =
-    "12%";
-
-
-  backButton.disabled =
-    true;
-
-
-  restartButton.classList.add(
-    "is-hidden"
-  );
-
-
-  stepContent.innerHTML = `
-    <div class="category-grid">
-
-      ${createCategory(
-        "rentIncrease",
-        "الإيجار",
-        "زيادة الإيجار",
-        "أحتاج أفهم إذا كانت الزيادة مرتبطة بقواعد خاصة"
-      )}
-
-      ${createCategory(
-        "latePayment",
-        "السداد",
-        "تأخرت في السداد",
-        "عندي دفعة مستحقة أو مهلة سداد"
-      )}
-
-      ${createCategory(
-        "renewalRefusal",
-        "التجديد",
-        "المؤجر يرفض التجديد",
-        "أرغب في الاستمرار لكن المؤجر لا يريد"
-      )}
-
-      ${createCategory(
-        "nonRenewal",
-        "التجديد",
-        "ما أبي أجدد",
-        "أريد عدم الاستمرار بعد نهاية العقد"
-      )}
-
-      ${createCategory(
-        "unregistered",
-        "التوثيق",
-        "العقد غير موثق",
-        "العقد غير مسجل في شبكة إيجار"
-      )}
-
-      ${createCategory(
-        "objection",
-        "التوثيق",
-        "اعتراض على بيانات العقد",
-        "تم تسجيل بيانات أحتاج مراجعتها"
-      )}
-
-      ${createCategory(
-        "maintenance",
-        "الصيانة",
-        "عندي مشكلة صيانة",
-        "أحتاج أفهم نوع المشكلة ومسؤولية الصيانة"
-      )}
-
-      ${createCategory(
-        "deposit",
-        "الخروج",
-        "مبلغ الضمان",
-        "أخليت الوحدة وأحتاج أفهم مسار مبلغ الضمان"
-      )}
-
-    </div>
-  `;
-
-
-  document
-    .querySelectorAll(
-      "[data-scenario]"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            startScenario(
-              button.dataset.scenario
-            );
-
-          }
-        );
-
-      }
-    );
-
-}
-
-
-/* بدء السيناريو */
-
-function startScenario(id) {
-
-  currentScenario =
-    scenarios[id];
-
-
-  currentStep =
-    0;
-
-
-  answers =
-    {};
-
-
-  showingResult =
-    false;
-
-
-  restartButton.classList.remove(
-    "is-hidden"
-  );
-
-
-  renderStep(
-    true
-  );
-
-}
-
-
-/* عرض السؤال */
-
-function renderStep(
-  shouldScroll = true
-) {
-
-  showingResult =
-    false;
-
-
-  const steps =
-    getActiveSteps();
-
-
-  if (
-    currentStep >= steps.length
-  ) {
-    currentStep =
-      Math.max(
-        0,
-        steps.length - 1
-      );
-  }
-
-
-  const step =
-    steps[currentStep];
-
-
-  if (
-    !step
-  ) {
-    renderResult();
-
-    return;
-  }
-
-
-  stepTitle.textContent =
-    step.title;
-
-
-  stepCurrent.textContent =
-    String(
-      currentStep + 1
-    );
-
-
-  stepTotal.textContent =
-    String(
-      steps.length + 1
-    );
-
-
-  progressBar.style.width =
-    `${
-      (
-        (
-          currentStep + 1
-        ) /
-        (
-          steps.length + 1
-        )
-      ) * 100
-    }%`;
-
-
-  backButton.disabled =
-    false;
-
-
-  stepContent.innerHTML = `
-    <div class="options-grid">
-
-      ${step.options
-        .map(
-          (
-            [
-              value,
-              title,
-              description
-            ]
-          ) =>
-            createOption(
-              value,
-              title,
-              description
-            )
-        )
-        .join("")}
-
-    </div>
-  `;
-
-
-  document
-    .querySelectorAll(
-      "[data-value]"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            answers[
-              step.key
-            ] =
-              button.dataset.value;
-
-
-            const updatedSteps =
-              getActiveSteps();
-
-
-            if (
-              currentStep <
-              updatedSteps.length - 1
-            ) {
-
-              currentStep += 1;
-
-              renderStep(
-                true
-              );
-
-            } else {
-
-              renderResult(
-                true
-              );
-
-            }
-
-          }
-        );
-
-      }
-    );
-
-
-  if (
-    shouldScroll
-  ) {
-    scrollToQuestion();
-  }
-
-}
-
-
-/* عرض النتيجة */
-
-function renderResult(
-  shouldScroll = true
-) {
-
-  showingResult =
-    true;
-
-
-  const result =
-    currentScenario.evaluate(
-      answers
-    );
-
-
-  const steps =
-    getActiveSteps();
-
-
-  stepTitle.textContent =
-    "ملخص حالتك";
-
-
-  stepCurrent.textContent =
-    String(
-      steps.length + 1
-    );
-
-
-  stepTotal.textContent =
-    String(
-      steps.length + 1
-    );
-
-
-  progressBar.style.width =
-    "100%";
-
-
-  backButton.disabled =
-    false;
-
-
-  stepContent.innerHTML = `
-    <div class="result-layout">
-
-      <section class="result-summary">
-
-        <span class="result-label">
-          ${result.label}
+        <span>
+          مشروع تحليل أعمال
         </span>
-
-        <h4>
-          ${result.title}
-        </h4>
-
-        <p>
-          ${result.body}
-        </p>
-
-        <div class="result-disclaimer">
-          ${result.disclaimer}
-        </div>
-
-      </section>
+      </a>
 
 
-      <section class="result-details">
+      <nav
+        class="desktop-nav"
+        aria-label="التنقل داخل الصفحة"
+      >
 
-        <h4>
-          ليش ظهرت هذه النتيجة؟
-        </h4>
-
-
-        <ul class="result-reasons">
-
-          ${result.reasons
-            .map(
-              reason => `
-                <li>
-                  ${reason}
-                </li>
-              `
-            )
-            .join("")}
-
-        </ul>
-
-
-        <div class="result-next">
-
-          <strong>
-            الخطوة التالية
-          </strong>
-
-          <br>
-
-          ${result.next}
-
-        </div>
-
-
-        <div class="result-meta">
-
-          <div>
-
-            <span>
-              الجهة
-            </span>
-
-            <strong>
-              ${result.source.authority}
-            </strong>
-
-          </div>
-
-
-          <div>
-
-            <span>
-              آخر مراجعة
-            </span>
-
-            <strong>
-              ${result.source.reviewed}
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <a
-          class="result-source"
-          href="${result.source.url}"
-          target="_blank"
-          rel="noreferrer"
-        >
-          تحقق من المصدر الرسمي ↗
+        <a href="#platform">
+          المنصة
         </a>
 
-      </section>
+        <a href="#analysis">
+          التحليل
+        </a>
+
+        <a href="#rules">
+          القواعد
+        </a>
+
+        <a href="#requirements">
+          المتطلبات
+        </a>
+
+        <a href="#sources">
+          المصادر
+        </a>
+
+      </nav>
+
+
+      <a
+        class="work-page-link"
+        href="index.html"
+      >
+        صفحة الأعمال
+        <span>↗</span>
+      </a>
+
+
+      <button
+        class="mobile-menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="فتح القائمة"
+        aria-expanded="false"
+      >
+
+        <span></span>
+        <span></span>
+
+      </button>
 
     </div>
-  `;
 
 
-  if (
-    shouldScroll
-  ) {
-    scrollToQuestion();
-  }
+    <nav
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+    >
 
-}
+      <a href="#platform">
+        المنصة
+      </a>
 
+      <a href="#analysis">
+        التحليل
+      </a>
 
-/* زر السابق */
+      <a href="#rules">
+        القواعد
+      </a>
 
-backButton.addEventListener(
-  "click",
-  () => {
+      <a href="#requirements">
+        المتطلبات
+      </a>
 
-    if (
-      !currentScenario
-    ) {
-      return;
-    }
+      <a href="#sources">
+        المصادر
+      </a>
 
+      <a
+        class="mobile-work-link"
+        href="index.html"
+      >
+        العودة إلى صفحة الأعمال
+      </a>
 
-    if (
-      showingResult
-    ) {
+    </nav>
 
-      const steps =
-        getActiveSteps();
+  </header>
 
 
-      currentStep =
-        Math.max(
-          0,
-          steps.length - 1
-        );
 
+  <main id="top">
 
-      renderStep(
-        true
-      );
 
+    <section class="hero shell">
 
-      return;
-    }
+      <div class="hero-meta reveal">
 
+        <span>
+          تحليل الأعمال
+          <i>•</i>
+          تصميم القرار
+          <i>•</i>
+          نموذج تفاعلي
+        </span>
 
-    if (
-      currentStep > 0
-    ) {
+        <span>
+          2026
+        </span>
 
-      currentStep -= 1;
+      </div>
 
-      renderStep(
-        true
-      );
 
+      <div class="hero-layout">
 
-      return;
-    }
+        <div class="hero-copy">
 
+          <h1 class="hero-title reveal">
+            ميثاق
+          </h1>
 
-    renderScenarioPicker();
 
-    scrollToQuestion();
+          <p class="product-caption reveal">
+            دليل تجريبي لفهم المسار الإيجاري
+          </p>
 
-  }
-);
 
+          <p class="hero-statement reveal">
+            اعرف وش ينطبق على حالتك،
+            <br>
+            قبل ما تتخذ أي خطوة.
+          </p>
 
-/* إعادة البداية */
 
-restartButton.addEventListener(
-  "click",
-  () => {
+          <p class="hero-description reveal">
+            نموذج تجريبي يحول المعلومات والقواعد الإيجارية
+            إلى رحلة أسئلة واضحة، تساعد المستخدم على معرفة
+            القاعدة المرتبطة بحالته، وسبب ظهورها، والمصدر
+            الرسمي الذي يمكن التحقق منه.
+          </p>
 
-    renderScenarioPicker();
+        </div>
 
-    scrollToQuestion();
 
-  }
-);
+        <aside class="hero-facts reveal">
 
+          <article>
 
-/* القائمة */
+            <span>
+              النطاق
+            </span>
 
-const menuButton =
-  document.getElementById(
-    "menuButton"
-  );
+            <strong>
+              الإيجار السكني
+            </strong>
 
+          </article>
 
-const mobileMenu =
-  document.getElementById(
-    "mobileMenu"
-  );
 
+          <article>
 
-function closeMenu() {
+            <span>
+              التغطية
+            </span>
 
-  document.body.classList.remove(
-    "menu-open"
-  );
+            <strong>
+              المملكة، مع مراعاة الأحكام الخاصة بالرياض
+            </strong>
 
+          </article>
 
-  menuButton?.setAttribute(
-    "aria-expanded",
-    "false"
-  );
 
+          <article>
 
-  mobileMenu?.setAttribute(
-    "aria-hidden",
-    "true"
-  );
+            <span>
+              النسخة الحالية
+            </span>
 
-}
+            <strong>
+              ثمانية مسارات رئيسية
+            </strong>
 
+          </article>
 
-menuButton?.addEventListener(
-  "click",
-  () => {
 
-    const isOpen =
-      document.body.classList.toggle(
-        "menu-open"
-      );
+          <article>
 
+            <span>
+              آخر مراجعة للمصادر
+            </span>
 
-    menuButton.setAttribute(
-      "aria-expanded",
-      String(
-        isOpen
-      )
-    );
+            <strong>
+              29 سبتمبر 2026
+            </strong>
 
+          </article>
 
-    mobileMenu.setAttribute(
-      "aria-hidden",
-      String(
-        !isOpen
-      )
-    );
+        </aside>
 
-  }
-);
+      </div>
 
 
-mobileMenu
-  ?.querySelectorAll(
-    "a"
-  )
-  .forEach(
-    link => {
+      <div class="hero-warning reveal">
 
-      link.addEventListener(
-        "click",
-        closeMenu
-      );
+        <span class="warning-dot"></span>
 
-    }
-  );
+        <div>
 
+          <strong>
+            قبل الاستخدام
+          </strong>
 
-document.addEventListener(
-  "keydown",
-  event => {
+          <p>
+            ميثاق مشروع تجريبي، وليس خدمة حكومية أو استشارة قانونية.
+            النتائج هدفها دعم الفهم، وقد تختلف الحالة الفعلية بسبب
+            تفاصيل العقد، أو الاستثناءات، أو التحديثات التنظيمية.
+          </p>
 
-    if (
-      event.key === "Escape"
-    ) {
-      closeMenu();
-    }
+        </div>
 
-  }
-);
+      </div>
 
+    </section>
 
-/* التنقل الداخلي */
 
-document.addEventListener(
-  "click",
-  event => {
 
-    const link =
-      event.target.closest(
-        'a[href^="#"]'
-      );
+    <section
+      class="platform-section"
+      id="platform"
+    >
 
+      <div class="shell">
 
-    if (
-      !link
-    ) {
-      return;
-    }
+        <header class="section-heading reveal">
 
+          <span class="section-index">
+            01
+          </span>
 
-    const href =
-      link.getAttribute(
-        "href"
-      );
+          <div>
 
+            <span class="section-label">
+              النموذج التفاعلي
+            </span>
 
-    if (
-      !href ||
-      href === "#"
-    ) {
-      return;
-    }
+            <h2>
+              ابدأ من مشكلتك،
+              <br>
+              ميثاق يرتب الباقي.
+            </h2>
 
+            <p>
+              الأسئلة تتغير حسب إجاباتك، فإذا لم يعد سؤال معين
+              مرتبطًا بحالتك، يتجاوزه ميثاق تلقائيًا.
+            </p>
 
-    const target =
-      document.querySelector(
-        href
-      );
+          </div>
 
+        </header>
 
-    if (
-      !target
-    ) {
-      return;
-    }
 
+        <div
+          class="navigator reveal"
+          id="navigator"
+        >
 
-    event.preventDefault();
+          <div
+            class="question-anchor"
+            id="questionAnchor"
+          ></div>
 
 
-    target.scrollIntoView({
-      behavior:
-        reducedMotion
-          ? "auto"
-          : "smooth",
+          <div class="navigator-heading">
 
-      block:
-        "start"
-    });
+            <div>
 
+              <span class="navigator-label">
+                تقييم الحالة
+              </span>
 
-    closeMenu();
+              <h3 id="stepTitle">
+                وش المشكلة اللي تواجهك؟
+              </h3>
 
-  }
-);
+            </div>
 
 
-/* ظهور العناصر */
+            <div class="step-count">
 
-const revealElements =
-  document.querySelectorAll(
-    ".reveal"
-  );
+              <span id="stepCurrent">
+                1
+              </span>
 
+              <span>/</span>
 
-if (
-  reducedMotion
-) {
+              <span id="stepTotal">
+                1
+              </span>
 
-  revealElements.forEach(
-    element => {
+            </div>
 
-      element.classList.add(
-        "is-visible"
-      );
+          </div>
 
-    }
-  );
 
-} else {
+          <div class="progress-track">
 
-  const revealObserver =
-    new IntersectionObserver(
-      entries => {
+            <span id="progressBar"></span>
 
-        entries.forEach(
-          entry => {
+          </div>
 
-            if (
-              !entry.isIntersecting
-            ) {
-              return;
-            }
 
+          <div
+            class="step-content"
+            id="stepContent"
+          ></div>
 
-            entry.target.classList.add(
-              "is-visible"
-            );
 
+          <div class="navigator-actions">
 
-            revealObserver.unobserve(
-              entry.target
-            );
+            <button
+              id="backButton"
+              class="secondary-button"
+              type="button"
+              disabled
+            >
+              السابق
+            </button>
 
-          }
-        );
 
-      },
-      {
-        threshold:
-          0.08,
+            <button
+              id="restartButton"
+              class="secondary-button is-hidden"
+              type="button"
+            >
+              بدء حالة جديدة
+            </button>
 
-        rootMargin:
-          "0px 0px -45px 0px"
-      }
-    );
+          </div>
 
+        </div>
 
-  revealElements.forEach(
-    element => {
 
-      revealObserver.observe(
-        element
-      );
+        <div class="privacy-note reveal">
 
-    }
-  );
+          <span>
+            الخصوصية
+          </span>
 
-}
+          <p>
+            هذه النسخة لا تحتاج رقم هوية، أو رقم عقد، أو اسم،
+            أو أي بيانات شخصية، فالأسئلة مصممة لفهم منطق الحالة فقط.
+          </p>
 
+        </div>
 
-/* تحديد القسم الحالي */
+      </div>
 
-const navigationLinks =
-  document.querySelectorAll(
-    '.desktop-nav a[href^="#"]'
-  );
+    </section>
 
 
-const observedSections =
-  [
-    "platform",
-    "analysis",
-    "rules",
-    "requirements",
-    "sources"
-  ]
-    .map(
-      id =>
-        document.getElementById(
-          id
-        )
-    )
-    .filter(
-      Boolean
-    );
 
+    <section
+      class="analysis-section"
+      id="analysis"
+    >
 
-const navigationObserver =
-  new IntersectionObserver(
-    entries => {
+      <div class="shell">
 
-      entries.forEach(
-        entry => {
+        <header class="section-heading reveal">
 
-          if (
-            !entry.isIntersecting
-          ) {
-            return;
-          }
+          <span class="section-index">
+            02
+          </span>
 
+          <div>
 
-          navigationLinks.forEach(
-            link => {
+            <span class="section-label">
+              تعريف المشكلة
+            </span>
 
-              link.classList.toggle(
-                "is-active",
-                link.getAttribute(
-                  "href"
-                ) ===
-                  `#${entry.target.id}`
-              );
+            <h2>
+              المعلومة موجودة،
+              <br>
+              لكن الوصول للقرار أصعب.
+            </h2>
 
-            }
-          );
+          </div>
 
-        }
-      );
+        </header>
 
-    },
-    {
-      rootMargin:
-        "-35% 0px -55% 0px",
 
-      threshold:
-        0
-    }
-  );
+        <div class="problem-cards">
 
+          <article class="feature-card reveal">
 
-observedSections.forEach(
-  section => {
+            <span>
+              المشكلة
+            </span>
 
-    navigationObserver.observe(
-      section
-    );
+            <p>
+              المستأجر قد يعرف أن هناك منصة، أو نظامًا، أو خدمة،
+              لكنه لا يعرف بالضرورة أي جزء ينطبق على حالته،
+              وما الذي يحتاج فعله بعدها.
+            </p>
 
-  }
-);
+          </article>
 
 
-/* تحريك مسارات البطاقات */
+          <article class="feature-card green-card reveal">
 
-function moveRail(
-  railId,
-  direction
-) {
+            <span>
+              سؤال التصميم
+            </span>
 
-  const rail =
-    document.getElementById(
-      railId
-    );
+            <p>
+              كيف نحول المصادر الرسمية إلى رحلة قرار واضحة،
+              دون أن ندعي أن الأداة بديل عن الجهة الرسمية؟
+            </p>
 
+          </article>
 
-  if (
-    !rail
-  ) {
-    return;
-  }
+        </div>
 
 
-  const amount =
-    Math.min(
-      rail.clientWidth * 0.78,
-      520
-    );
+        <div class="scope-row reveal">
 
+          <article>
 
-  rail.scrollBy({
-    left:
-      direction * amount,
+            <span>
+              المستخدم
+            </span>
 
-    behavior:
-      reducedMotion
-        ? "auto"
-        : "smooth"
-  });
+            <strong>
+              المستأجر السكني
+            </strong>
 
-}
+          </article>
 
 
-document
-  .querySelectorAll(
-    "[data-rail-next]"
-  )
-  .forEach(
-    button => {
+          <article>
 
-      button.addEventListener(
-        "click",
-        () => {
+            <span>
+              النطاق
+            </span>
 
-          moveRail(
-            button.dataset.railNext,
-            -1
-          );
+            <strong>
+              المملكة العربية السعودية
+            </strong>
 
-        }
-      );
+          </article>
 
-    }
-  );
 
+          <article>
 
-document
-  .querySelectorAll(
-    "[data-rail-prev]"
-  )
-  .forEach(
-    button => {
+            <span>
+              التخصيص
+            </span>
 
-      button.addEventListener(
-        "click",
-        () => {
+            <strong>
+              قواعد محلية عند انطباقها
+            </strong>
 
-          moveRail(
-            button.dataset.railPrev,
-            1
-          );
+          </article>
 
-        }
-      );
 
-    }
-  );
+          <article>
 
+            <span>
+              المرجع
+            </span>
 
-/* التشغيل */
+            <strong>
+              المصادر الرسمية المنشورة
+            </strong>
 
-renderScenarioPicker();
+          </article>
+
+        </div>
+
+
+
+        <div class="major-block">
+
+          <header class="statement-heading reveal">
+
+            <span>
+              نقاط الألم
+            </span>
+
+            <h3>
+              الأشياء اللي يحاول
+              <mark>ميثاق</mark>
+              تقليلها.
+            </h3>
+
+          </header>
+
+
+          <div class="pain-grid">
+
+            <article class="pain-card reveal">
+
+              <span>
+                01
+              </span>
+
+              <strong>
+                تشتت المعلومات
+              </strong>
+
+              <p>
+                المعلومة المطلوبة قد تكون موزعة بين نص تنظيمي،
+                وخدمة إلكترونية، وصفحة توعوية.
+              </p>
+
+            </article>
+
+
+            <article class="pain-card reveal">
+
+              <span>
+                02
+              </span>
+
+              <strong>
+                اختلاف النتيجة حسب السياق
+              </strong>
+
+              <p>
+                الموقع، والتاريخ، وحالة العقد، وسبب المشكلة،
+                قد تغير القاعدة التي تنطبق.
+              </p>
+
+            </article>
+
+
+            <article class="pain-card reveal">
+
+              <span>
+                03
+              </span>
+
+              <strong>
+                النتيجة بدون تفسير
+              </strong>
+
+              <p>
+                الجواب وحده لا يكفي، فالمستخدم يحتاج يعرف
+                لماذا ظهرت النتيجة.
+              </p>
+
+            </article>
+
+
+            <article class="pain-card reveal">
+
+              <span>
+                04
+              </span>
+
+              <strong>
+                الخلط بين التوجيه والحكم
+              </strong>
+
+              <p>
+                الأداة تساعد على الفهم، لكنها لا تستبدل
+                المصدر أو الجهة الرسمية.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="major-block">
+
+          <header class="statement-heading reveal">
+
+            <span>
+              رحلة المستخدم
+            </span>
+
+            <h3>
+              من البحث المتفرق،
+              <br>
+              إلى مسار مفهوم.
+            </h3>
+
+          </header>
+
+
+          <div class="process-grid">
+
+            <article class="process-card reveal">
+
+              <div class="process-title">
+
+                <span>
+                  الوضع الحالي
+                </span>
+
+                <strong>
+                  رحلة غير موجهة
+                </strong>
+
+              </div>
+
+
+              <ol>
+
+                <li>
+                  <span>01</span>
+                  تظهر المشكلة
+                </li>
+
+                <li>
+                  <span>02</span>
+                  يبدأ البحث
+                </li>
+
+                <li>
+                  <span>03</span>
+                  قراءة عدة مصادر
+                </li>
+
+                <li>
+                  <span>04</span>
+                  تفسير الحالة ذاتيًا
+                </li>
+
+                <li>
+                  <span>05</span>
+                  البحث عن الخطوة التالية
+                </li>
+
+              </ol>
+
+            </article>
+
+
+            <article class="process-card process-highlight reveal">
+
+              <div class="process-title">
+
+                <span>
+                  الوضع المقترح
+                </span>
+
+                <strong>
+                  رحلة موجهة
+                </strong>
+
+              </div>
+
+
+              <ol>
+
+                <li>
+                  <span>01</span>
+                  تحديد المشكلة
+                </li>
+
+                <li>
+                  <span>02</span>
+                  أسئلة حسب الحالة
+                </li>
+
+                <li>
+                  <span>03</span>
+                  تطبيق القاعدة المناسبة
+                </li>
+
+                <li>
+                  <span>04</span>
+                  تفسير سبب النتيجة
+                </li>
+
+                <li>
+                  <span>05</span>
+                  الرجوع للمصدر الرسمي
+                </li>
+
+              </ol>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="major-block decision-logic-intro reveal">
+
+          <span>
+            منطق القرار
+          </span>
+
+          <h3>
+            ميثاق لا يبحث عن إجابة ثابتة،
+            بل يحدد المسار من مجموعة شروط.
+          </h3>
+
+          <p>
+            كل سؤال يضيف معلومة إلى سياق الحالة، وبعض الإجابات
+            تلغي الحاجة إلى أسئلة لاحقة، بينما تتطلب إجابات أخرى
+            معلومات إضافية قبل الوصول إلى نتيجة.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section
+      class="rules-section"
+      id="rules"
+    >
+
+      <div class="shell">
+
+        <header class="section-heading reveal">
+
+          <span class="section-index">
+            03
+          </span>
+
+          <div>
+
+            <span class="section-label">
+              قواعد الأعمال
+            </span>
+
+            <h2>
+              المصدر أولًا،
+              <br>
+              ثم نبني القرار.
+            </h2>
+
+            <p>
+              القواعد مرتبة داخل مسار أفقي، حتى تبقى دراسة الحالة
+              مختصرة بصريًا، ويمكن تصفح التفاصيل بدون زيادة طول الصفحة.
+            </p>
+
+          </div>
+
+        </header>
+
+
+        <div class="rail-shell reveal">
+
+          <div class="rail-toolbar">
+
+            <span>
+              اسحب البطاقات يمينًا ويسارًا، أو استخدم الأسهم
+            </span>
+
+
+            <div class="rail-buttons">
+
+              <button
+                type="button"
+                data-rail-prev="rulesRail"
+                aria-label="البطاقة السابقة"
+              >
+                →
+              </button>
+
+              <button
+                type="button"
+                data-rail-next="rulesRail"
+                aria-label="البطاقة التالية"
+              >
+                ←
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="horizontal-rail"
+            id="rulesRail"
+          >
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                01
+              </span>
+
+              <div>
+
+                <small>
+                  زيادة الإيجار
+                </small>
+
+                <h3>
+                  إيقاف الزيادة السنوية داخل النطاق العمراني للرياض.
+                </h3>
+
+                <p>
+                  الأحكام الرسمية أوقفت الزيادة السنوية لقيمة الأجرة الإجمالية
+                  للعقارات السكنية والتجارية داخل النطاق العمراني لمدينة الرياض،
+                  لمدة خمس سنوات بدءًا من 25 سبتمبر 2025.
+                </p>
+
+              </div>
+
+              <a
+                href="https://rega.gov.sa/media-center/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85-%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85-%D8%B3%D8%AA%D8%A3%D8%AC-%D8%B1/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                02
+              </span>
+
+              <div>
+
+                <small>
+                  العقد غير المسجل
+                </small>
+
+                <h3>
+                  للمستأجر حق طلب تسجيل العقد غير المسجل.
+                </h3>
+
+                <p>
+                  تنص الأحكام على وجوب تقدم المؤجر بطلب تسجيل العقد،
+                  كما تمنح المستأجر حق التقدم بطلب تسجيله.
+                </p>
+
+              </div>
+
+              <a
+                href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                03
+              </span>
+
+              <div>
+
+                <small>
+                  الاعتراض
+                </small>
+
+                <h3>
+                  الاعتراض على بيانات التسجيل مرتبط بمدة 60 يومًا.
+                </h3>
+
+                <p>
+                  للطرف الآخر الاعتراض على بيانات العقد خلال 60 يومًا
+                  من تاريخ إبلاغه بالتسجيل، وإذا انقضت المدة دون اعتراض،
+                  تكون بيانات العقد صحيحة وفق الأحكام.
+                </p>
+
+              </div>
+
+              <a
+                href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                04
+              </span>
+
+              <div>
+
+                <small>
+                  التجديد
+                </small>
+
+                <h3>
+                  الأصل هو التجديد التلقائي، مع إشعار قبل 60 يومًا.
+                </h3>
+
+                <p>
+                  تنص الأحكام على تجدد العقد تلقائيًا، ما لم يشعر
+                  أحد الطرفين الآخر بعدم الرغبة في التجديد قبل
+                  60 يومًا على الأقل من انتهاء العقد، مع وجود استثناءات.
+                </p>
+
+              </div>
+
+              <a
+                href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                05
+              </span>
+
+              <div>
+
+                <small>
+                  مبلغ الضمان
+                </small>
+
+                <h3>
+                  مبلغ الضمان يعاد خلال 30 يومًا من الإخلاء.
+                </h3>
+
+                <p>
+                  بحسب عقد إيجار السكني، يعاد مبلغ الضمان خلال
+                  30 يومًا من إخلاء الوحدة، بعد خصم المستحقات الناتجة
+                  عن الأضرار أو التلفيات إن وجدت.
+                </p>
+
+              </div>
+
+              <a
+                href="https://www.ejar.sa/ar/page/19420"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                06
+              </span>
+
+              <div>
+
+                <small>
+                  الصيانة
+                </small>
+
+                <h3>
+                  للمؤجر التزامات محددة تتعلق بالصيانة.
+                </h3>
+
+                <p>
+                  يذكر عقد إيجار السكني التزام المؤجر بالصيانة الدورية،
+                  وصيانة ما يؤثر على سلامة المبنى، وإصلاح الخلل الذي
+                  يؤثر في انتفاع المستأجر، وصيانة الأجزاء المشتركة.
+                </p>
+
+              </div>
+
+              <a
+                href="https://www.ejar.sa/ar/page/19420"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+
+            <article class="rail-card rule-card">
+
+              <span class="card-number">
+                07
+              </span>
+
+              <div>
+
+                <small>
+                  السداد
+                </small>
+
+                <h3>
+                  مهلة السداد تختلف حسب دورة الدفعات.
+                </h3>
+
+                <p>
+                  إذا كانت دورة السداد 180 يومًا أو أكثر، تكون مهلة
+                  السداد 30 يومًا من تاريخ الاستحقاق، وإذا كانت أقل
+                  من 180 يومًا، تكون المهلة 15 يومًا.
+                </p>
+
+              </div>
+
+              <a
+                href="https://www.ejar.sa/ar/page/19420"
+                target="_blank"
+                rel="noreferrer"
+              >
+                اقرأ المصدر الرسمي ↗
+              </a>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="decision-block reveal">
+
+          <header>
+
+            <span>
+              مثال على منطق القرار
+            </span>
+
+            <h3>
+              زيادة الإيجار في الرياض
+            </h3>
+
+          </header>
+
+
+          <div class="decision-grid">
+
+            <article>
+
+              <span>
+                01
+              </span>
+
+              <strong>
+                المدينة
+              </strong>
+
+              <p>
+                الرياض
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <span>
+                02
+              </span>
+
+              <strong>
+                النطاق
+              </strong>
+
+              <p>
+                داخل النطاق العمراني
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <span>
+                03
+              </span>
+
+              <strong>
+                التاريخ
+              </strong>
+
+              <p>
+                بعد 25 سبتمبر 2025
+              </p>
+
+            </article>
+
+
+            <article class="decision-final">
+
+              <span>
+                النتيجة
+              </span>
+
+              <strong>
+                عرض الحكم المرتبط بالحالة، وسبب المطابقة، والمصدر الرسمي.
+              </strong>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section
+      class="requirements-section"
+      id="requirements"
+    >
+
+      <div class="shell">
+
+        <header class="section-heading reveal">
+
+          <span class="section-index">
+            04
+          </span>
+
+          <div>
+
+            <span class="section-label">
+              متطلبات الحل
+            </span>
+
+            <h2>
+              من فكرة،
+              <br>
+              إلى حل قابل للبناء.
+            </h2>
+
+          </div>
+
+        </header>
+
+
+        <div class="rail-shell reveal">
+
+          <div class="rail-toolbar">
+
+            <span>
+              المتطلبات الرئيسية
+            </span>
+
+
+            <div class="rail-buttons">
+
+              <button
+                type="button"
+                data-rail-prev="requirementsRail"
+                aria-label="المتطلب السابق"
+              >
+                →
+              </button>
+
+              <button
+                type="button"
+                data-rail-next="requirementsRail"
+                aria-label="المتطلب التالي"
+              >
+                ←
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="horizontal-rail"
+            id="requirementsRail"
+          >
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                01
+              </span>
+
+              <h3>
+                تحديد السياق
+              </h3>
+
+              <p>
+                جمع الحد الأدنى من المعلومات اللازمة،
+                قبل تطبيق أي قاعدة.
+              </p>
+
+            </article>
+
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                02
+              </span>
+
+              <h3>
+                أسئلة مشروطة
+              </h3>
+
+              <p>
+                عدم عرض سؤال لا علاقة له
+                بإجابة المستخدم السابقة.
+              </p>
+
+            </article>
+
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                03
+              </span>
+
+              <h3>
+                إجابة واضحة
+              </h3>
+
+              <p>
+                النتيجة تبدأ بخلاصة مفهومة،
+                وليست مجرد وصف لعملية التقييم.
+              </p>
+
+            </article>
+
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                04
+              </span>
+
+              <h3>
+                تفسير النتيجة
+              </h3>
+
+              <p>
+                توضيح الإجابات التي أثرت
+                في النتيجة النهائية.
+              </p>
+
+            </article>
+
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                05
+              </span>
+
+              <h3>
+                تتبع المصدر
+              </h3>
+
+              <p>
+                ربط كل نتيجة بالصفحة الرسمية
+                التي استخدمت لبناء الإجابة.
+              </p>
+
+            </article>
+
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                06
+              </span>
+
+              <h3>
+                الخصوصية
+              </h3>
+
+              <p>
+                عدم طلب معلومات شخصية،
+                لا يحتاجها منطق القرار.
+              </p>
+
+            </article>
+
+
+            <article class="rail-card requirement-card">
+
+              <span class="card-number">
+                07
+              </span>
+
+              <h3>
+                قابلية التحديث
+              </h3>
+
+              <p>
+                فصل قواعد القرار عن الواجهة،
+                حتى يمكن تحديثها عند تغير الأحكام.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="story-section reveal">
+
+          <span>
+            قصة المستخدم
+          </span>
+
+          <blockquote>
+            كمستأجر، أريد أن أشرح مشكلتي بأسئلة بسيطة،
+            حتى أفهم القاعدة المرتبطة بحالتي،
+            وأعرف أين أتحقق منها رسميًا.
+          </blockquote>
+
+
+          <div class="story-checks">
+
+            <article>
+
+              <strong>
+                الحالة
+              </strong>
+
+              <p>
+                المستخدم اختار مشكلة مدعومة.
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <strong>
+                عندما
+              </strong>
+
+              <p>
+                يكمل الأسئلة المطلوبة.
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <strong>
+                يجب
+              </strong>
+
+              <p>
+                ظهور إجابة واضحة، وسببها.
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <strong>
+                بالإضافة إلى
+              </strong>
+
+              <p>
+                المصدر الرسمي، وحدود النتيجة.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="metrics-section reveal">
+
+          <header>
+
+            <span>
+              مؤشرات النجاح المقترحة
+            </span>
+
+            <h3>
+              كيف نقيس قيمة الحل إذا تم تشغيله؟
+            </h3>
+
+          </header>
+
+
+          <div class="metrics-grid">
+
+            <article>
+
+              <strong>
+                نسبة الإكمال
+              </strong>
+
+              <p>
+                نسبة المستخدمين الذين يصلون إلى نتيجة.
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <strong>
+                زمن الوصول للتوجيه
+              </strong>
+
+              <p>
+                الوقت من اختيار المشكلة حتى ظهور المسار.
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <strong>
+                المسار الصحيح من أول مرة
+              </strong>
+
+              <p>
+                نسبة الحالات التي لا تحتاج إعادة التقييم.
+              </p>
+
+            </article>
+
+
+            <article>
+
+              <strong>
+                فتح المصدر الرسمي
+              </strong>
+
+              <p>
+                نسبة المستخدمين الذين ينتقلون للتحقق من المرجع.
+              </p>
+
+            </article>
+
+          </div>
+
+
+          <p class="metrics-note">
+            هذه مؤشرات مقترحة لقياس المنتج مستقبلًا،
+            وليست بيانات تشغيلية فعلية.
+          </p>
+
+        </div>
+
+
+
+        <div class="limitations reveal">
+
+          <header>
+
+            <span>
+              حدود النموذج
+            </span>
+
+            <h3>
+              التوجيه يساعدك،
+              <br>
+              لكنه لا يستبدل المصدر.
+            </h3>
+
+          </header>
+
+
+          <div class="limitations-grid">
+
+            <p>
+              ميثاق مشروع تجريبي ضمن دراسة حالة.
+            </p>
+
+            <p>
+              لا يمثل الهيئة العامة للعقار، أو إيجار، أو أي جهة حكومية.
+            </p>
+
+            <p>
+              لا يقدم استشارة قانونية، ولا يصدر قرارًا ملزمًا.
+            </p>
+
+            <p>
+              قد توجد تفاصيل، أو استثناءات، غير ممثلة في النموذج.
+            </p>
+
+            <p>
+              بعض المعلومات مبسطة لتناسب تجربة المستخدم.
+            </p>
+
+            <p>
+              المصدر الرسمي هو المرجع النهائي قبل اتخاذ أي إجراء.
+            </p>
+
+          </div>
+
+
+          <div class="limits-statement">
+            ميثاق لا يقرر من المخطئ أو من المصيب،
+            بل يساعد المستخدم على معرفة القاعدة والمسار المرتبط بحالته.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section
+      class="sources-section"
+      id="sources"
+    >
+
+      <div class="shell">
+
+        <header class="section-heading reveal">
+
+          <span class="section-index">
+            05
+          </span>
+
+          <div>
+
+            <span class="section-label">
+              المصادر الرسمية
+            </span>
+
+            <h2>
+              ما فيه نتيجة،
+              <br>
+              بدون مرجع.
+            </h2>
+
+            <p>
+              كل مصدر مستخدم في ميثاق مرتبط بالصفحة الرسمية
+              التي أخذت منها المعلومة، وليس بالصفحة الرئيسية للجهة فقط.
+            </p>
+
+          </div>
+
+        </header>
+
+
+        <div class="rail-shell reveal">
+
+          <div class="rail-toolbar">
+
+            <span>
+              المصادر المستخدمة في النسخة الحالية
+            </span>
+
+
+            <div class="rail-buttons">
+
+              <button
+                type="button"
+                data-rail-prev="sourcesRail"
+                aria-label="المصدر السابق"
+              >
+                →
+              </button>
+
+              <button
+                type="button"
+                data-rail-next="sourcesRail"
+                aria-label="المصدر التالي"
+              >
+                ←
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="horizontal-rail"
+            id="sourcesRail"
+          >
+
+            <a
+              class="rail-card source-card"
+              href="https://rega.gov.sa/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B1%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D9%88%D8%A7%D9%84%D9%84%D9%88%D8%A7%D8%A6%D8%AD-%D9%88%D8%A7%D9%84%D8%A3%D8%AF%D9%84%D8%A9/%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%A3%D8%AC%D8%B1/"
+              target="_blank"
+              rel="noreferrer"
+            >
+
+              <span class="card-number">
+                01
+              </span>
+
+              <small>
+                الهيئة العامة للعقار
+              </small>
+
+              <h3>
+                الأحكام النظامية الخاصة بضبط العلاقة بين المؤجر والمستأجر
+              </h3>
+
+              <p>
+                نوع المصدر: نص تنظيمي رسمي
+              </p>
+
+              <b>
+                فتح المصدر ↗
+              </b>
+
+            </a>
+
+
+            <a
+              class="rail-card source-card"
+              href="https://rega.gov.sa/media-center/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85-%D8%A4%D8%AC%D8%B1-%D9%88%D8%A7%D9%84%D9%85-%D8%B3%D8%AA%D8%A3%D8%AC-%D8%B1/"
+              target="_blank"
+              rel="noreferrer"
+            >
+
+              <span class="card-number">
+                02
+              </span>
+
+              <small>
+                الهيئة العامة للعقار
+              </small>
+
+              <h3>
+                الإعلان الرسمي عن أحكام سوق الإيجار
+              </h3>
+
+              <p>
+                نوع المصدر: إعلان رسمي
+              </p>
+
+              <b>
+                فتح المصدر ↗
+              </b>
+
+            </a>
+
+
+            <a
+              class="rail-card source-card"
+              href="https://www.ejar.sa/ar/page/19420"
+              target="_blank"
+              rel="noreferrer"
+            >
+
+              <span class="card-number">
+                03
+              </span>
+
+              <small>
+                شبكة إيجار
+              </small>
+
+              <h3>
+                عقد إيجار السكني
+              </h3>
+
+              <p>
+                السداد، والصيانة، والضمان، والتزامات الأطراف
+              </p>
+
+              <b>
+                فتح المصدر ↗
+              </b>
+
+            </a>
+
+
+            <a
+              class="rail-card source-card"
+              href="https://www.ejar.sa/ar/service/188290"
+              target="_blank"
+              rel="noreferrer"
+            >
+
+              <span class="card-number">
+                04
+              </span>
+
+              <small>
+                شبكة إيجار
+              </small>
+
+              <h3>
+                خدمة التجديد التلقائي
+              </h3>
+
+              <p>
+                نوع المصدر: صفحة خدمة رسمية
+              </p>
+
+              <b>
+                فتح المصدر ↗
+              </b>
+
+            </a>
+
+
+            <a
+              class="rail-card source-card"
+              href="https://www.ejar.sa/ar/faqregulation"
+              target="_blank"
+              rel="noreferrer"
+            >
+
+              <span class="card-number">
+                05
+              </span>
+
+              <small>
+                شبكة إيجار
+              </small>
+
+              <h3>
+                الأسئلة الشائعة للأحكام النظامية الجديدة
+              </h3>
+
+              <p>
+                نوع المصدر: توضيحات رسمية
+              </p>
+
+              <b>
+                فتح المصدر ↗
+              </b>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="source-review reveal">
+
+          <span class="review-dot"></span>
+
+          <div>
+
+            <strong>
+              تمت مراجعة المصادر
+            </strong>
+
+            <p>
+              آخر مراجعة لهذه النسخة كانت بتاريخ 29 سبتمبر 2026،
+              وأي تحديث تنظيمي لاحق يحتاج مراجعة منطق النتائج،
+              قبل اعتمادها في النموذج.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <div class="shell footer-inner">
+
+      <div>
+
+        <strong>
+          ميثاق
+        </strong>
+
+        <span>
+          دراسة حالة في تحليل الأعمال وتصميم مسارات القرار
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <a href="index.html">
+          صفحة الأعمال
+        </a>
+
+        <a href="#top">
+          العودة للأعلى ↑
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="mithaq.js"></script>
+
+</body>
+
+</html>
