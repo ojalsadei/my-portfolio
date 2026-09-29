@@ -1,272 +1,16 @@
-/* /* ==========================================
+/* ==========================================
    MEMOJI / PERSONALITY LAYER
 ========================================== */
 
 
 /* ------------------------------------------
-   HERO
+   HERO MEMOJI
+   Hidden intentionally.
 ------------------------------------------ */
 
-/* .hero {
-  position: relative;
-}
-
-
-@media (min-width: 1100px) {
-
-  .hero-title {
-    max-width: 1080px;
-  }
-
-}
-
-
 .hero-memoji {
-  position: absolute;
-
-  right: 1.5%;
-  top: 29%;
-
-  width: clamp(
-    235px,
-    21vw,
-    340px
-  );
-
-  z-index: 3;
-
-  user-select: none;
-
-  pointer-events: none;
-
-  transform:
-    translate3d(
-      var(--head-x, 0px),
-      var(--head-y, 0px),
-      0
-    )
-    rotate(
-      var(--head-rotate, 0deg)
-    );
-
-  transition:
-    transform 0.16s
-    cubic-bezier(
-      0.2,
-      0.8,
-      0.2,
-      1
-    );
+  display: none !important;
 }
-
-
-.memoji-face-stage {
-  position: relative;
-
-  width: 100%;
-
-  z-index: 2;
-}
-
-
-.memoji-face {
-  display: block;
-
-  width: 100%;
-
-  height: auto;
-
-  object-fit: contain;
-
-  filter:
-    drop-shadow(
-      0 28px 34px
-      rgba(
-        0,
-        0,
-        0,
-        0.34
-      )
-    );
-}
-
-
-.memoji-glow {
-  position: absolute;
-
-  width: 80%;
-  aspect-ratio: 1;
-
-  left: 10%;
-  top: 16%;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        91,
-        130,
-        255,
-        0.18
-      ) 0%,
-      rgba(
-        91,
-        130,
-        255,
-        0.06
-      ) 48%,
-      transparent 72%
-    );
-
-  filter: blur(12px);
-
-  z-index: 1;
-}
-
-
-/*
-   Artificial pupils sit on top
-   of the existing Memoji eyes.
-   Very small movement = more natural.
-*/
-
-.memoji-pupil {
-  position: absolute;
-
-  width: 14px;
-  height: 14px;
-
-  border-radius: 50%;
-
-  background:
-    #171512;
-
-  box-shadow:
-    inset 0 0 0 1px
-    rgba(
-      255,
-      255,
-      255,
-      0.05
-    );
-
-  z-index: 5;
-
-  transform:
-    translate(
-      var(--eye-x, 0px),
-      var(--eye-y, 0px)
-    );
-
-  transition:
-    transform 0.055s linear;
-}
-
-
-.memoji-pupil-left {
-  left: 39.4%;
-  top: 50.7%;
-}
-
-
-.memoji-pupil-right {
-  left: 58.8%;
-  top: 50.7%;
-}
-
-
-.pupil-highlight {
-  position: absolute;
-
-  width: 4px;
-  height: 4px;
-
-  top: 2px;
-  left: 3px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.82
-    );
-}
-
-
-.memoji-caption {
-  position: absolute;
-
-  right: -5px;
-  bottom: 8%;
-
-  padding:
-    9px 13px;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.12
-    );
-
-  border-radius:
-    999px;
-
-  background:
-    rgba(
-      25,
-      25,
-      25,
-      0.72
-    );
-
-  backdrop-filter:
-    blur(14px);
-
-  -webkit-backdrop-filter:
-    blur(14px);
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.72
-    );
-
-  font-size:
-    11px;
-
-  letter-spacing:
-    0.02em;
-
-  z-index: 6;
-
-  opacity: 0;
-
-  transform:
-    translateY(7px);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-
-.hero-memoji.is-curious
-.memoji-caption {
-  opacity: 1;
-
-  transform:
-    translateY(0);
-} */ */
 
 
 /* ------------------------------------------
@@ -281,7 +25,7 @@
 .about-memoji-wrap {
   width: fit-content;
 
-  margin-top: 50px;
+  margin-top: 45px;
 
   position: relative;
 }
@@ -289,21 +33,21 @@
 
 .about-memoji {
   width: clamp(
-    180px,
-    19vw,
-    270px
+    150px,
+    15vw,
+    220px
   );
 
   display: block;
 
   filter:
     drop-shadow(
-      0 24px 38px
+      0 20px 32px
       rgba(
         0,
         0,
         0,
-        0.24
+        0.22
       )
     );
 
@@ -324,47 +68,19 @@
 .about-memoji-wrap:hover
 .about-memoji {
   transform:
-    rotate(-3deg)
-    translateY(-8px)
-    scale(1.03);
+    rotate(-2deg)
+    translateY(-6px)
+    scale(1.02);
 }
 
 
+/*
+   Hide any text bubble such as
+   "Hi" or "Hello".
+*/
+
 .about-memoji-wrap span {
-  position: absolute;
-
-  right: -46px;
-  top: 15%;
-
-  padding:
-    9px 13px;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:
-    999px;
-
-  color:
-    var(--muted);
-
-  font-size:
-    12px;
-
-  background:
-    rgba(
-      18,
-      18,
-      18,
-      0.78
-    );
-
-  backdrop-filter:
-    blur(10px);
-
-  -webkit-backdrop-filter:
-    blur(10px);
+  display: none !important;
 }
 
 
@@ -379,29 +95,32 @@
 
 .contact-memoji {
   width: clamp(
-    190px,
-    18vw,
-    300px
+    120px,
+    11vw,
+    175px
   );
 
   position: absolute;
 
-  right: 1%;
-  bottom: -70px;
+  right: 3%;
+  bottom: -25px;
 
   filter:
     drop-shadow(
-      0 30px 45px
+      0 22px 34px
       rgba(
         0,
         0,
         0,
-        0.28
+        0.24
       )
     );
 
   transform:
-    rotate(4deg);
+    rotate(3deg);
+
+  transform-origin:
+    50% 90%;
 
   transition:
     transform 0.35s
@@ -418,8 +137,8 @@
 .contact-memoji {
   transform:
     rotate(0deg)
-    translateY(-8px)
-    scale(1.025);
+    translateY(-5px)
+    scale(1.02);
 }
 
 
@@ -435,52 +154,21 @@
 
 
 /* ------------------------------------------
-   DESKTOP — SMALLER SCREENS
------------------------------------------- */
-
-@media (max-width: 1200px) {
-
-  .hero-memoji {
-    right: -2%;
-    top: 34%;
-
-    width: 240px;
-  }
-
-
-  .memoji-caption {
-    display: none;
-  }
-
-}
-
-
-/* ------------------------------------------
    TABLET
 ------------------------------------------ */
 
 @media (max-width: 900px) {
 
-  .hero-memoji {
-    width: 190px;
-
-    right: 0;
-    top: 37%;
-
-    opacity: 0.9;
-  }
-
-
-  .memoji-pupil {
-    width: 11px;
-    height: 11px;
+  .about-memoji {
+    width: 160px;
   }
 
 
   .contact-memoji {
-    width: 190px;
+    width: 135px;
 
-    right: -5%;
+    right: 1%;
+    bottom: -15px;
   }
 
 }
@@ -492,69 +180,29 @@
 
 @media (max-width: 760px) {
 
-  /*
-   * No mouse on phones.
-   * Keep it decorative and stable.
-   */
-
-  .hero-memoji {
-    position: absolute;
-
-    width: 155px;
-
-    right: -12px;
-    top: auto;
-    bottom: 205px;
-
-    opacity: 0.96;
-
-    transform:
-      rotate(3deg);
-
-    transition: none;
-  }
-
-
-  .memoji-pupil {
-    display: none;
-  }
-
-
-  .memoji-caption {
-    display: none;
-  }
-
-
-  .memoji-glow {
-    opacity: 0.55;
-  }
-
-
   .about-memoji-wrap {
-    margin-top: 35px;
+    margin-top: 30px;
   }
 
 
   .about-memoji {
-    width: 180px;
-  }
-
-
-  .about-memoji-wrap span {
-    right: -20px;
+    width: 145px;
   }
 
 
   .contact-title-wrap {
-    padding-bottom: 125px;
+    padding-bottom: 95px;
   }
 
 
   .contact-memoji {
-    width: 180px;
+    width: 120px;
 
-    right: 5%;
-    bottom: -12px;
+    right: 8%;
+    bottom: -5px;
+
+    transform:
+      rotate(2deg);
   }
 
 }
@@ -569,8 +217,6 @@
   reduce
 ) {
 
-  .hero-memoji,
-  .memoji-pupil,
   .about-memoji,
   .contact-memoji {
     transition: none;
