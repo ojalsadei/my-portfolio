@@ -12,12 +12,12 @@
 
   <meta
     name="description"
-    content="Osama Alsadei, Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad and Mithaq."
+    content="Osama, Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad and Mithaq."
   >
 
   <meta
     name="author"
-    content="Osama Alsadei"
+    content="Osama"
   >
 
   <meta
@@ -27,7 +27,7 @@
 
   <meta
     property="og:title"
-    content="Osama Alsadei | Business Analyst & Product Builder"
+    content="Osama | Business Analyst & Product Builder"
   >
 
   <meta
@@ -46,7 +46,7 @@
   >
 
   <title>
-    Osama Alsadei | Business Analyst & Product Builder
+    Osama | Business Analyst & Product Builder
   </title>
 
 
@@ -75,16 +75,91 @@
   <style>
 
     /* =========================================
-       COMPACT WORK CARDS
+       HERO
+    ========================================= */
+
+    .hero-main-intro {
+      margin:
+        auto
+        0;
+    }
+
+
+    .hero-intro-title {
+      margin-top:
+        26px;
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size:
+        clamp(
+          82px,
+          11vw,
+          168px
+        );
+
+      line-height:
+        0.86;
+
+      font-weight:
+        500;
+
+      letter-spacing:
+        -0.075em;
+    }
+
+
+    .hero-intro-statement {
+      max-width:
+        1050px;
+
+      margin-top:
+        38px;
+
+      color:
+        var(--muted);
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size:
+        clamp(
+          26px,
+          3.2vw,
+          48px
+        );
+
+      line-height:
+        1.14;
+
+      letter-spacing:
+        -0.035em;
+    }
+
+
+    /* =========================================
+       WORK SECTION
     ========================================= */
 
     .portfolio-work {
-      min-height: 100svh;
+      min-height:
+        100svh;
 
       padding:
-        clamp(110px, 10vw, 150px)
+        clamp(
+          110px,
+          10vw,
+          150px
+        )
         0
-        clamp(90px, 9vw, 130px);
+        clamp(
+          90px,
+          9vw,
+          130px
+        );
 
       border-top:
         1px solid
@@ -95,10 +170,14 @@
 
       align-items:
         center;
+
+      overflow:
+        hidden;
     }
 
 
-    .portfolio-work .shell {
+    .portfolio-work
+    .shell {
       width:
         var(--shell);
     }
@@ -118,7 +197,11 @@
         40px;
 
       margin-bottom:
-        clamp(38px, 5vw, 68px);
+        clamp(
+          38px,
+          5vw,
+          68px
+        );
     }
 
 
@@ -130,7 +213,11 @@
         flex-start;
 
       gap:
-        clamp(24px, 4vw, 58px);
+        clamp(
+          24px,
+          4vw,
+          58px
+        );
     }
 
 
@@ -196,6 +283,10 @@
         nowrap;
     }
 
+
+    /* =========================================
+       PROJECT CARDS
+    ========================================= */
 
     .work-cards {
       height:
@@ -272,14 +363,18 @@
     .work-cards:has(.work-card:hover)
     .work-card {
       flex:
-        0.78 1 0;
+        0.78
+        1
+        0;
     }
 
 
     .work-cards
     .work-card:hover {
       flex:
-        1.22 1 0;
+        1.22
+        1
+        0;
 
       transform:
         translateY(
@@ -296,7 +391,7 @@
         0;
 
       z-index:
-        4;
+        5;
 
       padding:
         clamp(
@@ -411,7 +506,7 @@
         relative;
 
       z-index:
-        5;
+        6;
     }
 
 
@@ -456,6 +551,11 @@
         );
 
       backdrop-filter:
+        blur(
+          10px
+        );
+
+      -webkit-backdrop-filter:
         blur(
           10px
         );
@@ -774,8 +874,11 @@
 
     .sanad-card
     .work-card-bottom {
+      width:
+        45%;
+
       max-width:
-        60%;
+        340px;
     }
 
 
@@ -788,7 +891,7 @@
         radial-gradient(
           circle
           at
-          75%
+          78%
           5%,
           rgba(
             183,
@@ -827,8 +930,11 @@
 
     .mithaq-card
     .work-card-bottom {
+      width:
+        40%;
+
       max-width:
-        56%;
+        310px;
     }
 
 
@@ -855,21 +961,31 @@
     }
 
 
+    .mithaq-card h3 {
+      font-size:
+        clamp(
+          46px,
+          4.2vw,
+          68px
+        );
+    }
+
+
     .mithaq-stage {
       position:
         absolute;
 
       top:
-        8%;
+        9%;
 
       right:
-        4%;
+        3%;
 
       bottom:
         9%;
 
       width:
-        53%;
+        55%;
 
       z-index:
         2;
@@ -899,7 +1015,7 @@
         20px;
 
       background:
-        #0c100d;
+        #090c0a;
 
       box-shadow:
         0
@@ -920,10 +1036,7 @@
           1,
           0.36,
           1
-        ),
-        opacity
-        0.45s
-        ease;
+        );
     }
 
 
@@ -938,7 +1051,7 @@
         100%;
 
       object-fit:
-        cover;
+        contain;
     }
 
 
@@ -947,10 +1060,10 @@
         92%;
 
       aspect-ratio:
-        16 / 10;
+        1.72 / 1;
 
       top:
-        4%;
+        3%;
 
       right:
         0;
@@ -967,10 +1080,10 @@
         82%;
 
       aspect-ratio:
-        1.52 / 1;
+        1.54 / 1;
 
       bottom:
-        3%;
+        4%;
 
       left:
         0;
@@ -980,10 +1093,7 @@
 
       transform:
         rotate(
-          -2.5deg
-        )
-        translateY(
-          5px
+          -2deg
         );
     }
 
@@ -992,11 +1102,11 @@
     .mithaq-shot-start {
       transform:
         rotate(
-          3deg
+          2.5deg
         )
         translate(
-          18px,
-          -8px
+          10px,
+          -7px
         );
     }
 
@@ -1005,14 +1115,11 @@
     .mithaq-shot-result {
       transform:
         rotate(
-          -0.7deg
+          -0.5deg
         )
         translate(
-          -8px,
-          -13px
-        )
-        scale(
-          1.025
+          -7px,
+          -10px
         );
     }
 
@@ -1069,7 +1176,7 @@
     ========================================= */
 
     @media
-    (max-width: 1000px)
+    (max-width: 1100px)
     and
     (min-width: 761px) {
 
@@ -1081,7 +1188,7 @@
 
       .sanad-phone {
         width:
-          48%;
+          47%;
 
         right:
           4%;
@@ -1089,20 +1196,31 @@
 
 
       .sanad-card
-      .work-card-bottom,
+      .work-card-bottom {
+        width:
+          48%;
+      }
+
+
       .mithaq-card
       .work-card-bottom {
-        max-width:
-          68%;
+        width:
+          43%;
       }
 
 
       .mithaq-stage {
         width:
-          58%;
+          53%;
 
         right:
           2%;
+      }
+
+
+      .mithaq-card h3 {
+        font-size:
+          48px;
       }
 
     }
@@ -1114,6 +1232,44 @@
 
     @media
     (max-width: 760px) {
+
+      .hero-main-intro {
+        margin:
+          auto
+          0;
+      }
+
+
+      .hero-intro-title {
+        margin-top:
+          20px;
+
+        font-size:
+          clamp(
+            64px,
+            18vw,
+            90px
+          );
+
+        line-height:
+          0.88;
+      }
+
+
+      .hero-intro-statement {
+        margin-top:
+          27px;
+
+        max-width:
+          330px;
+
+        font-size:
+          26px;
+
+        line-height:
+          1.18;
+      }
+
 
       .portfolio-work {
         min-height:
@@ -1168,9 +1324,7 @@
       }
 
 
-      /*
-        Mobile project rail
-      */
+      /* Mobile rail */
 
       .work-cards {
         width:
@@ -1249,13 +1403,13 @@
         flex:
           0
           0
-          82vw;
+          78vw;
 
         width:
-          82vw;
+          78vw;
 
         max-width:
-          390px;
+          380px;
 
         height:
           490px;
@@ -1307,7 +1461,7 @@
 
       .work-card h3 {
         font-size:
-          42px;
+          41px;
 
         line-height:
           0.9;
@@ -1363,7 +1517,9 @@
       }
 
 
-      /* SANAD MOBILE */
+      /* =========================================
+         SANAD MOBILE
+      ========================================= */
 
       .sanad-card::after {
         content:
@@ -1373,7 +1529,7 @@
           absolute;
 
         inset:
-          40%
+          41%
           0
           0;
 
@@ -1393,14 +1549,14 @@
               65,
               95,
               215,
-              0.92
+              0.93
             )
             38%,
             rgba(
               54,
               80,
               185,
-              0.99
+              1
             )
             100%
           );
@@ -1412,22 +1568,22 @@
 
       .sanad-card::before {
         top:
-          23%;
+          22%;
 
         left:
           -5%;
 
         font-size:
-          94px;
+          90px;
       }
 
 
       .sanad-phone {
         width:
-          42%;
+          41%;
 
         top:
-          15%;
+          14%;
 
         right:
           5%;
@@ -1436,7 +1592,7 @@
           4px;
 
         border-radius:
-          29px;
+          28px;
 
         transform:
           rotate(
@@ -1465,8 +1621,11 @@
 
       .sanad-card
       .work-card-bottom {
+        width:
+          67%;
+
         max-width:
-          68%;
+          none;
       }
 
 
@@ -1478,7 +1637,9 @@
       }
 
 
-      /* MITHAQ MOBILE */
+      /* =========================================
+         MITHAQ MOBILE
+      ========================================= */
 
       .mithaq-card::after {
         content:
@@ -1488,7 +1649,7 @@
           absolute;
 
         inset:
-          39%
+          51%
           0
           0;
 
@@ -1508,9 +1669,9 @@
               11,
               15,
               12,
-              0.92
+              0.91
             )
-            37%,
+            35%,
             #0b0f0c
             100%
           );
@@ -1522,16 +1683,16 @@
 
       .mithaq-stage {
         width:
-          76%;
+          88%;
 
         height:
-          54%;
+          46%;
 
         top:
-          13%;
+          12%;
 
         right:
-          -7%;
+          6%;
 
         bottom:
           auto;
@@ -1543,13 +1704,31 @@
 
       .mithaq-shot {
         border-radius:
-          14px;
+          12px;
+
+        background:
+          #080b09;
+      }
+
+
+      .mithaq-shot img {
+        width:
+          100%;
+
+        height:
+          100%;
+
+        object-fit:
+          contain;
       }
 
 
       .mithaq-shot-start {
         width:
-          92%;
+          88%;
+
+        aspect-ratio:
+          1.72 / 1;
 
         top:
           0;
@@ -1559,24 +1738,27 @@
 
         transform:
           rotate(
-            2deg
+            1.5deg
           );
       }
 
 
       .mithaq-shot-result {
         width:
-          80%;
+          76%;
+
+        aspect-ratio:
+          1.54 / 1;
 
         bottom:
-          0;
+          -1%;
 
         left:
           0;
 
         transform:
           rotate(
-            -2deg
+            -1.5deg
           );
       }
 
@@ -1585,7 +1767,7 @@
       .mithaq-shot-start {
         transform:
           rotate(
-            2deg
+            1.5deg
           );
       }
 
@@ -1594,15 +1776,24 @@
       .mithaq-shot-result {
         transform:
           rotate(
-            -2deg
+            -1.5deg
           );
       }
 
 
       .mithaq-card
       .work-card-bottom {
-        max-width:
+        width:
           72%;
+
+        max-width:
+          none;
+      }
+
+
+      .mithaq-card h3 {
+        font-size:
+          39px;
       }
 
 
@@ -1681,6 +1872,10 @@
     }
 
 
+    /* =========================================
+       SMALL MOBILE
+    ========================================= */
+
     @media
     (max-width: 400px) {
 
@@ -1690,10 +1885,10 @@
       .work-cards
       .work-card:hover {
         flex-basis:
-          80vw;
+          76vw;
 
         width:
-          80vw;
+          76vw;
       }
 
 
@@ -1702,8 +1897,24 @@
           38px;
       }
 
+
+      .hero-intro-title {
+        font-size:
+          62px;
+      }
+
+
+      .hero-intro-statement {
+        font-size:
+          24px;
+      }
+
     }
 
+
+    /* =========================================
+       REDUCED MOTION
+    ========================================= */
 
     @media
     (prefers-reduced-motion: reduce) {
@@ -1783,18 +1994,35 @@
     >
 
       <a href="#work">
-        <span>01</span>
+
+        <span>
+          01
+        </span>
+
         Work
+
       </a>
+
 
       <a href="#about">
-        <span>02</span>
+
+        <span>
+          02
+        </span>
+
         About
+
       </a>
 
+
       <a href="#contact">
-        <span>03</span>
+
+        <span>
+          03
+        </span>
+
         Contact
+
       </a>
 
     </div>
@@ -1806,7 +2034,9 @@
   <main id="top">
 
 
-    <!-- HERO -->
+    <!-- =========================================
+         HERO
+    ========================================= -->
 
     <section class="hero shell">
 
@@ -1823,32 +2053,23 @@
       </div>
 
 
-      <div class="hero-main">
+      <div class="hero-main hero-main-intro">
 
         <p class="eyebrow reveal">
           BUSINESS ANALYST × PRODUCT BUILDER
         </p>
 
 
-        <h1 class="hero-title">
-
-          <span class="reveal">
-            I analyze
-          </span>
-
-          <span class="reveal">
-            problems,
-          </span>
-
-          <span class="reveal accent-line">
-            design systems,
-          </span>
-
-          <span class="reveal">
-            and build products.
-          </span>
-
+        <h1 class="hero-intro-title reveal">
+          Hi, I'm Osama.
         </h1>
+
+
+        <p class="hero-intro-statement reveal">
+          I analyze problems, structure ideas,
+          <br>
+          and turn them into useful digital products.
+        </p>
 
       </div>
 
@@ -1856,9 +2077,10 @@
       <div class="hero-footer reveal">
 
         <p>
-          I'm Osama Alsadei, a Computer Information Systems
-          graduate focused on business analysis, product thinking
-          and turning ideas into practical digital experiences.
+          I work at the intersection of business,
+          systems and product, turning ambiguity
+          into clear requirements, experiences
+          and working prototypes.
         </p>
 
 
@@ -1876,7 +2098,9 @@
 
 
 
-    <!-- WORK -->
+    <!-- =========================================
+         WORK
+    ========================================= -->
 
     <section
       id="work"
@@ -1901,6 +2125,7 @@
                 SELECTED WORK
               </p>
 
+
               <h2>
                 Things I've built,
                 analyzed & shaped.
@@ -1922,7 +2147,9 @@
         <div class="work-cards">
 
 
-          <!-- SANAD -->
+          <!-- =========================================
+               SANAD
+          ========================================= -->
 
           <a
             href="sanad.html"
@@ -1944,11 +2171,13 @@
 
             <div class="work-card-inner">
 
+
               <div class="work-card-top">
 
                 <span class="work-card-index">
                   01 / SANAD
                 </span>
+
 
                 <span class="work-card-type">
                   Product
@@ -1958,6 +2187,7 @@
 
 
               <div class="work-card-bottom">
+
 
                 <div class="work-card-tags">
 
@@ -2006,7 +2236,9 @@
 
 
 
-          <!-- MITHAQ -->
+          <!-- =========================================
+               MITHAQ
+          ========================================= -->
 
           <a
             href="mithaq.html"
@@ -2025,7 +2257,10 @@
               aria-hidden="true"
             >
 
-              <div class="mithaq-shot mithaq-shot-start">
+
+              <div
+                class="mithaq-shot mithaq-shot-start"
+              >
 
                 <img
                   src="mithaq-hero.png"
@@ -2037,7 +2272,9 @@
               </div>
 
 
-              <div class="mithaq-shot mithaq-shot-result">
+              <div
+                class="mithaq-shot mithaq-shot-result"
+              >
 
                 <img
                   src="mithaq-cover.png"
@@ -2048,16 +2285,19 @@
 
               </div>
 
+
             </div>
 
 
             <div class="work-card-inner">
+
 
               <div class="work-card-top">
 
                 <span class="work-card-index">
                   02 / MITHAQ
                 </span>
+
 
                 <span class="work-card-type">
                   Analysis
@@ -2067,6 +2307,7 @@
 
 
               <div class="work-card-bottom">
+
 
                 <div class="work-card-tags">
 
@@ -2113,17 +2354,20 @@
         </div>
 
 
+
         <div
           class="work-swipe-hint"
           aria-hidden="true"
         >
 
           <span></span>
+
           <span></span>
 
           Swipe to explore
 
         </div>
+
 
       </div>
 
@@ -2131,7 +2375,9 @@
 
 
 
-    <!-- ABOUT -->
+    <!-- =========================================
+         ABOUT
+    ========================================= -->
 
     <section
       id="about"
@@ -2140,17 +2386,20 @@
 
       <div class="shell about-shell">
 
+
         <div class="section-heading reveal">
 
           <p class="section-number">
             02
           </p>
 
+
           <div>
 
             <p class="eyebrow">
               ABOUT
             </p>
+
 
             <h2>
               I like turning ambiguity
@@ -2162,7 +2411,9 @@
         </div>
 
 
+
         <div class="about-grid">
+
 
           <div class="about-copy reveal">
 
@@ -2171,6 +2422,7 @@
               in Riyadh, focused on the intersection of business,
               systems and product.
             </p>
+
 
             <p>
               I enjoy understanding a problem, structuring
@@ -2182,37 +2434,75 @@
           </div>
 
 
+
           <div class="capabilities">
 
+
             <div class="capability reveal">
-              <span>01</span>
+
+              <span>
+                01
+              </span>
+
               Business Analysis
+
             </div>
 
+
             <div class="capability reveal">
-              <span>02</span>
+
+              <span>
+                02
+              </span>
+
               Product Thinking
+
             </div>
 
+
             <div class="capability reveal">
-              <span>03</span>
+
+              <span>
+                03
+              </span>
+
               Requirements & Process Design
+
             </div>
 
+
             <div class="capability reveal">
-              <span>04</span>
+
+              <span>
+                04
+              </span>
+
               UI / UX Prototyping
+
             </div>
 
+
             <div class="capability reveal">
-              <span>05</span>
+
+              <span>
+                05
+              </span>
+
               React Native / Expo
+
             </div>
 
+
             <div class="capability reveal">
-              <span>06</span>
+
+              <span>
+                06
+              </span>
+
               SQL & Data Modeling
+
             </div>
+
 
           </div>
 
@@ -2224,7 +2514,9 @@
 
 
 
-    <!-- CONTACT -->
+    <!-- =========================================
+         CONTACT
+    ========================================= -->
 
     <section
       id="contact"
@@ -2233,25 +2525,34 @@
 
       <div class="shell contact-shell">
 
+
         <p class="eyebrow reveal">
           03 · CONTACT
         </p>
 
 
+
         <div class="contact-main">
+
 
           <div class="contact-title-wrap">
 
             <h2 class="reveal">
+
               Let's build
+
               <br>
+
               something useful.
+
             </h2>
 
           </div>
 
 
+
           <div class="contact-side reveal">
+
 
             <p>
               I'm interested in business analysis,
@@ -2260,7 +2561,9 @@
             </p>
 
 
+
             <div class="contact-info">
+
 
               <button
                 class="copy-contact"
@@ -2281,6 +2584,7 @@
 
                 </span>
 
+
                 <span
                   class="copy-feedback"
                   aria-live="polite"
@@ -2289,6 +2593,7 @@
                 </span>
 
               </button>
+
 
 
               <button
@@ -2310,6 +2615,7 @@
 
                 </span>
 
+
                 <span
                   class="copy-feedback"
                   aria-live="polite"
@@ -2319,10 +2625,13 @@
 
               </button>
 
+
             </div>
 
 
+
             <div class="contact-socials">
+
 
               <a
                 href="https://www.linkedin.com/in/osama-alsadei/"
@@ -2330,9 +2639,15 @@
                 rel="noreferrer"
                 class="contact-link"
               >
+
                 LinkedIn
-                <span>↗</span>
+
+                <span>
+                  ↗
+                </span>
+
               </a>
+
 
 
               <a
@@ -2341,11 +2656,18 @@
                 rel="noreferrer"
                 class="contact-link"
               >
+
                 GitHub
-                <span>↗</span>
+
+                <span>
+                  ↗
+                </span>
+
               </a>
 
+
             </div>
+
 
           </div>
 
@@ -2359,15 +2681,18 @@
 
 
 
-  <!-- FOOTER -->
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
 
   <footer class="footer">
 
     <div class="shell footer-inner">
 
       <span>
-        © 2026 Osama Alsadei
+        © 2026 Osama
       </span>
+
 
       <a href="#top">
         Back to top ↑
@@ -2376,6 +2701,7 @@
     </div>
 
   </footer>
+
 
 
   <script src="script.js"></script>
