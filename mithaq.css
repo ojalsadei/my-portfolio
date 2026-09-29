@@ -27,8 +27,6 @@
 }
 
 
-/* الأساس */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -108,14 +106,12 @@ mark {
 
 .shell {
   width: var(--shell);
-
   margin-inline: auto;
 }
 
 
 .page-noise {
   position: fixed;
-
   inset: 0;
 
   z-index: 999;
@@ -200,14 +196,12 @@ mark {
 
 .header-brand strong {
   font-size: 20px;
-
   font-weight: 700;
 }
 
 
 .header-brand span {
   color: var(--faint);
-
   font-size: 13px;
 }
 
@@ -262,7 +256,7 @@ mark {
 }
 
 
-.portfolio-link {
+.work-page-link {
   justify-self: end;
 
   min-height: 44px;
@@ -291,7 +285,7 @@ mark {
 }
 
 
-.portfolio-link:hover {
+.work-page-link:hover {
   transform: translateY(-2px);
 
   background: var(--accent);
@@ -373,10 +367,21 @@ mark {
 }
 
 
+.product-caption {
+  margin-top: 32px;
+
+  color: var(--muted);
+
+  font-size: 16px;
+
+  font-weight: 500;
+}
+
+
 .hero-statement {
   max-width: 950px;
 
-  margin-top: 48px;
+  margin-top: 28px;
 
   color: var(--text-soft);
 
@@ -434,14 +439,12 @@ mark {
 
 .hero-facts span {
   color: var(--faint);
-
   font-size: 13px;
 }
 
 
 .hero-facts strong {
   font-size: 17px;
-
   font-weight: 600;
 }
 
@@ -499,7 +502,7 @@ mark {
 }
 
 
-/* العناوين */
+/* عناوين الأقسام */
 
 .section-heading {
   display: grid;
@@ -604,7 +607,6 @@ mark {
 
 .question-anchor {
   position: absolute;
-
   top: -130px;
 }
 
@@ -755,7 +757,6 @@ mark {
 
 .category-button small {
   color: var(--accent);
-
   font-size: 13px;
 }
 
@@ -866,13 +867,13 @@ mark {
 }
 
 
-/* النتائج */
+/* النتيجة */
 
 .result-layout {
   display: grid;
 
   grid-template-columns:
-    0.85fr 1.15fr;
+    0.9fr 1.1fr;
 
   gap: 18px;
 }
@@ -880,7 +881,7 @@ mark {
 
 .result-summary,
 .result-details {
-  min-height: 400px;
+  min-height: 500px;
 
   padding: 32px;
 
@@ -925,7 +926,7 @@ mark {
 .result-summary h4 {
   margin: 26px 0 16px;
 
-  font-size: 31px;
+  font-size: 32px;
 
   line-height: 1.35;
 }
@@ -934,7 +935,46 @@ mark {
 .result-summary > p {
   color: var(--text-soft);
 
+  font-size: 17px;
+
   line-height: 1.85;
+}
+
+
+.official-answer {
+  margin-top: 28px;
+
+  padding: 22px;
+
+  border: 1px solid
+    rgba(183, 255, 86, 0.16);
+
+  border-radius: 18px;
+
+  background:
+    var(--accent-soft);
+}
+
+
+.official-answer span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: var(--accent);
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.official-answer p {
+  color: var(--text-soft);
+
+  font-size: 16px;
+
+  line-height: 1.8;
 }
 
 
@@ -1000,18 +1040,57 @@ mark {
     rgba(255, 255, 255, 0.04);
 
   color: var(--text-soft);
+
+  line-height: 1.8;
 }
 
 
-.result-meta {
+.result-next strong {
+  color: var(--text);
+}
+
+
+.result-source-box {
   margin-top: 18px;
 
-  padding: 18px;
+  padding: 19px;
 
   border: 1px solid var(--line);
 
   border-radius: 17px;
+}
 
+
+.source-status-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  color: var(--accent);
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+.source-status-row::before {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+}
+
+
+.result-meta {
   display: grid;
 
   grid-template-columns:
@@ -1039,13 +1118,15 @@ mark {
 
 .result-meta strong {
   font-size: 14px;
+
+  line-height: 1.6;
 }
 
 
 .result-source {
   display: inline-block;
 
-  margin-top: 18px;
+  margin-top: 20px;
 
   color: var(--accent);
 
@@ -1056,6 +1137,25 @@ mark {
   border-bottom:
     1px solid
     rgba(183, 255, 86, 0.45);
+}
+
+
+.result-restart {
+  display: inline-flex;
+
+  margin-top: 14px;
+
+  padding: 11px 15px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 13px;
+
+  background: transparent;
+
+  color: var(--text-soft);
+
+  cursor: pointer;
 }
 
 
@@ -1371,7 +1471,54 @@ mark {
 }
 
 
-/* البطاقات الأفقية */
+.decision-logic-intro {
+  padding: 42px;
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+}
+
+
+.decision-logic-intro > span {
+  color: var(--accent);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.decision-logic-intro h3 {
+  max-width: 900px;
+
+  margin-top: 13px;
+
+  font-size:
+    clamp(
+      36px,
+      4vw,
+      58px
+    );
+
+  line-height: 1.3;
+}
+
+
+.decision-logic-intro p {
+  max-width: 780px;
+
+  margin-top: 22px;
+
+  color: var(--muted);
+
+  font-size: 17px;
+}
+
+
+/* المسارات الأفقية */
 
 .rail-shell {
   position: relative;
@@ -1453,6 +1600,17 @@ mark {
   scrollbar-color:
     var(--surface-3)
     transparent;
+
+  cursor: grab;
+
+  user-select: none;
+}
+
+
+.horizontal-rail.is-dragging {
+  cursor: grabbing;
+
+  scroll-snap-type: none;
 }
 
 
@@ -1492,6 +1650,8 @@ mark {
   background: var(--surface);
 
   scroll-snap-align: start;
+
+  user-select: text;
 }
 
 
@@ -1580,7 +1740,7 @@ mark {
 
 
 .source-card {
-  min-height: 340px;
+  min-height: 350px;
 
   display: flex;
 
@@ -1602,9 +1762,18 @@ mark {
 .source-card h3 {
   margin-top: auto;
 
-  font-size: 29px;
+  font-size: 28px;
 
   line-height: 1.4;
+}
+
+
+.source-card p {
+  margin-top: 12px;
+
+  color: var(--muted);
+
+  font-size: 14px;
 }
 
 
@@ -1812,6 +1981,95 @@ mark {
 }
 
 
+/* مؤشرات النجاح */
+
+.metrics-section {
+  margin-top: 120px;
+}
+
+
+.metrics-section header span {
+  color: var(--accent);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.metrics-section header h3 {
+  max-width: 850px;
+
+  margin-top: 12px;
+
+  font-size:
+    clamp(
+      38px,
+      4vw,
+      58px
+    );
+}
+
+
+.metrics-grid {
+  margin-top: 42px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  border-top: 1px solid var(--line);
+}
+
+
+.metrics-grid article {
+  min-height: 190px;
+
+  padding: 24px;
+
+  border-left: 1px solid var(--line);
+
+  border-bottom: 1px solid var(--line);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+}
+
+
+.metrics-grid article:last-child {
+  border-left: 0;
+}
+
+
+.metrics-grid strong {
+  color: var(--accent);
+
+  font-size: 18px;
+}
+
+
+.metrics-grid p {
+  margin-top: 9px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+}
+
+
+.metrics-note {
+  margin-top: 18px;
+
+  color: var(--faint);
+
+  font-size: 13px;
+}
+
+
 /* الحدود */
 
 .limitations {
@@ -1885,6 +2143,23 @@ mark {
 
 .limitations-grid p:nth-child(3n) {
   border-left: 0;
+}
+
+
+.limits-statement {
+  margin-top: 30px;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(255, 210, 116, 0.16);
+
+  color: var(--warning);
+
+  font-size: 18px;
+
+  font-weight: 600;
 }
 
 
@@ -1992,7 +2267,7 @@ mark {
 }
 
 
-/* ظهور العناصر */
+/* الحركة */
 
 .reveal {
   opacity: 0;
@@ -2050,7 +2325,7 @@ mark {
 
 
   .desktop-nav,
-  .portfolio-link {
+  .work-page-link {
     display: none;
   }
 
@@ -2181,7 +2456,7 @@ mark {
   }
 
 
-  .mobile-portfolio-link {
+  .mobile-work-link {
     color:
       var(--accent) !important;
   }
@@ -2199,14 +2474,16 @@ mark {
 
 
   .scope-row,
-  .story-checks {
+  .story-checks,
+  .metrics-grid {
     grid-template-columns:
       repeat(2, 1fr);
   }
 
 
   .scope-row article:nth-child(2n),
-  .story-checks article:nth-child(2n) {
+  .story-checks article:nth-child(2n),
+  .metrics-grid article:nth-child(2n) {
     border-left: 0;
   }
 
@@ -2333,10 +2610,17 @@ mark {
   }
 
 
-  .hero-statement {
-    margin-top: 32px;
+  .product-caption {
+    margin-top: 26px;
 
-    font-size: 44px;
+    font-size: 15px;
+  }
+
+
+  .hero-statement {
+    margin-top: 25px;
+
+    font-size: 43px;
   }
 
 
@@ -2427,8 +2711,17 @@ mark {
   }
 
 
+  .result-summary,
+  .result-details {
+    min-height: auto;
+
+    padding: 25px;
+  }
+
+
   .scope-row,
   .story-checks,
+  .metrics-grid,
   .limitations-grid {
     grid-template-columns: 1fr;
   }
@@ -2438,6 +2731,8 @@ mark {
   .scope-row article:nth-child(2n),
   .story-checks article,
   .story-checks article:nth-child(2n),
+  .metrics-grid article,
+  .metrics-grid article:nth-child(2n),
   .limitations-grid p,
   .limitations-grid p:nth-child(2n),
   .limitations-grid p:nth-child(3n) {
@@ -2495,7 +2790,8 @@ mark {
 
   .decision-block,
   .story-section,
-  .limitations {
+  .limitations,
+  .decision-logic-intro {
     padding: 26px;
 
     border-radius: 28px;
