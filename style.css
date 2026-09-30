@@ -338,10 +338,6 @@ img {
 }
 
 .project-card {
-  container-type: inline-size;
-  container-name: project-card;
-  --card-safe-x: clamp(20px, 5cqw, 40px);
-  --card-safe-y: clamp(22px, 5cqw, 40px);
   position: relative;
   min-height: clamp(540px, 46vw, 660px);
   overflow: hidden;
@@ -376,9 +372,9 @@ img {
 .project-card-top {
   position: absolute;
   z-index: 6;
-  top: var(--card-safe-y);
-  right: var(--card-safe-x);
-  left: var(--card-safe-x);
+  top: clamp(22px, 2.8vw, 36px);
+  right: clamp(22px, 2.8vw, 36px);
+  left: clamp(22px, 2.8vw, 36px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -421,7 +417,7 @@ img {
   left: -3%;
   color: rgba(255, 255, 255, 0.09);
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(96px, 30cqw, 210px);
+  font-size: clamp(110px, 13vw, 210px);
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.085em;
@@ -430,8 +426,8 @@ img {
 .phone-mockup {
   position: absolute;
   top: 12%;
-  right: 6cqw;
-  width: clamp(150px, 43cqw, 300px);
+  right: 8%;
+  width: min(43%, 300px);
   overflow: hidden;
   border: 6px solid #111;
   border-radius: 38px;
@@ -488,16 +484,16 @@ img {
 
 .mithaq-shot--one {
   top: 12%;
-  right: 3cqw;
-  width: 68cqw;
+  right: 4%;
+  width: 68%;
   aspect-ratio: 1.72 / 1;
   transform: rotate(1.5deg);
 }
 
 .mithaq-shot--two {
   top: 31%;
-  left: 5cqw;
-  width: 61cqw;
+  left: 7%;
+  width: 61%;
   aspect-ratio: 1.54 / 1;
   transform: rotate(-2deg);
 }
@@ -505,26 +501,26 @@ img {
 .project-card-copy {
   position: absolute;
   z-index: 7;
-  right: var(--card-safe-x);
-  bottom: var(--card-safe-y);
-  left: var(--card-safe-x);
-  max-width: min(430px, 76cqw);
+  right: clamp(22px, 3vw, 40px);
+  bottom: clamp(24px, 3vw, 40px);
+  left: clamp(22px, 3vw, 40px);
+  max-width: 430px;
 }
 
 .project-tags {
-  margin-bottom: clamp(10px, 2.4cqw, 14px);
+  margin-bottom: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
 }
 
 .project-tags span {
-  padding: clamp(5px, 1cqw, 6px) clamp(8px, 1.6cqw, 9px);
+  padding: 6px 9px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.1);
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(8px, 1.6cqw, 9px);
+  font-size: 9px;
 }
 
 .project-card--mithaq .project-tags span:first-child {
@@ -534,7 +530,7 @@ img {
 
 .project-card h3 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(44px, 10.5cqw, 78px);
+  font-size: clamp(48px, 5.2vw, 78px);
   font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.065em;
@@ -542,10 +538,10 @@ img {
 }
 
 .project-card-copy > p {
-  max-width: min(390px, 72cqw);
-  margin-top: clamp(8px, 2cqw, 11px);
+  max-width: 390px;
+  margin-top: 11px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(12px, 2.2cqw, 13px);
+  font-size: 13px;
   line-height: 1.55;
 }
 
@@ -1084,123 +1080,249 @@ img {
 }
 
 
-/* Project cards respond to their own width.
-   Safe content remains fully visible; decorative art may crop intentionally. */
-@container project-card (max-width: 620px) {
+/* Project cards: card-level responsive system.
+   Safe content stays inside the card; decorative artwork is allowed to crop. */
+@supports (container-type: inline-size) and (width: 1cqw) {
+  .project-card {
+    container-type: inline-size;
+    container-name: project-card;
+    --card-safe-x: clamp(20px, 5cqw, 40px);
+    --card-safe-y: clamp(22px, 5cqw, 40px);
+  }
+
   .project-card-top {
-    font-size: 8px;
+    top: var(--card-safe-y);
+    right: var(--card-safe-x);
+    left: var(--card-safe-x);
   }
 
   .project-card-copy {
-    max-width: 82cqw;
-  }
-
-  .project-card::after {
-    inset: 36% 0 0;
-  }
-
-  .phone-mockup {
-    top: 10cqw;
-    right: 3cqw;
-    width: 46cqw;
-  }
-
-  .sanad-word {
-    top: 16cqw;
-    left: -5cqw;
-    font-size: 29cqw;
-  }
-
-  .mithaq-shot--one {
-    top: 11cqw;
-    right: -5cqw;
-    width: 82cqw;
-  }
-
-  .mithaq-shot--two {
-    top: 31cqw;
-    left: -2cqw;
-    width: 70cqw;
-  }
-}
-
-@container project-card (max-width: 430px) {
-  .project-card-copy {
-    max-width: calc(100cqw - 40px);
-  }
-
-  .project-card-copy > p {
-    max-width: 100%;
-  }
-
-  .project-card::after {
-    inset: 34% 0 0;
-  }
-
-  .sanad-word {
-    top: 18cqw;
-    left: -9cqw;
-    font-size: 34cqw;
-  }
-
-  .phone-mockup {
-    top: 12cqw;
-    right: -2cqw;
-    width: 50cqw;
-    border-width: 4px;
-    border-radius: 28px;
-  }
-
-  .phone-mockup::before {
-    top: 5px;
-    height: 10px;
-  }
-
-  .mithaq-shot--one {
-    top: 13cqw;
-    right: -13cqw;
-    width: 96cqw;
-  }
-
-  .mithaq-shot--two {
-    top: 36cqw;
-    left: -10cqw;
-    width: 82cqw;
-  }
-}
-
-@container project-card (max-width: 350px) {
-  .project-card-top {
-    gap: 8px;
-    letter-spacing: 0.09em;
+    right: var(--card-safe-x);
+    bottom: var(--card-safe-y);
+    left: var(--card-safe-x);
+    max-width: min(430px, 76cqw);
   }
 
   .project-tags {
-    gap: 5px;
+    margin-bottom: clamp(10px, 2.4cqw, 14px);
+  }
+
+  .project-tags span {
+    padding: clamp(5px, 1cqw, 6px) clamp(8px, 1.6cqw, 9px);
+    font-size: clamp(8px, 1.6cqw, 9px);
   }
 
   .project-card h3 {
-    font-size: 42px;
+    font-size: clamp(44px, 10.5cqw, 78px);
   }
 
-  .project-link-line {
-    margin-top: 14px;
-    padding-top: 12px;
+  .project-card-copy > p {
+    max-width: min(390px, 72cqw);
+    margin-top: clamp(8px, 2cqw, 11px);
+    font-size: clamp(12px, 2.2cqw, 13px);
+  }
+
+  .sanad-word {
+    font-size: clamp(96px, 30cqw, 210px);
   }
 
   .phone-mockup {
-    right: -5cqw;
-    width: 53cqw;
+    right: 6cqw;
+    width: clamp(150px, 43cqw, 300px);
   }
 
   .mithaq-shot--one {
-    right: -18cqw;
-    width: 102cqw;
+    right: 3cqw;
+    width: 68cqw;
   }
 
   .mithaq-shot--two {
-    left: -14cqw;
-    width: 86cqw;
+    left: 5cqw;
+    width: 61cqw;
+  }
+
+  @container project-card (max-width: 620px) {
+    .project-card-top {
+      font-size: 8px;
+    }
+
+    .project-card-copy {
+      max-width: 82cqw;
+    }
+
+    .project-card::after {
+      inset: 36% 0 0;
+    }
+
+    .phone-mockup {
+      top: 10cqw;
+      right: 3cqw;
+      width: 46cqw;
+    }
+
+    .sanad-word {
+      top: 16cqw;
+      left: -5cqw;
+      font-size: 29cqw;
+    }
+
+    .mithaq-shot--one {
+      top: 11cqw;
+      right: -5cqw;
+      width: 82cqw;
+    }
+
+    .mithaq-shot--two {
+      top: 31cqw;
+      left: -2cqw;
+      width: 70cqw;
+    }
+  }
+
+  @container project-card (max-width: 430px) {
+    .project-card-copy {
+      max-width: calc(100cqw - 40px);
+    }
+
+    .project-card-copy > p {
+      max-width: 100%;
+    }
+
+    .project-card::after {
+      inset: 34% 0 0;
+    }
+
+    .sanad-word {
+      top: 18cqw;
+      left: -9cqw;
+      font-size: 34cqw;
+    }
+
+    .phone-mockup {
+      top: 12cqw;
+      right: -2cqw;
+      width: 50cqw;
+      border-width: 4px;
+      border-radius: 28px;
+    }
+
+    .phone-mockup::before {
+      top: 5px;
+      height: 10px;
+    }
+
+    .mithaq-shot--one {
+      top: 13cqw;
+      right: -13cqw;
+      width: 96cqw;
+    }
+
+    .mithaq-shot--two {
+      top: 36cqw;
+      left: -10cqw;
+      width: 82cqw;
+    }
+  }
+
+  @container project-card (max-width: 350px) {
+    .project-card-top {
+      gap: 8px;
+      letter-spacing: 0.09em;
+    }
+
+    .project-tags {
+      gap: 5px;
+    }
+
+    .project-card h3 {
+      font-size: 42px;
+    }
+
+    .project-link-line {
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+
+    .phone-mockup {
+      right: -5cqw;
+      width: 53cqw;
+    }
+
+    .mithaq-shot--one {
+      right: -18cqw;
+      width: 102cqw;
+    }
+
+    .mithaq-shot--two {
+      left: -14cqw;
+      width: 86cqw;
+    }
+  }
+}
+
+/* Fallback for browsers without container queries. */
+@supports not (container-type: inline-size) {
+  @media (max-width: 760px) {
+    .project-card::after {
+      inset: 40% 0 0;
+    }
+
+    .project-card-top {
+      top: 20px;
+      right: 20px;
+      left: 20px;
+    }
+
+    .sanad-word {
+      top: 18%;
+      left: -4%;
+      font-size: 92px;
+    }
+
+    .phone-mockup {
+      top: 12%;
+      right: 7%;
+      width: 42%;
+      border-width: 4px;
+      border-radius: 27px;
+    }
+
+    .phone-mockup::before {
+      top: 5px;
+      height: 10px;
+    }
+
+    .mithaq-shot--one {
+      top: 13%;
+      right: 4%;
+      width: 82%;
+    }
+
+    .mithaq-shot--two {
+      top: 28%;
+      left: 5%;
+      width: 73%;
+    }
+
+    .project-card-copy {
+      right: 20px;
+      bottom: 22px;
+      left: 20px;
+      max-width: 86%;
+    }
+
+    .project-card h3 {
+      font-size: 45px;
+    }
+
+    .project-card-copy > p {
+      font-size: 12px;
+    }
+
+    .project-tags span {
+      padding: 5px 8px;
+      font-size: 8px;
+    }
   }
 }
 
