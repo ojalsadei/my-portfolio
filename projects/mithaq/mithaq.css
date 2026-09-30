@@ -2853,3 +2853,63 @@ mark {
   }
 
 }
+
+
+/* ==========================================
+   ACCESSIBILITY & RESPONSIVE POLISH
+========================================== */
+
+html {
+  scroll-padding-top: 92px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1200;
+  padding: 11px 14px;
+  border-radius: 999px;
+  background: #f4f6f1;
+  color: #080a09;
+  font-size: 13px;
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #b7ff56;
+  outline-offset: 4px;
+}
+
+.horizontal-rail {
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 78px;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .horizontal-rail {
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
