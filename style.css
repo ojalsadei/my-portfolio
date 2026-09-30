@@ -338,6 +338,10 @@ img {
 }
 
 .project-card {
+  container-type: inline-size;
+  container-name: project-card;
+  --card-safe-x: clamp(20px, 5cqw, 40px);
+  --card-safe-y: clamp(22px, 5cqw, 40px);
   position: relative;
   min-height: clamp(540px, 46vw, 660px);
   overflow: hidden;
@@ -372,9 +376,9 @@ img {
 .project-card-top {
   position: absolute;
   z-index: 6;
-  top: clamp(22px, 2.8vw, 36px);
-  right: clamp(22px, 2.8vw, 36px);
-  left: clamp(22px, 2.8vw, 36px);
+  top: var(--card-safe-y);
+  right: var(--card-safe-x);
+  left: var(--card-safe-x);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -417,7 +421,7 @@ img {
   left: -3%;
   color: rgba(255, 255, 255, 0.09);
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(110px, 13vw, 210px);
+  font-size: clamp(96px, 30cqw, 210px);
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.085em;
@@ -426,8 +430,8 @@ img {
 .phone-mockup {
   position: absolute;
   top: 12%;
-  right: 8%;
-  width: min(43%, 300px);
+  right: 6cqw;
+  width: clamp(150px, 43cqw, 300px);
   overflow: hidden;
   border: 6px solid #111;
   border-radius: 38px;
@@ -484,16 +488,16 @@ img {
 
 .mithaq-shot--one {
   top: 12%;
-  right: 4%;
-  width: 68%;
+  right: 3cqw;
+  width: 68cqw;
   aspect-ratio: 1.72 / 1;
   transform: rotate(1.5deg);
 }
 
 .mithaq-shot--two {
   top: 31%;
-  left: 7%;
-  width: 61%;
+  left: 5cqw;
+  width: 61cqw;
   aspect-ratio: 1.54 / 1;
   transform: rotate(-2deg);
 }
@@ -501,26 +505,26 @@ img {
 .project-card-copy {
   position: absolute;
   z-index: 7;
-  right: clamp(22px, 3vw, 40px);
-  bottom: clamp(24px, 3vw, 40px);
-  left: clamp(22px, 3vw, 40px);
-  max-width: 430px;
+  right: var(--card-safe-x);
+  bottom: var(--card-safe-y);
+  left: var(--card-safe-x);
+  max-width: min(430px, 76cqw);
 }
 
 .project-tags {
-  margin-bottom: 14px;
+  margin-bottom: clamp(10px, 2.4cqw, 14px);
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
 }
 
 .project-tags span {
-  padding: 6px 9px;
+  padding: clamp(5px, 1cqw, 6px) clamp(8px, 1.6cqw, 9px);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.1);
   color: rgba(255, 255, 255, 0.72);
-  font-size: 9px;
+  font-size: clamp(8px, 1.6cqw, 9px);
 }
 
 .project-card--mithaq .project-tags span:first-child {
@@ -530,7 +534,7 @@ img {
 
 .project-card h3 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(48px, 5.2vw, 78px);
+  font-size: clamp(44px, 10.5cqw, 78px);
   font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.065em;
@@ -538,10 +542,10 @@ img {
 }
 
 .project-card-copy > p {
-  max-width: 390px;
-  margin-top: 11px;
+  max-width: min(390px, 72cqw);
+  margin-top: clamp(8px, 2cqw, 11px);
   color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  font-size: clamp(12px, 2.2cqw, 13px);
   line-height: 1.55;
 }
 
@@ -1174,11 +1178,6 @@ img {
 }
 
 @container project-card (max-width: 430px) {
-  .project-card {
-    --card-safe-x: 20px;
-    --card-safe-y: 22px;
-  }
-
   .project-card-copy {
     max-width: calc(100cqw - 40px);
   }
