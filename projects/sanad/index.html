@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Sanad — A local-first receipt and warranty management app by Osama."
+  >
+
+  <meta
+    name="theme-color"
+    content="#f2f0ea"
+  >
+
+  <title>Sanad — Osama</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+<body>
+
+  <div class="noise"></div>
+
+
+  <!-- Navigation -->
+
+  <header class="site-header">
+
+    <nav class="nav shell">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+        OSAMA
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="index.html#work">
+          Work
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+        <a href="index.html#contact">
+          Contact
+        </a>
+
+      </div>
+
+
+      <a
+       href="../../index.html#work"
+       class="nav-cta"
+      >
+       ← Back to work
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- Sanad Case Study -->
+
+    <section class="case-study">
+
+      <div class="shell">
+
+
+        <!-- Header -->
+
+        <header class="case-header reveal">
+
+          <p class="eyebrow">
+            CASE STUDY — 2026
+          </p>
+
+          <h2>
+            Sanad
+          </h2>
+
+          <p class="case-lead">
+            A receipt-first system for keeping proof
+            of purchase and tracking product
+            warranties without relying on a cloud
+            account.
+          </p>
+
+        </header>
+
+
+        <!-- Facts -->
+
+        <div class="case-facts reveal">
+
+          <div>
+
+            <span>
+              Role
+            </span>
+
+            <strong>
+              Product Design & Development
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Platform
+            </span>
+
+            <strong>
+              iOS / Expo
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Architecture
+            </span>
+
+            <strong>
+              Local-first
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Stack
+            </span>
+
+            <strong>
+              React Native · TypeScript · SQLite
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- Problem -->
+
+        <div class="case-grid story-block">
+
+          <div class="story-label reveal">
+
+            <span>
+              01
+            </span>
+
+            <p>
+              THE PROBLEM
+            </p>
+
+          </div>
+
+
+          <div class="story-copy reveal">
+
+            <h3>
+              A warranty is only useful when you can
+              prove the purchase.
+            </h3>
+
+            <p>
+              Receipts are easy to lose. Even when
+              they're saved, the purchase date,
+              products and warranty information are
+              usually scattered across photos,
+              emails and paper copies.
+            </p>
+
+            <p>
+              Sanad brings those pieces into one
+              structured place so users can retrieve
+              proof of purchase and know when product
+              coverage ends.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Home -->
+
+        <div class="wide-showcase reveal">
+
+          <div class="showcase-copy">
+
+            <p class="eyebrow">
+              AT A GLANCE
+            </p>
+
+            <h3>
+              Warranty status,
+              without digging through receipts.
+            </h3>
+
+            <p>
+              The home screen prioritizes products
+              whose warranties are close to
+              expiration while still giving an
+              overview of all covered products.
+            </p>
+
+          </div>
+
+
+          <div class="showcase-phone phone-frame">
+
+            <div class="phone-island"></div>
+
+            <img
+              src="assets/home.png"
+              alt="Sanad warranty dashboard"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Product model -->
+
+        <div class="case-grid story-block">
+
+          <div class="story-label reveal">
+
+            <span>
+              02
+            </span>
+
+            <p>
+              PRODUCT MODEL
+            </p>
+
+          </div>
+
+
+          <div class="story-copy reveal">
+
+            <h3>
+              The receipt is the source of truth.
+            </h3>
+
+            <p>
+              Sanad is receipt-centered rather than
+              product-centered. One receipt can
+              contain multiple products, and each
+              product can have its own price,
+              warranty duration and expiration date.
+            </p>
+
+            <p>
+              This keeps the digital structure close
+              to the real-world purchase instead of
+              duplicating receipt data for every
+              product.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Receipt screens -->
+
+        <div class="screen-pair">
+
+          <div class="screen-card reveal">
+
+            <div class="screen-copy">
+
+              <span>
+                RECEIPT ARCHIVE
+              </span>
+
+              <h4>
+                Purchase history in one place.
+              </h4>
+
+              <p>
+                Receipts can be found by store or
+                product, with totals and product
+                counts visible at a glance.
+              </p>
+
+            </div>
+
+
+            <div class="phone-frame small-phone">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/receipts.png"
+                alt="Sanad receipt archive"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="screen-card reveal">
+
+            <div class="screen-copy">
+
+              <span>
+                RECEIPT DETAIL
+              </span>
+
+              <h4>
+                Proof and products stay connected.
+              </h4>
+
+              <p>
+                The original receipt remains attached
+                to its purchase data and every product
+                covered by it.
+              </p>
+
+            </div>
+
+
+            <div class="phone-frame small-phone">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/details-products.png"
+                alt="Products attached to a Sanad receipt"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Flow -->
+
+        <div class="case-grid story-block">
+
+          <div class="story-label reveal">
+
+            <span>
+              03
+            </span>
+
+            <p>
+              THE FLOW
+            </p>
+
+          </div>
+
+
+          <div class="story-copy reveal">
+
+            <h3>
+              Save the proof first.
+              Add context second.
+            </h3>
+
+            <p>
+              Users begin with the actual receipt:
+              camera, photo library or PDF. They then
+              review purchase information and attach
+              the products included in that
+              transaction.
+            </p>
+
+            <p>
+              Warranty expiration is derived from the
+              purchase date and selected warranty
+              duration rather than the date the item
+              was added to the app.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Add flow -->
+
+        <div class="triple-gallery">
+
+          <div class="gallery-item reveal">
+
+            <div class="phone-frame gallery-phone">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/add.png"
+                alt="Add receipt screen in Sanad"
+              >
+
+            </div>
+
+            <p>
+              01 — Add proof
+            </p>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <div class="phone-frame gallery-phone">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/setup-top.png"
+                alt="Receipt purchase information screen"
+              >
+
+            </div>
+
+            <p>
+              02 — Review purchase
+            </p>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <div class="phone-frame gallery-phone">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/setup-warranty.png"
+                alt="Warranty duration selection screen"
+              >
+
+            </div>
+
+            <p>
+              03 — Set warranty
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Architecture -->
+
+        <div class="architecture-block">
+
+          <div class="architecture-copy reveal">
+
+            <p class="eyebrow">
+              LOCAL-FIRST ARCHITECTURE
+            </p>
+
+            <h3>
+              Personal purchase data stays personal.
+            </h3>
+
+            <p>
+              Sanad does not require an account or
+              backend for its core experience.
+              Receipt files stay on the device while
+              structured metadata is stored locally
+              in SQLite.
+            </p>
+
+          </div>
+
+
+          <div class="architecture-diagram reveal">
+
+            <div class="architecture-node primary-node">
+              SANAD
+            </div>
+
+            <div class="architecture-line"></div>
+
+            <div class="architecture-children">
+
+              <div class="architecture-node">
+                Receipt Files
+
+                <small>
+                  Local storage
+                </small>
+              </div>
+
+
+              <div class="architecture-node">
+                Purchase Data
+
+                <small>
+                  SQLite
+                </small>
+              </div>
+
+
+              <div class="architecture-node">
+                Preferences
+
+                <small>
+                  AsyncStorage
+                </small>
+              </div>
+
+
+              <div class="architecture-node">
+                Reminders
+
+                <small>
+                  Local notifications
+                </small>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Features -->
+
+        <div class="features-section">
+
+          <div class="features-title reveal">
+
+            <p class="eyebrow">
+              PRODUCT CAPABILITIES
+            </p>
+
+            <h3>
+              Built around the full warranty lifecycle.
+            </h3>
+
+          </div>
+
+
+          <div class="feature-grid">
+
+            <article class="feature reveal">
+
+              <span>
+                01
+              </span>
+
+              <h4>
+                Warranty tracking
+              </h4>
+
+              <p>
+                Active, expiring and expired warranty
+                states are derived automatically.
+              </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+              <span>
+                02
+              </span>
+
+              <h4>
+                Expiry reminders
+              </h4>
+
+              <p>
+                Local notifications can remind users
+                before coverage ends.
+              </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+              <span>
+                03
+              </span>
+
+              <h4>
+                Multiple products
+              </h4>
+
+              <p>
+                A single receipt can contain several
+                products with independent warranties.
+              </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+              <span>
+                04
+              </span>
+
+              <h4>
+                Receipt archive
+              </h4>
+
+              <p>
+                Search saved purchases by store or
+                product.
+              </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+              <span>
+                05
+              </span>
+
+              <h4>
+                Backup & restore
+              </h4>
+
+              <p>
+                Users can export and restore their
+                local Sanad data.
+              </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+              <span>
+                06
+              </span>
+
+              <h4>
+                Flexible preferences
+              </h4>
+
+              <p>
+                Currency, calendar, language and
+                appearance are independently
+                configurable.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+        <!-- Localization -->
+
+        <div class="localization">
+
+          <div class="localization-copy reveal">
+
+            <p class="eyebrow">
+              LOCALIZATION
+            </p>
+
+            <h3>
+              Designed beyond translation.
+            </h3>
+
+            <p>
+              Sanad supports Arabic, English and
+              Japanese, including RTL layout,
+              locale-aware dates and currency
+              formatting.
+            </p>
+
+          </div>
+
+
+          <div class="language-phones">
+
+            <div class="phone-frame language-phone reveal">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/home.png"
+                alt="Sanad English interface"
+              >
+
+              <span>
+                English
+              </span>
+
+            </div>
+
+
+            <div class="phone-frame language-phone reveal">
+
+              <div class="phone-island"></div>
+
+              <img
+                src="assets/japanese.png"
+                alt="Sanad Japanese interface"
+              >
+
+              <span>
+                日本語
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Settings -->
+
+        <div class="settings-showcase">
+
+          <div class="settings-phone phone-frame reveal">
+
+            <div class="phone-island"></div>
+
+            <img
+              src="assets/settings.png"
+              alt="Sanad settings screen"
+            >
+
+          </div>
+
+
+          <div class="settings-copy reveal">
+
+            <p class="eyebrow">
+              PERSONAL BY DEFAULT
+            </p>
+
+            <h3>
+              The app adapts to the user,
+              not the other way around.
+            </h3>
+
+            <p>
+              Appearance, language, calendar and
+              default currency can all be controlled
+              independently.
+            </p>
+
+            <p>
+              Arabic does not force a Hijri calendar,
+              and receipt currency does not modify the
+              user's global default.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Reflection -->
+
+        <div class="case-grid story-block final-story">
+
+          <div class="story-label reveal">
+
+            <span>
+              04
+            </span>
+
+            <p>
+              WHAT I LEARNED
+            </p>
+
+          </div>
+
+
+          <div class="story-copy reveal">
+
+            <h3>
+              Good product decisions simplify the
+              code and the experience at the same
+              time.
+            </h3>
+
+            <p>
+              Building Sanad required thinking beyond
+              individual screens: defining the data
+              model, handling local files, managing
+              navigation state, designing warranty
+              logic and making the experience work
+              naturally across languages.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Bottom back -->
+
+        <div
+          style="
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+
+          <a
+            href="index.html#work"
+            style="
+              color: #111;
+              font-family: 'Space Grotesk', sans-serif;
+              font-size: 22px;
+            "
+          >
+            ← Back to selected work
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
