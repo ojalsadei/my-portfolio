@@ -2780,7 +2780,9 @@ const mobileMenu =
   );
 
 
-function closeMenu() {
+function closeMenu(
+  restoreFocus = false
+) {
 
   document.body.classList.remove(
     "menu-open"
@@ -2792,11 +2794,23 @@ function closeMenu() {
     "false"
   );
 
+  menuButton?.setAttribute(
+    "aria-label",
+    "فتح القائمة"
+  );
+
 
   mobileMenu?.setAttribute(
     "aria-hidden",
     "true"
   );
+
+
+  if (
+    restoreFocus
+  ) {
+    menuButton?.focus();
+  }
 
 }
 
@@ -2819,6 +2833,13 @@ menuButton?.addEventListener(
       )
     );
 
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen
+        ? "إغلاق القائمة"
+        : "فتح القائمة"
+    );
+
 
     mobileMenu.setAttribute(
       "aria-hidden",
@@ -2826,6 +2847,15 @@ menuButton?.addEventListener(
         !isOpen
       )
     );
+
+
+    if (
+      isOpen
+    ) {
+      mobileMenu
+        .querySelector("a")
+        ?.focus();
+    }
 
   }
 );
@@ -2854,11 +2884,37 @@ document.addEventListener(
   event => {
 
     if (
-      event.key === "Escape"
+      event.key === "Escape" &&
+      document.body.classList.contains(
+        "menu-open"
+      )
+    ) {
+      closeMenu(
+        true
+      );
+    }
+
+  }
+);
+
+
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    if (
+      window.innerWidth > 760 &&
+      document.body.classList.contains(
+        "menu-open"
+      )
     ) {
       closeMenu();
     }
 
+  },
+  {
+    passive: true
   }
 );
 
