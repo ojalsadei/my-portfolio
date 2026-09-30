@@ -333,7 +333,7 @@ img {
 /* Work */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
   gap: clamp(16px, 2vw, 24px);
 }
 
@@ -792,12 +792,7 @@ img {
   .section-heading {
     grid-template-columns: 86px minmax(0, 1fr);
   }
-
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card {
+.project-card {
     min-height: 620px;
   }
 
@@ -1081,13 +1076,17 @@ img {
 
 
 /* Project cards: card-level responsive system.
-   Safe content stays inside the card; decorative artwork is allowed to crop. */
+   Safe content stays in normal flow; decorative artwork may crop intentionally. */
 @supports (container-type: inline-size) and (width: 1cqw) {
   .project-card {
     container-type: inline-size;
     container-name: project-card;
     --card-safe-x: clamp(20px, 5cqw, 40px);
     --card-safe-y: clamp(22px, 5cqw, 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--card-safe-y) var(--card-safe-x);
   }
 
   .project-card-top {
@@ -1097,10 +1096,12 @@ img {
   }
 
   .project-card-copy {
-    right: var(--card-safe-x);
-    bottom: var(--card-safe-y);
-    left: var(--card-safe-x);
-    max-width: min(430px, 76cqw);
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: min(100%, 430px);
+    max-width: none;
   }
 
   .project-tags {
@@ -1117,18 +1118,18 @@ img {
   }
 
   .project-card-copy > p {
-    max-width: min(390px, 72cqw);
+    max-width: min(390px, 100%);
     margin-top: clamp(8px, 2cqw, 11px);
     font-size: clamp(12px, 2.2cqw, 13px);
   }
 
   .sanad-word {
-    font-size: clamp(96px, 30cqw, 210px);
+    font-size: clamp(110px, 30cqw, 210px);
   }
 
   .phone-mockup {
     right: 6cqw;
-    width: clamp(150px, 43cqw, 300px);
+    width: clamp(170px, 43cqw, 300px);
   }
 
   .mithaq-shot--one {
@@ -1146,62 +1147,70 @@ img {
       font-size: 8px;
     }
 
-    .project-card-copy {
-      max-width: 82cqw;
+    .project-card::after {
+      inset: 31% 0 0;
     }
 
-    .project-card::after {
-      inset: 36% 0 0;
+    /* SANAD: let the device become a large cropped visual instead of shrinking it. */
+    .sanad-word {
+      top: 14cqw;
+      left: -10cqw;
+      font-size: 39cqw;
     }
 
     .phone-mockup {
-      top: 10cqw;
-      right: 3cqw;
-      width: 46cqw;
+      top: 8cqw;
+      right: -10cqw;
+      width: 59cqw;
+      transform: rotate(6deg);
     }
 
-    .sanad-word {
-      top: 16cqw;
-      left: -5cqw;
-      font-size: 29cqw;
-    }
-
+    /* MITHAQ: one dominant screen, one secondary layer peeking in. */
     .mithaq-shot--one {
-      top: 11cqw;
-      right: -5cqw;
-      width: 82cqw;
+      top: 10cqw;
+      right: -18cqw;
+      width: 105cqw;
+      transform: rotate(3deg);
     }
 
     .mithaq-shot--two {
-      top: 31cqw;
-      left: -2cqw;
-      width: 70cqw;
+      top: 37cqw;
+      left: -14cqw;
+      width: 76cqw;
+      transform: rotate(-4deg);
     }
   }
 
-  @container project-card (max-width: 430px) {
-    .project-card-copy {
-      max-width: calc(100cqw - 40px);
-    }
-
-    .project-card-copy > p {
-      max-width: 100%;
+  @container project-card (max-width: 470px) {
+    .project-card {
+      --card-safe-x: 20px;
+      --card-safe-y: 22px;
+      min-height: 550px;
     }
 
     .project-card::after {
-      inset: 34% 0 0;
+      inset: 27% 0 0;
+    }
+
+    .project-card h3 {
+      font-size: clamp(44px, 14cqw, 58px);
+    }
+
+    .project-link-line {
+      margin-top: 16px;
+      padding-top: 13px;
     }
 
     .sanad-word {
-      top: 18cqw;
-      left: -9cqw;
-      font-size: 34cqw;
+      top: 15cqw;
+      left: -15cqw;
+      font-size: 48cqw;
     }
 
     .phone-mockup {
-      top: 12cqw;
-      right: -2cqw;
-      width: 50cqw;
+      top: 7cqw;
+      right: -18cqw;
+      width: 70cqw;
       border-width: 4px;
       border-radius: 28px;
     }
@@ -1212,50 +1221,58 @@ img {
     }
 
     .mithaq-shot--one {
-      top: 13cqw;
-      right: -13cqw;
-      width: 96cqw;
+      top: 11cqw;
+      right: -29cqw;
+      width: 122cqw;
     }
 
     .mithaq-shot--two {
-      top: 36cqw;
-      left: -10cqw;
-      width: 82cqw;
+      top: 43cqw;
+      left: -22cqw;
+      width: 84cqw;
     }
   }
 
-  @container project-card (max-width: 350px) {
+  @container project-card (max-width: 360px) {
+    .project-card {
+      min-height: 530px;
+    }
+
     .project-card-top {
       gap: 8px;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.08em;
     }
 
     .project-tags {
       gap: 5px;
     }
 
-    .project-card h3 {
-      font-size: 42px;
+    .project-tags span {
+      padding-inline: 7px;
     }
 
-    .project-link-line {
-      margin-top: 14px;
-      padding-top: 12px;
+    .project-card h3 {
+      font-size: 43px;
+    }
+
+    .sanad-word {
+      left: -18cqw;
+      font-size: 52cqw;
     }
 
     .phone-mockup {
-      right: -5cqw;
-      width: 53cqw;
+      right: -22cqw;
+      width: 76cqw;
     }
 
     .mithaq-shot--one {
-      right: -18cqw;
-      width: 102cqw;
+      right: -34cqw;
+      width: 128cqw;
     }
 
     .mithaq-shot--two {
-      left: -14cqw;
-      width: 86cqw;
+      left: -27cqw;
+      width: 90cqw;
     }
   }
 }
