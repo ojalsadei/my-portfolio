@@ -333,107 +333,97 @@ img {
 /* Work */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+  gap: clamp(18px, 2vw, 26px);
+  align-items: stretch;
 }
 
 .project-card {
-  position: relative;
-  min-height: clamp(540px, 46vw, 660px);
+  container-type: inline-size;
+  container-name: project-card;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-rows: minmax(300px, 1fr) auto;
   isolation: isolate;
   transform: translateZ(0);
   transition: transform 0.42s var(--ease), border-color 0.25s ease, box-shadow 0.42s ease;
 }
 
-.project-card::after {
-  content: "";
-  position: absolute;
-  inset: 38% 0 0;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.58) 42%, rgba(0, 0, 0, 0.86));
-}
-
 .project-card--sanad {
-  background: linear-gradient(145deg, var(--sanad-1), var(--sanad-2));
-}
-
-.project-card--sanad::after {
-  background: linear-gradient(to bottom, rgba(68, 104, 232, 0), rgba(55, 82, 190, 0.76) 45%, rgba(42, 63, 147, 0.98));
+  background: #314aa9;
 }
 
 .project-card--mithaq {
-  background: radial-gradient(circle at 82% 5%, rgba(183, 255, 86, 0.09), transparent 34%), #0c100d;
+  background: #0b0f0c;
 }
 
-.project-card-top {
-  position: absolute;
-  z-index: 6;
-  top: clamp(22px, 2.8vw, 36px);
-  right: clamp(22px, 2.8vw, 36px);
-  left: clamp(22px, 2.8vw, 36px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  color: rgba(255, 255, 255, 0.58);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+.project-visual {
+  position: relative;
+  min-height: clamp(330px, 58cqw, 430px);
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.project-type {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.project-type::before {
+.project-visual::after {
   content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.project-card--mithaq .project-type {
-  color: var(--mithaq);
-}
-
-.project-art {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  inset: auto 0 0;
+  z-index: 4;
+  height: 34%;
   pointer-events: none;
+}
+
+.project-visual--sanad {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.12), transparent 34%),
+    linear-gradient(145deg, var(--sanad-1), var(--sanad-2));
+}
+
+.project-visual--sanad::after {
+  background: linear-gradient(to bottom, rgba(49, 74, 169, 0), #314aa9 92%);
+}
+
+.project-visual--mithaq {
+  background:
+    radial-gradient(circle at 82% 8%, rgba(183, 255, 86, 0.12), transparent 38%),
+    #0b0f0c;
+}
+
+.project-visual--mithaq::after {
+  background: linear-gradient(to bottom, rgba(11, 15, 12, 0), #0b0f0c 94%);
 }
 
 .sanad-word {
   position: absolute;
-  top: 17%;
-  left: -3%;
-  color: rgba(255, 255, 255, 0.09);
+  z-index: 1;
+  top: 19%;
+  left: -4%;
+  color: rgba(255, 255, 255, 0.10);
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(110px, 13vw, 210px);
+  font-size: clamp(118px, 30cqw, 220px);
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.085em;
+  white-space: nowrap;
 }
 
 .phone-mockup {
   position: absolute;
-  top: 12%;
-  right: 8%;
-  width: min(43%, 300px);
+  z-index: 2;
+  top: auto;
+  bottom: -30%;
+  right: clamp(24px, 6cqw, 54px);
+  width: clamp(188px, 34cqw, 255px);
   overflow: hidden;
   border: 6px solid #111;
   border-radius: 38px;
   background: #111;
   box-shadow: 0 34px 80px rgba(0, 0, 0, 0.3);
   transform: rotate(4deg);
+  transform-origin: 50% 15%;
   transition: transform 0.52s var(--ease);
 }
 
@@ -462,12 +452,13 @@ img {
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: rgba(183, 255, 86, 0.07);
+  background: rgba(183, 255, 86, 0.08);
   filter: blur(55px);
 }
 
 .mithaq-shot {
   position: absolute;
+  z-index: 2;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 17px;
@@ -483,32 +474,63 @@ img {
 }
 
 .mithaq-shot--one {
-  top: 12%;
-  right: 4%;
-  width: 68%;
+  top: 8%;
+  right: 2%;
+  width: min(76cqw, 560px);
   aspect-ratio: 1.72 / 1;
   transform: rotate(1.5deg);
 }
 
 .mithaq-shot--two {
-  top: 31%;
-  left: 7%;
-  width: 61%;
+  top: 39%;
+  left: 5%;
+  width: min(59cqw, 430px);
   aspect-ratio: 1.54 / 1;
   transform: rotate(-2deg);
 }
 
 .project-card-copy {
-  position: absolute;
-  z-index: 7;
-  right: clamp(22px, 3vw, 40px);
-  bottom: clamp(24px, 3vw, 40px);
-  left: clamp(22px, 3vw, 40px);
-  max-width: 430px;
+  position: relative;
+  z-index: 6;
+  min-height: 272px;
+  padding: clamp(24px, 4cqw, 36px);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(18px, 3cqw, 24px);
+  color: rgba(255, 255, 255, 0.58);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.project-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.project-type::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.project-card--mithaq .project-type {
+  color: var(--mithaq);
 }
 
 .project-tags {
-  margin-bottom: 14px;
+  margin-bottom: clamp(12px, 2.2cqw, 16px);
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -518,7 +540,7 @@ img {
   padding: 6px 9px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.08);
   color: rgba(255, 255, 255, 0.72);
   font-size: 9px;
 }
@@ -530,7 +552,7 @@ img {
 
 .project-card h3 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(48px, 5.2vw, 78px);
+  font-size: clamp(48px, 10cqw, 76px);
   font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.065em;
@@ -538,16 +560,16 @@ img {
 }
 
 .project-card-copy > p {
-  max-width: 390px;
+  max-width: 42ch;
   margin-top: 11px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  font-size: clamp(12px, 1.9cqw, 14px);
   line-height: 1.55;
 }
 
 .project-link-line {
-  margin-top: 20px;
-  padding-top: 15px;
+  margin-top: auto;
+  padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
@@ -558,6 +580,114 @@ img {
 
 .project-card--mithaq .project-link-line {
   color: var(--mithaq);
+}
+
+@container project-card (max-width: 520px) {
+  .project-visual {
+    min-height: 325px;
+  }
+
+  .sanad-word {
+    top: 20%;
+    left: -8%;
+    font-size: 47cqw;
+  }
+
+  .phone-mockup {
+    top: auto;
+    bottom: -28%;
+    right: 2cqw;
+    width: 54cqw;
+    max-width: 212px;
+    border-width: 4px;
+    border-radius: 30px;
+  }
+
+  .phone-mockup::before {
+    top: 5px;
+    height: 11px;
+  }
+
+  .mithaq-shot--one {
+    top: 9cqw;
+    right: -6cqw;
+    width: 94cqw;
+  }
+
+  .mithaq-shot--two {
+    top: 34cqw;
+    left: 2cqw;
+    width: 70cqw;
+  }
+
+  .project-card-copy {
+    min-height: 270px;
+    padding: 22px;
+  }
+
+  .project-card-top {
+    margin-bottom: 18px;
+  }
+
+  .project-card h3 {
+    font-size: clamp(46px, 14cqw, 58px);
+  }
+}
+
+@container project-card (max-width: 380px) {
+  .project-visual {
+    min-height: 315px;
+  }
+
+  .sanad-word {
+    top: 22%;
+    left: -11%;
+    font-size: 52cqw;
+  }
+
+  .phone-mockup {
+    top: auto;
+    bottom: -25%;
+    right: 0;
+    width: 56cqw;
+  }
+
+  .mithaq-shot--one {
+    top: 13cqw;
+    right: -8cqw;
+    width: 106cqw;
+  }
+
+  .mithaq-shot--two {
+    display: none;
+  }
+
+  .project-card-copy {
+    min-height: 258px;
+    padding: 20px;
+  }
+
+  .project-card-top {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .project-tags {
+    gap: 5px;
+  }
+
+  .project-tags span {
+    padding: 5px 8px;
+    font-size: 8px;
+  }
+
+  .project-card h3 {
+    font-size: 44px;
+  }
+
+  .project-link-line {
+    padding-top: 16px;
+  }
 }
 
 /* About */
@@ -792,20 +922,7 @@ img {
   .section-heading {
     grid-template-columns: 86px minmax(0, 1fr);
   }
-
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card {
-    min-height: 620px;
-  }
-
-  .project-card-copy {
-    max-width: 460px;
-  }
-
-  .about-grid {
+.about-grid {
     padding-left: 120px;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -914,7 +1031,7 @@ img {
   }
 
   .hero {
-    min-height: max(720px, 100svh);
+    min-height: 100svh;
     padding-top: calc(var(--header-height) + 34px);
     padding-bottom: 28px;
     gap: 34px;
@@ -987,78 +1104,7 @@ img {
   }
 
   /* Stack projects on mobile: no hidden horizontal rail / swipe dependency */
-  .work-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .project-card {
-    min-height: 540px;
-    border-radius: 26px;
-  }
-
-  .project-card::after {
-    inset: 40% 0 0;
-  }
-
-  .project-card-top {
-    top: 20px;
-    right: 20px;
-    left: 20px;
-  }
-
-  .sanad-word {
-    top: 18%;
-    left: -4%;
-    font-size: 92px;
-  }
-
-  .phone-mockup {
-    top: 12%;
-    right: 7%;
-    width: 42%;
-    border-width: 4px;
-    border-radius: 27px;
-  }
-
-  .phone-mockup::before {
-    top: 5px;
-    height: 10px;
-  }
-
-  .mithaq-shot--one {
-    top: 13%;
-    right: 4%;
-    width: 82%;
-  }
-
-  .mithaq-shot--two {
-    top: 28%;
-    left: 5%;
-    width: 73%;
-  }
-
-  .project-card-copy {
-    right: 20px;
-    bottom: 22px;
-    left: 20px;
-    max-width: 86%;
-  }
-
-  .project-card h3 {
-    font-size: 45px;
-  }
-
-  .project-card-copy > p {
-    font-size: 12px;
-  }
-
-  .project-tags span {
-    padding: 5px 8px;
-    font-size: 8px;
-  }
-
-  .about-grid {
+.about-grid {
     padding-left: 0;
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1118,16 +1164,7 @@ img {
   .hero h1 {
     font-size: clamp(52px, 16.5vw, 66px);
   }
-
-  .project-card {
-    min-height: 510px;
-  }
-
-  .project-card-copy {
-    max-width: 92%;
-  }
-
-  .contact-row {
+.contact-row {
     align-items: flex-end;
   }
 }
