@@ -362,7 +362,7 @@ img {
 
 .project-visual {
   position: relative;
-  min-height: clamp(310px, 46cqw, 410px);
+  min-height: clamp(330px, 58cqw, 430px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -1031,7 +1031,7 @@ img {
   }
 
   .hero {
-    min-height: max(720px, 100svh);
+    min-height: 100svh;
     padding-top: calc(var(--header-height) + 34px);
     padding-bottom: 28px;
     gap: 34px;
