@@ -413,9 +413,10 @@ img {
 .phone-mockup {
   position: absolute;
   z-index: 2;
-  top: 7%;
+  top: auto;
+  bottom: -30%;
   right: clamp(24px, 6cqw, 54px);
-  width: clamp(190px, 36cqw, 270px);
+  width: clamp(188px, 34cqw, 255px);
   overflow: hidden;
   border: 6px solid #111;
   border-radius: 38px;
@@ -583,7 +584,7 @@ img {
 
 @container project-card (max-width: 520px) {
   .project-visual {
-    min-height: 305px;
+    min-height: 325px;
   }
 
   .sanad-word {
@@ -593,10 +594,11 @@ img {
   }
 
   .phone-mockup {
-    top: 7cqw;
+    top: auto;
+    bottom: -28%;
     right: 2cqw;
-    width: 57cqw;
-    max-width: 225px;
+    width: 54cqw;
+    max-width: 212px;
     border-width: 4px;
     border-radius: 30px;
   }
@@ -634,7 +636,7 @@ img {
 
 @container project-card (max-width: 380px) {
   .project-visual {
-    min-height: 285px;
+    min-height: 315px;
   }
 
   .sanad-word {
@@ -644,9 +646,10 @@ img {
   }
 
   .phone-mockup {
-    top: 8cqw;
+    top: auto;
+    bottom: -25%;
     right: 0;
-    width: 60cqw;
+    width: 56cqw;
   }
 
   .mithaq-shot--one {
