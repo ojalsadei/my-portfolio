@@ -273,6 +273,10 @@ img {
   transition: transform 0.28s var(--ease), background 0.2s ease, color 0.2s ease;
 }
 
+#work-start {
+  scroll-margin-top: calc(var(--header-height) + 18px);
+}
+
 /* Sections */
 .work-section,
 .about-section,
