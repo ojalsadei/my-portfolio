@@ -1000,67 +1000,17 @@ img {
     min-height: 540px;
     border-radius: 26px;
   }
-
-  .project-card::after {
-    inset: 40% 0 0;
-  }
-
-  .project-card-top {
-    top: 20px;
-    right: 20px;
-    left: 20px;
-  }
-
-  .sanad-word {
-    top: 18%;
-    left: -4%;
-    font-size: 92px;
-  }
-
-  .phone-mockup {
-    top: 12%;
-    right: 7%;
-    width: 42%;
-    border-width: 4px;
-    border-radius: 27px;
-  }
-
-  .phone-mockup::before {
-    top: 5px;
-    height: 10px;
-  }
-
-  .mithaq-shot--one {
-    top: 13%;
-    right: 4%;
-    width: 82%;
-  }
-
-  .mithaq-shot--two {
-    top: 28%;
-    left: 5%;
-    width: 73%;
-  }
-
-  .project-card-copy {
-    right: 20px;
-    bottom: 22px;
-    left: 20px;
-    max-width: 86%;
-  }
-
-  .project-card h3 {
-    font-size: 45px;
-  }
-
-  .project-card-copy > p {
-    font-size: 12px;
-  }
-
-  .project-tags span {
-    padding: 5px 8px;
-    font-size: 8px;
-  }
+
+
+
+
+
+
+
+
+
+
+
 
   .about-grid {
     padding-left: 0;
@@ -1126,10 +1076,7 @@ img {
   .project-card {
     min-height: 510px;
   }
-
-  .project-card-copy {
-    max-width: 92%;
-  }
+
 
   .contact-row {
     align-items: flex-end;
