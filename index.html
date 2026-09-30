@@ -1,2711 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Osama, Business Analyst and Product Builder based in Riyadh, Saudi Arabia. Selected work including Sanad and Mithaq."
-  >
-
-  <meta
-    name="author"
-    content="Osama"
-  >
-
-  <meta
-    name="theme-color"
-    content="#090909"
-  >
-
-  <meta
-    property="og:title"
-    content="Osama | Business Analyst & Product Builder"
-  >
-
-  <meta
-    property="og:description"
-    content="Business analysis, product thinking and practical digital products. Explore selected work including Sanad and Mithaq."
-  >
-
-  <meta
-    property="og:type"
-    content="website"
-  >
-
-  <meta
-    property="og:url"
-    content="https://ojalsadei.github.io/my-portfolio/"
-  >
-
-  <title>
-    Osama | Business Analyst & Product Builder
-  </title>
-
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
-
-  <style>
-
-    /* =========================================
-       HERO
-    ========================================= */
-
-    .hero-main-intro {
-      margin:
-        auto
-        0;
-    }
-
-
-    .hero-intro-title {
-      margin-top:
-        26px;
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(
-          82px,
-          11vw,
-          168px
-        );
-
-      line-height:
-        0.86;
-
-      font-weight:
-        500;
-
-      letter-spacing:
-        -0.075em;
-    }
-
-
-    .hero-intro-statement {
-      max-width:
-        1050px;
-
-      margin-top:
-        38px;
-
-      color:
-        var(--muted);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(
-          26px,
-          3.2vw,
-          48px
-        );
-
-      line-height:
-        1.14;
-
-      letter-spacing:
-        -0.035em;
-    }
-
-
-    /* =========================================
-       WORK SECTION
-    ========================================= */
-
-    .portfolio-work {
-      min-height:
-        100svh;
-
-      padding:
-        clamp(
-          110px,
-          10vw,
-          150px
-        )
-        0
-        clamp(
-          90px,
-          9vw,
-          130px
-        );
-
-      border-top:
-        1px solid
-        var(--line);
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      overflow:
-        hidden;
-    }
-
-
-    .portfolio-work
-    .shell {
-      width:
-        var(--shell);
-    }
-
-
-    .work-heading-compact {
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        flex-end;
-
-      gap:
-        40px;
-
-      margin-bottom:
-        clamp(
-          38px,
-          5vw,
-          68px
-        );
-    }
-
-
-    .work-heading-left {
-      display:
-        flex;
-
-      align-items:
-        flex-start;
-
-      gap:
-        clamp(
-          24px,
-          4vw,
-          58px
-        );
-    }
-
-
-    .work-heading-number {
-      padding-top:
-        10px;
-
-      color:
-        var(--faint);
-
-      font-size:
-        12px;
-    }
-
-
-    .work-heading-compact h2 {
-      max-width:
-        850px;
-
-      margin-top:
-        14px;
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(
-          44px,
-          5.2vw,
-          78px
-        );
-
-      line-height:
-        0.98;
-
-      letter-spacing:
-        -0.055em;
-
-      font-weight:
-        500;
-    }
-
-
-    .work-count {
-      padding-bottom:
-        7px;
-
-      color:
-        var(--faint);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        11px;
-
-      letter-spacing:
-        0.13em;
-
-      white-space:
-        nowrap;
-    }
-
-
-    /* =========================================
-       PROJECT CARDS
-    ========================================= */
-
-    .work-cards {
-      height:
-        min(
-          610px,
-          65vw
-        );
-
-      min-height:
-        520px;
-
-      display:
-        flex;
-
-      gap:
-        18px;
-    }
-
-
-    .work-card {
-      position:
-        relative;
-
-      flex:
-        1 1 50%;
-
-      min-width:
-        0;
-
-      overflow:
-        hidden;
-
-      border:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          0.1
-        );
-
-      border-radius:
-        38px;
-
-      color:
-        white;
-
-      isolation:
-        isolate;
-
-      transition:
-        flex
-        0.65s
-        cubic-bezier(
-          0.22,
-          1,
-          0.36,
-          1
-        ),
-        transform
-        0.45s
-        cubic-bezier(
-          0.22,
-          1,
-          0.36,
-          1
-        ),
-        border-color
-        0.3s
-        ease;
-    }
-
-
-    .work-cards:has(.work-card:hover)
-    .work-card {
-      flex:
-        0.78
-        1
-        0;
-    }
-
-
-    .work-cards
-    .work-card:hover {
-      flex:
-        1.22
-        1
-        0;
-
-      transform:
-        translateY(
-          -5px
-        );
-    }
-
-
-    .work-card-inner {
-      position:
-        absolute;
-
-      inset:
-        0;
-
-      z-index:
-        5;
-
-      padding:
-        clamp(
-          24px,
-          3.2vw,
-          44px
-        );
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      justify-content:
-        space-between;
-
-      pointer-events:
-        none;
-    }
-
-
-    .work-card-top {
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        flex-start;
-
-      gap:
-        20px;
-    }
-
-
-    .work-card-index {
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          0.52
-        );
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        11px;
-
-      letter-spacing:
-        0.13em;
-    }
-
-
-    .work-card-type {
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        8px;
-
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          0.55
-        );
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        10px;
-
-      letter-spacing:
-        0.13em;
-
-      text-transform:
-        uppercase;
-    }
-
-
-    .work-card-type::before {
-      content:
-        "";
-
-      width:
-        6px;
-
-      height:
-        6px;
-
-      border-radius:
-        50%;
-
-      background:
-        currentColor;
-    }
-
-
-    .work-card-bottom {
-      position:
-        relative;
-
-      z-index:
-        6;
-    }
-
-
-    .work-card-tags {
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        7px;
-
-      margin-bottom:
-        17px;
-    }
-
-
-    .work-card-tags span {
-      padding:
-        7px
-        10px;
-
-      border:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          0.16
-        );
-
-      border-radius:
-        999px;
-
-      background:
-        rgba(
-          0,
-          0,
-          0,
-          0.13
-        );
-
-      backdrop-filter:
-        blur(
-          10px
-        );
-
-      -webkit-backdrop-filter:
-        blur(
-          10px
-        );
-
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          0.72
-        );
-
-      font-size:
-        10px;
-    }
-
-
-    .work-card h3 {
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(
-          46px,
-          5.8vw,
-          86px
-        );
-
-      line-height:
-        0.88;
-
-      letter-spacing:
-        -0.065em;
-
-      font-weight:
-        600;
-    }
-
-
-    .work-card-subtitle {
-      max-width:
-        390px;
-
-      margin-top:
-        15px;
-
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          0.66
-        );
-
-      font-size:
-        14px;
-
-      line-height:
-        1.6;
-    }
-
-
-    .work-card-link {
-      margin-top:
-        23px;
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      gap:
-        20px;
-
-      padding-top:
-        17px;
-
-      border-top:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          0.17
-        );
-
-      color:
-        white;
-
-      font-size:
-        13px;
-    }
-
-
-    .work-card-link i {
-      font-style:
-        normal;
-
-      font-size:
-        22px;
-
-      transition:
-        transform
-        0.3s
-        ease;
-    }
-
-
-    .work-card:hover
-    .work-card-link i {
-      transform:
-        translate(
-          4px,
-          -4px
-        );
-    }
-
-
-    /* =========================================
-       SANAD
-    ========================================= */
-
-    .sanad-card {
-      background:
-        linear-gradient(
-          145deg,
-          #4266e7,
-          #7190ff
-        );
-
-      border-color:
-        rgba(
-          255,
-          255,
-          255,
-          0.16
-        );
-    }
-
-
-    .sanad-card::before {
-      content:
-        "SANAD";
-
-      position:
-        absolute;
-
-      top:
-        17%;
-
-      left:
-        -3%;
-
-      z-index:
-        0;
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(
-          105px,
-          14vw,
-          230px
-        );
-
-      font-weight:
-        700;
-
-      line-height:
-        0.8;
-
-      letter-spacing:
-        -0.085em;
-
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          0.09
-        );
-
-      pointer-events:
-        none;
-    }
-
-
-    .sanad-phone {
-      position:
-        absolute;
-
-      width:
-        min(
-          325px,
-          48%
-        );
-
-      top:
-        8%;
-
-      right:
-        8%;
-
-      z-index:
-        2;
-
-      overflow:
-        hidden;
-
-      border:
-        7px solid
-        #111;
-
-      border-radius:
-        46px;
-
-      background:
-        #111;
-
-      box-shadow:
-        0
-        40px
-        90px
-        rgba(
-          0,
-          0,
-          0,
-          0.32
-        );
-
-      transform:
-        rotate(
-          5deg
-        )
-        translateY(
-          15px
-        );
-
-      transition:
-        transform
-        0.65s
-        cubic-bezier(
-          0.22,
-          1,
-          0.36,
-          1
-        );
-    }
-
-
-    .sanad-phone img {
-      display:
-        block;
-
-      width:
-        100%;
-    }
-
-
-    .sanad-phone::before {
-      content:
-        "";
-
-      position:
-        absolute;
-
-      z-index:
-        3;
-
-      top:
-        9px;
-
-      left:
-        50%;
-
-      width:
-        31%;
-
-      height:
-        19px;
-
-      transform:
-        translateX(
-          -50%
-        );
-
-      border-radius:
-        999px;
-
-      background:
-        #050505;
-    }
-
-
-    .sanad-card:hover
-    .sanad-phone {
-      transform:
-        rotate(
-          1deg
-        )
-        translateY(
-          -7px
-        )
-        scale(
-          1.025
-        );
-    }
-
-
-    .sanad-card
-    .work-card-bottom {
-      width:
-        45%;
-
-      max-width:
-        340px;
-    }
-
-
-    /* =========================================
-       MITHAQ
-    ========================================= */
-
-    .mithaq-card {
-      background:
-        radial-gradient(
-          circle
-          at
-          78%
-          5%,
-          rgba(
-            183,
-            255,
-            86,
-            0.085
-          ),
-          transparent
-          31%
-        ),
-        linear-gradient(
-          145deg,
-          #0b0f0c,
-          #121713
-        );
-    }
-
-
-    .mithaq-card:hover {
-      border-color:
-        rgba(
-          183,
-          255,
-          86,
-          0.28
-        );
-    }
-
-
-    .mithaq-card
-    .work-card-type {
-      color:
-        #b7ff56;
-    }
-
-
-    .mithaq-card
-    .work-card-bottom {
-      width:
-        40%;
-
-      max-width:
-        310px;
-    }
-
-
-    .mithaq-card
-    .work-card-tags
-    span:first-child {
-      border-color:
-        rgba(
-          183,
-          255,
-          86,
-          0.22
-        );
-
-      color:
-        #b7ff56;
-    }
-
-
-    .mithaq-card
-    .work-card-link {
-      color:
-        #b7ff56;
-    }
-
-
-    .mithaq-card h3 {
-      font-size:
-        clamp(
-          46px,
-          4.2vw,
-          68px
-        );
-    }
-
-
-    .mithaq-stage {
-      position:
-        absolute;
-
-      top:
-        9%;
-
-      right:
-        3%;
-
-      bottom:
-        9%;
-
-      width:
-        55%;
-
-      z-index:
-        2;
-
-      pointer-events:
-        none;
-    }
-
-
-    .mithaq-shot {
-      position:
-        absolute;
-
-      overflow:
-        hidden;
-
-      border:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          0.12
-        );
-
-      border-radius:
-        20px;
-
-      background:
-        #090c0a;
-
-      box-shadow:
-        0
-        32px
-        80px
-        rgba(
-          0,
-          0,
-          0,
-          0.38
-        );
-
-      transition:
-        transform
-        0.65s
-        cubic-bezier(
-          0.22,
-          1,
-          0.36,
-          1
-        );
-    }
-
-
-    .mithaq-shot img {
-      display:
-        block;
-
-      width:
-        100%;
-
-      height:
-        100%;
-
-      object-fit:
-        contain;
-    }
-
-
-    .mithaq-shot-start {
-      width:
-        92%;
-
-      aspect-ratio:
-        1.72 / 1;
-
-      top:
-        3%;
-
-      right:
-        0;
-
-      transform:
-        rotate(
-          1.5deg
-        );
-    }
-
-
-    .mithaq-shot-result {
-      width:
-        82%;
-
-      aspect-ratio:
-        1.54 / 1;
-
-      bottom:
-        4%;
-
-      left:
-        0;
-
-      z-index:
-        3;
-
-      transform:
-        rotate(
-          -2deg
-        );
-    }
-
-
-    .mithaq-card:hover
-    .mithaq-shot-start {
-      transform:
-        rotate(
-          2.5deg
-        )
-        translate(
-          10px,
-          -7px
-        );
-    }
-
-
-    .mithaq-card:hover
-    .mithaq-shot-result {
-      transform:
-        rotate(
-          -0.5deg
-        )
-        translate(
-          -7px,
-          -10px
-        );
-    }
-
-
-    .mithaq-glow {
-      position:
-        absolute;
-
-      width:
-        380px;
-
-      height:
-        380px;
-
-      top:
-        -160px;
-
-      right:
-        -100px;
-
-      border-radius:
-        50%;
-
-      background:
-        rgba(
-          183,
-          255,
-          86,
-          0.07
-        );
-
-      filter:
-        blur(
-          60px
-        );
-
-      pointer-events:
-        none;
-    }
-
-
-    /* =========================================
-       SWIPE HINT
-    ========================================= */
-
-    .work-swipe-hint {
-      display:
-        none;
-    }
-
-
-    /* =========================================
-       TABLET
-    ========================================= */
-
-    @media
-    (max-width: 1100px)
-    and
-    (min-width: 761px) {
-
-      .work-cards {
-        height:
-          570px;
-      }
-
-
-      .sanad-phone {
-        width:
-          47%;
-
-        right:
-          4%;
-      }
-
-
-      .sanad-card
-      .work-card-bottom {
-        width:
-          48%;
-      }
-
-
-      .mithaq-card
-      .work-card-bottom {
-        width:
-          43%;
-      }
-
-
-      .mithaq-stage {
-        width:
-          53%;
-
-        right:
-          2%;
-      }
-
-
-      .mithaq-card h3 {
-        font-size:
-          48px;
-      }
-
-    }
-
-
-    /* =========================================
-       MOBILE
-    ========================================= */
-
-    @media
-    (max-width: 760px) {
-
-      .hero-main-intro {
-        margin:
-          auto
-          0;
-      }
-
-
-      .hero-intro-title {
-        margin-top:
-          20px;
-
-        font-size:
-          clamp(
-            64px,
-            18vw,
-            90px
-          );
-
-        line-height:
-          0.88;
-      }
-
-
-      .hero-intro-statement {
-        margin-top:
-          27px;
-
-        max-width:
-          330px;
-
-        font-size:
-          26px;
-
-        line-height:
-          1.18;
-      }
-
-
-      .portfolio-work {
-        min-height:
-          auto;
-
-        padding:
-          105px
-          0
-          95px;
-
-        overflow:
-          hidden;
-      }
-
-
-      .work-heading-compact {
-        align-items:
-          flex-start;
-
-        margin-bottom:
-          38px;
-      }
-
-
-      .work-heading-left {
-        gap:
-          17px;
-      }
-
-
-      .work-heading-number {
-        padding-top:
-          7px;
-      }
-
-
-      .work-heading-compact h2 {
-        max-width:
-          300px;
-
-        font-size:
-          42px;
-
-        line-height:
-          0.98;
-      }
-
-
-      .work-count {
-        display:
-          none;
-      }
-
-
-      /* Mobile rail */
-
-      .work-cards {
-        width:
-          100vw;
-
-        height:
-          510px;
-
-        min-height:
-          0;
-
-        margin-left:
-          calc(
-            (
-              100vw
-              -
-              var(--shell)
-            )
-            /
-            -2
-          );
-
-        margin-right:
-          calc(
-            (
-              100vw
-              -
-              var(--shell)
-            )
-            /
-            -2
-          );
-
-        padding:
-          0
-          18px
-          14px;
-
-        display:
-          flex;
-
-        gap:
-          14px;
-
-        overflow-x:
-          auto;
-
-        overflow-y:
-          hidden;
-
-        scroll-snap-type:
-          x mandatory;
-
-        scroll-padding-inline:
-          18px;
-
-        scrollbar-width:
-          none;
-
-        -webkit-overflow-scrolling:
-          touch;
-      }
-
-
-      .work-cards::-webkit-scrollbar {
-        display:
-          none;
-      }
-
-
-      .work-card,
-      .work-cards:has(.work-card:hover)
-      .work-card,
-      .work-cards
-      .work-card:hover {
-        flex:
-          0
-          0
-          78vw;
-
-        width:
-          78vw;
-
-        max-width:
-          380px;
-
-        height:
-          490px;
-
-        transform:
-          none;
-
-        border-radius:
-          30px;
-
-        scroll-snap-align:
-          start;
-      }
-
-
-      .work-card-inner {
-        padding:
-          22px;
-
-        z-index:
-          6;
-      }
-
-
-      .work-card-top {
-        position:
-          relative;
-
-        z-index:
-          7;
-      }
-
-
-      .work-card-index,
-      .work-card-type {
-        font-size:
-          9px;
-      }
-
-
-      .work-card-bottom {
-        position:
-          relative;
-
-        z-index:
-          7;
-      }
-
-
-      .work-card h3 {
-        font-size:
-          41px;
-
-        line-height:
-          0.9;
-      }
-
-
-      .work-card-subtitle {
-        margin-top:
-          8px;
-
-        font-size:
-          12px;
-
-        line-height:
-          1.4;
-      }
-
-
-      .work-card-tags {
-        gap:
-          5px;
-
-        margin-bottom:
-          10px;
-      }
-
-
-      .work-card-tags span {
-        padding:
-          5px
-          8px;
-
-        font-size:
-          8px;
-      }
-
-
-      .work-card-link {
-        margin-top:
-          13px;
-
-        padding-top:
-          12px;
-
-        font-size:
-          11px;
-      }
-
-
-      .work-card-link i {
-        font-size:
-          17px;
-      }
-
-
-      /* =========================================
-         SANAD MOBILE
-      ========================================= */
-
-      .sanad-card::after {
-        content:
-          "";
-
-        position:
-          absolute;
-
-        inset:
-          41%
-          0
-          0;
-
-        z-index:
-          3;
-
-        background:
-          linear-gradient(
-            to bottom,
-            rgba(
-              70,
-              103,
-              232,
-              0
-            ),
-            rgba(
-              65,
-              95,
-              215,
-              0.93
-            )
-            38%,
-            rgba(
-              54,
-              80,
-              185,
-              1
-            )
-            100%
-          );
-
-        pointer-events:
-          none;
-      }
-
-
-      .sanad-card::before {
-        top:
-          22%;
-
-        left:
-          -5%;
-
-        font-size:
-          90px;
-      }
-
-
-      .sanad-phone {
-        width:
-          41%;
-
-        top:
-          14%;
-
-        right:
-          5%;
-
-        border-width:
-          4px;
-
-        border-radius:
-          28px;
-
-        transform:
-          rotate(
-            5deg
-          );
-      }
-
-
-      .sanad-phone::before {
-        height:
-          11px;
-
-        top:
-          5px;
-      }
-
-
-      .sanad-card:hover
-      .sanad-phone {
-        transform:
-          rotate(
-            5deg
-          );
-      }
-
-
-      .sanad-card
-      .work-card-bottom {
-        width:
-          67%;
-
-        max-width:
-          none;
-      }
-
-
-      .sanad-card
-      .work-card-tags
-      span:nth-child(3) {
-        display:
-          none;
-      }
-
-
-      /* =========================================
-         MITHAQ MOBILE
-      ========================================= */
-
-      .mithaq-card::after {
-        content:
-          "";
-
-        position:
-          absolute;
-
-        inset:
-          51%
-          0
-          0;
-
-        z-index:
-          3;
-
-        background:
-          linear-gradient(
-            to bottom,
-            rgba(
-              11,
-              15,
-              12,
-              0
-            ),
-            rgba(
-              11,
-              15,
-              12,
-              0.91
-            )
-            35%,
-            #0b0f0c
-            100%
-          );
-
-        pointer-events:
-          none;
-      }
-
-
-      .mithaq-stage {
-        width:
-          88%;
-
-        height:
-          46%;
-
-        top:
-          12%;
-
-        right:
-          6%;
-
-        bottom:
-          auto;
-
-        z-index:
-          2;
-      }
-
-
-      .mithaq-shot {
-        border-radius:
-          12px;
-
-        background:
-          #080b09;
-      }
-
-
-      .mithaq-shot img {
-        width:
-          100%;
-
-        height:
-          100%;
-
-        object-fit:
-          contain;
-      }
-
-
-      .mithaq-shot-start {
-        width:
-          88%;
-
-        aspect-ratio:
-          1.72 / 1;
-
-        top:
-          0;
-
-        right:
-          0;
-
-        transform:
-          rotate(
-            1.5deg
-          );
-      }
-
-
-      .mithaq-shot-result {
-        width:
-          76%;
-
-        aspect-ratio:
-          1.54 / 1;
-
-        bottom:
-          -1%;
-
-        left:
-          0;
-
-        transform:
-          rotate(
-            -1.5deg
-          );
-      }
-
-
-      .mithaq-card:hover
-      .mithaq-shot-start {
-        transform:
-          rotate(
-            1.5deg
-          );
-      }
-
-
-      .mithaq-card:hover
-      .mithaq-shot-result {
-        transform:
-          rotate(
-            -1.5deg
-          );
-      }
-
-
-      .mithaq-card
-      .work-card-bottom {
-        width:
-          72%;
-
-        max-width:
-          none;
-      }
-
-
-      .mithaq-card h3 {
-        font-size:
-          39px;
-      }
-
-
-      .mithaq-card {
-        box-shadow:
-          inset
-          1px
-          0
-          0
-          rgba(
-            183,
-            255,
-            86,
-            0.08
-          );
-      }
-
-
-      /* Swipe hint */
-
-      .work-swipe-hint {
-        margin-top:
-          11px;
-
-        display:
-          flex;
-
-        align-items:
-          center;
-
-        gap:
-          7px;
-
-        color:
-          var(--faint);
-
-        font-family:
-          "Space Grotesk",
-          sans-serif;
-
-        font-size:
-          9px;
-
-        letter-spacing:
-          0.12em;
-
-        text-transform:
-          uppercase;
-      }
-
-
-      .work-swipe-hint span {
-        width:
-          15px;
-
-        height:
-          3px;
-
-        border-radius:
-          99px;
-
-        background:
-          var(--surface-3);
-      }
-
-
-      .work-swipe-hint
-      span:first-child {
-        width:
-          28px;
-
-        background:
-          var(--text);
-      }
-
-    }
-
-
-    /* =========================================
-       SMALL MOBILE
-    ========================================= */
-
-    @media
-    (max-width: 400px) {
-
-      .work-card,
-      .work-cards:has(.work-card:hover)
-      .work-card,
-      .work-cards
-      .work-card:hover {
-        flex-basis:
-          76vw;
-
-        width:
-          76vw;
-      }
-
-
-      .work-heading-compact h2 {
-        font-size:
-          38px;
-      }
-
-
-      .hero-intro-title {
-        font-size:
-          62px;
-      }
-
-
-      .hero-intro-statement {
-        font-size:
-          24px;
-      }
-
-    }
-
-
-    /* =========================================
-       REDUCED MOTION
-    ========================================= */
-
-    @media
-    (prefers-reduced-motion: reduce) {
-
-      .work-card,
-      .sanad-phone,
-      .mithaq-shot {
-        transition:
-          none;
-      }
-
-    }
-
-  </style>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Osama Alsadei's portfolio — business analysis, product thinking, systems and hands-on prototyping. Selected work includes Sanad and Mithaq.">
+  <meta name="author" content="Osama Alsadei">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090909">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="canonical" href="https://ojalsadei.github.io/my-portfolio/">
+
+  <meta property="og:title" content="Osama Alsadei — Portfolio">
+  <meta property="og:description" content="Business analysis, product thinking, systems and practical digital products.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ojalsadei.github.io/my-portfolio/">
+  <meta property="og:site_name" content="Osama Alsadei Portfolio">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Osama Alsadei — Portfolio">
+  <meta name="twitter:description" content="Business analysis, product thinking, systems and practical digital products.">
+
+  <title>Osama Alsadei — Business Analysis, Product & Systems</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Osama Alsadei",
+    "url": "https://ojalsadei.github.io/my-portfolio/",
+    "sameAs": [
+      "https://www.linkedin.com/in/osama-alsadei/",
+      "https://github.com/ojalsadei"
+    ],
+    "knowsAbout": [
+      "Business Analysis",
+      "Product Thinking",
+      "Systems Analysis",
+      "Prototyping",
+      "React Native",
+      "SQL"
+    ]
+  }
+  </script>
 </head>
 
-
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="noise" aria-hidden="true"></div>
 
-  <div class="noise"></div>
-
-
-  <!-- HEADER -->
-
-  <header class="site-header">
-
-    <nav class="nav shell">
-
-      <a
-        href="#top"
-        class="brand"
-        aria-label="Back to top"
-      >
+  <header class="site-header" id="siteHeader">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a href="#top" class="brand" aria-label="Osama Alsadei — back to top">
         OSAMA ALSADEI
       </a>
 
-
-      <div class="nav-links">
-
-        <a href="#work">
-          Work
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
+      <div class="nav-links" aria-label="Portfolio sections">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </div>
 
-
       <button
-        class="mobile-menu-button"
-        id="mobileMenuButton"
+        class="menu-button"
+        id="menuButton"
         type="button"
         aria-label="Open navigation"
         aria-controls="mobileMenu"
         aria-expanded="false"
       >
-
         <span></span>
         <span></span>
-
       </button>
-
     </nav>
 
-
-    <div
-      class="mobile-menu"
-      id="mobileMenu"
-      aria-hidden="true"
-    >
-
-      <a href="#work">
-
-        <span>
-          01
-        </span>
-
-        Work
-
-      </a>
-
-
-      <a href="#about">
-
-        <span>
-          02
-        </span>
-
-        About
-
-      </a>
-
-
-      <a href="#contact">
-
-        <span>
-          03
-        </span>
-
-        Contact
-
-      </a>
-
-    </div>
-
+    <nav class="mobile-menu shell" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+      <a href="#work"><span>01</span>Work</a>
+      <a href="#about"><span>02</span>About</a>
+      <a href="#contact"><span>03</span>Contact</a>
+    </nav>
   </header>
 
-
-
-  <main id="top">
-
-
-    <!-- =========================================
-         HERO
-    ========================================= -->
-
-    <section class="hero shell">
-
-      <div class="hero-meta reveal">
-
-        <span>
-          Riyadh, Saudi Arabia
-        </span>
-
-        <span>
-          Portfolio · 2026
-        </span>
-
+  <main id="main">
+    <section class="hero shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-meta page-enter page-enter-1">
+        <span>Riyadh, Saudi Arabia</span>
+        <span>Portfolio · 2026</span>
       </div>
 
-
-      <div class="hero-main hero-main-intro">
-
-        <p class="eyebrow reveal">
-          BUSINESS ANALYST × PRODUCT BUILDER
-        </p>
-
-
-        <h1 class="hero-intro-title reveal">
-          Hi, I'm Osama.
+      <div class="hero-main">
+        <p class="eyebrow page-enter page-enter-2">Business analysis · product · systems</p>
+        <h1 id="hero-title" class="page-enter page-enter-3">
+          I turn ambiguity into useful digital products.
         </h1>
-
-
-        <p class="hero-intro-statement reveal">
-          I analyze problems, structure ideas,
-          <br>
-          and turn them into useful digital products.
-        </p>
-
       </div>
 
-
-      <div class="hero-footer reveal">
-
+      <div class="hero-footer page-enter page-enter-4">
         <p>
-          I work at the intersection of business,
-          systems and product, turning ambiguity
-          into clear requirements, experiences
-          and working prototypes.
+          I'm Osama. I move from understanding the problem to structuring the logic,
+          shaping the experience and building enough to make the idea real.
         </p>
 
-
-        <a
-          href="#work"
-          class="scroll-button"
-          aria-label="View selected work"
-        >
-          ↓
+        <a href="#work" class="scroll-button" aria-label="View selected work">
+          <span aria-hidden="true">↓</span>
         </a>
-
       </div>
-
     </section>
 
-
-
-    <!-- =========================================
-         WORK
-    ========================================= -->
-
-    <section
-      id="work"
-      class="portfolio-work"
-    >
-
+    <section class="work-section" id="work" aria-labelledby="work-title">
       <div class="shell">
-
-
-        <div class="work-heading-compact reveal">
-
-          <div class="work-heading-left">
-
-            <span class="work-heading-number">
-              01
-            </span>
-
-
-            <div>
-
-              <p class="eyebrow">
-                SELECTED WORK
-              </p>
-
-
-              <h2>
-                Things I've built,
-                analyzed & shaped.
-              </h2>
-
-            </div>
-
+        <div class="section-heading work-heading">
+          <div class="section-kicker">
+            <span class="section-number">01</span>
+            <p class="eyebrow">Selected work</p>
           </div>
 
-
-          <span class="work-count">
-            02 PROJECTS
-          </span>
-
+          <div class="section-title-row">
+            <h2 id="work-title">Things I've built, analyzed & shaped.</h2>
+            <span class="project-count">02 PROJECTS</span>
+          </div>
         </div>
 
-
-
-        <div class="work-cards">
-
-
-          <!-- =========================================
-               SANAD
-          ========================================= -->
-
-          <a
-            href="projects/sanad/index.html"
-            class="work-card sanad-card reveal"
-            aria-label="View Sanad case study"
-          >
-
-            <div class="sanad-phone">
-
-              <img
-                src="projects/sanad/assets/home.png"
-                alt="Sanad application home screen"
-                loading="eager"
-                decoding="async"
-              >
-
+        <div class="work-grid">
+          <a class="project-card project-card--sanad" href="projects/sanad/index.html" aria-label="View Sanad case study">
+            <div class="project-art project-art--sanad" aria-hidden="true">
+              <div class="sanad-word">SANAD</div>
+              <div class="phone-mockup">
+                <img src="projects/sanad/assets/home.png" alt="" loading="lazy" decoding="async">
+              </div>
             </div>
 
-
-            <div class="work-card-inner">
-
-
-              <div class="work-card-top">
-
-                <span class="work-card-index">
-                  01 / SANAD
-                </span>
-
-
-                <span class="work-card-type">
-                  Product
-                </span>
-
-              </div>
-
-
-              <div class="work-card-bottom">
-
-
-                <div class="work-card-tags">
-
-                  <span>
-                    Mobile App
-                  </span>
-
-                  <span>
-                    Product Design
-                  </span>
-
-                  <span>
-                    React Native
-                  </span>
-
-                </div>
-
-
-                <h3>
-                  SANAD
-                </h3>
-
-
-                <p class="work-card-subtitle">
-                  Keep proof. Stay covered.
-                </p>
-
-
-                <div class="work-card-link">
-
-                  <span>
-                    View case study
-                  </span>
-
-                  <i>
-                    ↗
-                  </i>
-
-                </div>
-
-              </div>
-
+            <div class="project-card-top">
+              <span>01 / SANAD</span>
+              <span class="project-type">Product</span>
             </div>
 
+            <div class="project-card-copy">
+              <div class="project-tags" aria-label="Sanad disciplines">
+                <span>Mobile product</span>
+                <span>Product design</span>
+                <span>React Native</span>
+              </div>
+
+              <h3>Sanad</h3>
+              <p>A local-first product that turns receipts into structured warranty records.</p>
+
+              <div class="project-link-line">
+                <span>View case study</span>
+                <span aria-hidden="true">↗</span>
+              </div>
+            </div>
           </a>
 
-
-
-          <!-- =========================================
-               MITHAQ
-          ========================================= -->
-
-          <a
-            href="projects/mithaq/index.html"
-            class="work-card mithaq-card reveal"
-            aria-label="View Mithaq case study"
-          >
-
-            <span
-              class="mithaq-glow"
-              aria-hidden="true"
-            ></span>
-
-
-            <div
-              class="mithaq-stage"
-              aria-hidden="true"
-            >
-
-
-              <div
-                class="mithaq-shot mithaq-shot-start"
-              >
-
-                <img
-                  src="projects/mithaq/assets/mithaq-hero.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                >
-
+          <a class="project-card project-card--mithaq" href="projects/mithaq/index.html" aria-label="View Mithaq case study">
+            <div class="project-art project-art--mithaq" aria-hidden="true">
+              <div class="mithaq-glow"></div>
+              <div class="mithaq-shot mithaq-shot--one">
+                <img src="projects/mithaq/assets/mithaq-hero.png" alt="" loading="lazy" decoding="async">
               </div>
-
-
-              <div
-                class="mithaq-shot mithaq-shot-result"
-              >
-
-                <img
-                  src="projects/mithaq/assets/mithaq-cover.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                >
-
+              <div class="mithaq-shot mithaq-shot--two">
+                <img src="projects/mithaq/assets/mithaq-cover.png" alt="" loading="lazy" decoding="async">
               </div>
-
-
             </div>
 
-
-            <div class="work-card-inner">
-
-
-              <div class="work-card-top">
-
-                <span class="work-card-index">
-                  02 / MITHAQ
-                </span>
-
-
-                <span class="work-card-type">
-                  Analysis
-                </span>
-
-              </div>
-
-
-              <div class="work-card-bottom">
-
-
-                <div class="work-card-tags">
-
-                  <span>
-                    Business Analysis
-                  </span>
-
-                  <span>
-                    Decision Design
-                  </span>
-
-                </div>
-
-
-                <h3>
-                  MITHAQ
-                </h3>
-
-
-                <p class="work-card-subtitle">
-                  From complexity to clarity.
-                </p>
-
-
-                <div class="work-card-link">
-
-                  <span>
-                    View case study
-                  </span>
-
-                  <i>
-                    ↗
-                  </i>
-
-                </div>
-
-              </div>
-
+            <div class="project-card-top">
+              <span>02 / MITHAQ</span>
+              <span class="project-type">Analysis</span>
             </div>
 
+            <div class="project-card-copy">
+              <div class="project-tags" aria-label="Mithaq disciplines">
+                <span>Business analysis</span>
+                <span>Decision design</span>
+              </div>
+
+              <h3>Mithaq</h3>
+              <p>An interactive case study that turns rules and case context into a traceable decision path.</p>
+
+              <div class="project-link-line">
+                <span>View case study</span>
+                <span aria-hidden="true">↗</span>
+              </div>
+            </div>
           </a>
-
-
         </div>
-
-
-
-        <div
-          class="work-swipe-hint"
-          aria-hidden="true"
-        >
-
-          <span></span>
-
-          <span></span>
-
-          Swipe to explore
-
-        </div>
-
-
       </div>
-
     </section>
 
-
-
-    <!-- =========================================
-         ABOUT
-    ========================================= -->
-
-    <section
-      id="about"
-      class="about-section"
-    >
-
-      <div class="shell about-shell">
-
-
-        <div class="section-heading reveal">
-
-          <p class="section-number">
-            02
-          </p>
-
-
-          <div>
-
-            <p class="eyebrow">
-              ABOUT
-            </p>
-
-
-            <h2>
-              I like turning ambiguity
-              into something people can use.
-            </h2>
-
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">
+            <span class="section-number">02</span>
+            <p class="eyebrow">About</p>
           </div>
 
+          <div class="section-title-row">
+            <h2 id="about-title">I like working where the problem is still messy.</h2>
+          </div>
         </div>
-
-
 
         <div class="about-grid">
-
-
-          <div class="about-copy reveal">
-
+          <div class="about-copy">
             <p>
-              I'm a Computer Information Systems graduate based
-              in Riyadh, focused on the intersection of business,
-              systems and product.
+              I'm a Computer Information Systems graduate based in Riyadh. My work sits between
+              business, systems and product rather than inside one narrow job title.
             </p>
-
-
             <p>
-              I enjoy understanding a problem, structuring
-              requirements, thinking through the experience
-              and taking an idea far enough to become a
-              working product.
+              I enjoy framing the problem, finding the important constraints, turning them into a
+              clear flow and taking the solution far enough to test with something real.
             </p>
-
           </div>
 
+          <div class="capability-groups">
+            <article class="capability-group">
+              <span>01</span>
+              <div>
+                <h3>Frame</h3>
+                <p>Problem definition · stakeholder needs · requirements · process analysis</p>
+              </div>
+            </article>
 
+            <article class="capability-group">
+              <span>02</span>
+              <div>
+                <h3>Shape</h3>
+                <p>User flows · decision logic · information architecture · UI/UX prototyping</p>
+              </div>
+            </article>
 
-          <div class="capabilities">
-
-
-            <div class="capability reveal">
-
-              <span>
-                01
-              </span>
-
-              Business Analysis
-
-            </div>
-
-
-            <div class="capability reveal">
-
-              <span>
-                02
-              </span>
-
-              Product Thinking
-
-            </div>
-
-
-            <div class="capability reveal">
-
-              <span>
-                03
-              </span>
-
-              Requirements & Process Design
-
-            </div>
-
-
-            <div class="capability reveal">
-
-              <span>
-                04
-              </span>
-
-              UI / UX Prototyping
-
-            </div>
-
-
-            <div class="capability reveal">
-
-              <span>
-                05
-              </span>
-
-              React Native / Expo
-
-            </div>
-
-
-            <div class="capability reveal">
-
-              <span>
-                06
-              </span>
-
-              SQL & Data Modeling
-
-            </div>
-
-
+            <article class="capability-group">
+              <span>03</span>
+              <div>
+                <h3>Build</h3>
+                <p>Functional prototypes · React Native / Expo · SQL · data modeling</p>
+              </div>
+            </article>
           </div>
-
         </div>
-
       </div>
-
     </section>
 
-
-
-    <!-- =========================================
-         CONTACT
-    ========================================= -->
-
-    <section
-      id="contact"
-      class="contact-section"
-    >
-
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="shell contact-shell">
-
-
-        <p class="eyebrow reveal">
-          03 · CONTACT
-        </p>
-
-
-
-        <div class="contact-main">
-
-
-          <div class="contact-title-wrap">
-
-            <h2 class="reveal">
-
-              Let's build
-
-              <br>
-
-              something useful.
-
-            </h2>
-
-          </div>
-
-
-
-          <div class="contact-side reveal">
-
-
-            <p>
-              I'm interested in business analysis,
-              product and technology opportunities.
-              Feel free to reach out.
-            </p>
-
-
-
-            <div class="contact-info">
-
-
-              <button
-                class="copy-contact"
-                type="button"
-                data-copy="o.j.alsadei@gmail.com"
-                aria-label="Copy email address"
-              >
-
-                <span class="copy-contact-text">
-
-                  <span class="contact-info-label">
-                    Email
-                  </span>
-
-                  <span class="contact-info-value">
-                    o.j.alsadei@gmail.com
-                  </span>
-
-                </span>
-
-
-                <span
-                  class="copy-feedback"
-                  aria-live="polite"
-                >
-                  Copy
-                </span>
-
-              </button>
-
-
-
-              <button
-                class="copy-contact"
-                type="button"
-                data-copy="+966532801162"
-                aria-label="Copy phone number"
-              >
-
-                <span class="copy-contact-text">
-
-                  <span class="contact-info-label">
-                    Phone
-                  </span>
-
-                  <span class="contact-info-value">
-                    +966 53 280 1162
-                  </span>
-
-                </span>
-
-
-                <span
-                  class="copy-feedback"
-                  aria-live="polite"
-                >
-                  Copy
-                </span>
-
-              </button>
-
-
-            </div>
-
-
-
-            <div class="contact-socials">
-
-
-              <a
-                href="https://www.linkedin.com/in/osama-alsadei/"
-                target="_blank"
-                rel="noreferrer"
-                class="contact-link"
-              >
-
-                LinkedIn
-
-                <span>
-                  ↗
-                </span>
-
-              </a>
-
-
-
-              <a
-                href="https://github.com/ojalsadei"
-                target="_blank"
-                rel="noreferrer"
-                class="contact-link"
-              >
-
-                GitHub
-
-                <span>
-                  ↗
-                </span>
-
-              </a>
-
-
-            </div>
-
-
-          </div>
-
+        <div class="section-kicker contact-kicker">
+          <span class="section-number">03</span>
+          <p class="eyebrow">Contact</p>
         </div>
 
+        <div class="contact-grid">
+          <h2 id="contact-title">Let's build something useful.</h2>
+
+          <div class="contact-side">
+            <p>
+              If the work needs structure, product thinking or a practical prototype,
+              I'd be glad to talk.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-row">
+                <div>
+                  <span class="contact-label">Email</span>
+                  <a class="contact-value" href="mailto:o.j.alsadei@gmail.com">o.j.alsadei@gmail.com</a>
+                </div>
+                <button class="copy-button" type="button" data-copy="o.j.alsadei@gmail.com" aria-label="Copy email address">
+                  Copy
+                </button>
+              </div>
+
+              <div class="contact-row">
+                <div>
+                  <span class="contact-label">Phone</span>
+                  <a class="contact-value" href="tel:+966532801162">+966 53 280 1162</a>
+                </div>
+                <button class="copy-button" type="button" data-copy="+966532801162" aria-label="Copy phone number">
+                  Copy
+                </button>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/osama-alsadei/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/ojalsadei" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
-
   </main>
 
-
-
-  <!-- =========================================
-       FOOTER
-  ========================================= -->
-
   <footer class="footer">
-
     <div class="shell footer-inner">
-
-      <span>
-        © 2026 Osama
-      </span>
-
-
-      <a href="#top">
-        Back to top ↑
-      </a>
-
+      <span>© <span id="year">2026</span> Osama Alsadei</span>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
-
   </footer>
 
-
-
-  <script src="script.js"></script>
-
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <script src="script.js" defer></script>
 </body>
-
 </html>
